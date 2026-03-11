@@ -9,12 +9,14 @@ import {
   Terminal,
   Shield,
   Copy,
-  ExternalLink,
   ChevronDown,
   ChevronUp,
+  Images,
 } from "lucide-react";
 import { Card, CardContent, CardHeader } from "../components/ui/card";
 import { CASE_STUDIES } from "../mock";
+import CodeBlock from "../components/CodeBlock";
+import ScreenshotGallery from "../components/ScreenshotGallery";
 
 const severityColor = (severity) => {
   switch (severity) {
@@ -146,10 +148,22 @@ const CaseStudyDetail = () => {
             ))}
           </div>
 
+          {/* Top-level screenshots (shown before the header analysis) */}
+          {caseStudy.screenshots && caseStudy.screenshots.length > 0 && (
+            <section className="mb-10">
+              <h2 className="text-xl font-bold text-[#f0f4f8] font-mono flex items-center gap-2 mb-4">
+                <Images className="w-5 h-5 text-[#22d3ee]" />
+                Screenshots
+              </h2>
+              <ScreenshotGallery images={caseStudy.screenshots} title="Screenshots" />
+            </section>
+          )}
+
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Main content */}
             <div className="lg:col-span-2 space-y-8">
               {/* Email Headers */}
+              {caseStudy.emailHeaders && caseStudy.emailHeaders.length > 0 && (
               <section>
                 <div className="flex items-center justify-between mb-4">
                   <h2 className="text-xl font-bold text-[#f0f4f8] font-mono flex items-center gap-2">
@@ -219,8 +233,10 @@ const CaseStudyDetail = () => {
                   </div>
                 </div>
               </section>
+              )} {/* end emailHeaders conditional */}
 
               {/* Red Flags */}
+              {caseStudy.redFlags && caseStudy.redFlags.length > 0 && (
               <section>
                 <h2 className="text-xl font-bold text-[#f0f4f8] font-mono flex items-center gap-2 mb-4">
                   <Flag className="w-5 h-5 text-[#fb7185]" />
@@ -246,6 +262,7 @@ const CaseStudyDetail = () => {
                   ))}
                 </div>
               </section>
+              )} {/* end redFlags conditional */}
 
               {/* Analysis Steps */}
               <section>
@@ -279,6 +296,20 @@ const CaseStudyDetail = () => {
                           <p className="text-[#8899aa] text-sm leading-relaxed pt-4 font-mono">
                             {step.content}
                           </p>
+                          {/* Optional code block inside this step */}
+                          {step.codeBlock && (
+                            <CodeBlock
+                              code={step.codeBlock.code}
+                              language={step.codeBlock.language || "text"}
+                              title={step.codeBlock.title}
+                            />
+                          )}
+                          {/* Optional images inside this step */}
+                          {step.images && step.images.length > 0 && (
+                            <div className="mt-4">
+                              <ScreenshotGallery images={step.images} title="" />
+                            </div>
+                          )}
                         </div>
                       )}
                     </div>

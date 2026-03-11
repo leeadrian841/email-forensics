@@ -13,6 +13,7 @@ import {
   Terminal,
   BookOpen,
   ArrowRight,
+  Award,
 } from "lucide-react";
 import { Card, CardContent, CardHeader } from "../components/ui/card";
 import { ANALYST_INFO, CASE_STUDIES } from "../mock";
@@ -107,22 +108,35 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-20">
-            {ANALYST_INFO.stats.map((stat) => (
-              <div
-                key={stat.label}
-                className="px-6 py-5 rounded-xl border border-[#1a2d45] bg-[#0d1526] hover:border-[#22d3ee]/20 transition-colors duration-200"
-              >
-                <div className="text-2xl font-bold text-[#22d3ee] font-mono mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-[#8899aa] text-xs font-mono">
-                  {stat.label}
-                </div>
+          {/* Certifications */}
+          {ANALYST_INFO.certs && ANALYST_INFO.certs.length > 0 && (
+            <div className="mt-20">
+              <div className="flex items-center gap-2 text-[#22d3ee] text-xs font-mono mb-5 uppercase tracking-widest">
+                <Award className="w-3.5 h-3.5" />
+                Certifications
               </div>
-            ))}
-          </div>
+              <div className="flex flex-wrap gap-4">
+                {ANALYST_INFO.certs.map((cert) => (
+                  <div
+                    key={cert.name}
+                    className="flex items-center gap-3 px-5 py-4 rounded-xl border border-[#22d3ee]/20 bg-[#22d3ee]/5 hover:bg-[#22d3ee]/10 transition-colors duration-200"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-[#22d3ee]/10 border border-[#22d3ee]/20 flex items-center justify-center flex-shrink-0">
+                      <Award className="w-4 h-4 text-[#22d3ee]" />
+                    </div>
+                    <div>
+                      <p className="text-[#f0f4f8] font-semibold font-mono text-sm">
+                        {cert.name}
+                      </p>
+                      <p className="text-[#8899aa] font-mono text-xs mt-0.5">
+                        {cert.issuer} &middot; {cert.year}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
