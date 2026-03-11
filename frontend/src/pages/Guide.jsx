@@ -11,10 +11,12 @@ import {
   ChevronDown,
   ChevronUp,
   Shield,
+  ImageIcon,
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 import { Card, CardContent, CardHeader } from "../components/ui/card";
 import { GUIDE_CONTENT } from "../mock";
+import ScreenshotGallery from "../components/ScreenshotGallery";
 
 const forensicValueColor = {
   Critical: "text-[#fb7185] bg-[#fb7185]/10 border-[#fb7185]/20",
@@ -93,23 +95,36 @@ const Guide = () => {
                     )}
                   </button>
                   {expandedHeader === i && (
-                    <div className="border-t border-[#1a2d45] px-5 pb-5 pt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <span className="text-[#4a5568] text-xs font-mono uppercase tracking-wider block mb-2">
-                          Description
-                        </span>
-                        <p className="text-[#8899aa] text-sm font-mono leading-relaxed">
-                          {header.description}
-                        </p>
+                    <div className="border-t border-[#1a2d45] px-5 pb-5 pt-4 space-y-5">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <span className="text-[#4a5568] text-xs font-mono uppercase tracking-wider block mb-2">
+                            Description
+                          </span>
+                          <p className="text-[#8899aa] text-sm font-mono leading-relaxed">
+                            {header.description}
+                          </p>
+                        </div>
+                        <div>
+                          <span className="text-[#4a5568] text-xs font-mono uppercase tracking-wider block mb-2">
+                            What to look for
+                          </span>
+                          <p className="text-[#f0f4f8] text-sm font-mono leading-relaxed">
+                            {header.whatToLook}
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <span className="text-[#4a5568] text-xs font-mono uppercase tracking-wider block mb-2">
-                          What to look for
-                        </span>
-                        <p className="text-[#f0f4f8] text-sm font-mono leading-relaxed">
-                          {header.whatToLook}
-                        </p>
-                      </div>
+                      {header.examples && header.examples.length > 0 && (
+                        <div>
+                          <div className="flex items-center gap-2 mb-3">
+                            <ImageIcon className="w-3.5 h-3.5 text-[#f59e0b]" />
+                            <span className="text-[#f59e0b] text-xs font-mono uppercase tracking-wider">
+                              Examples
+                            </span>
+                          </div>
+                          <ScreenshotGallery images={header.examples} />
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
@@ -193,7 +208,7 @@ const Guide = () => {
                           ))}
                         </ol>
                         {guide.tips && (
-                          <div className="bg-[#060b14] border border-[#1a2d45] rounded-lg p-3">
+                          <div className="bg-[#060b14] border border-[#1a2d45] rounded-lg p-3 mb-5">
                             <span className="text-[#f59e0b] text-xs font-mono font-semibold">
                               Tip:{" "}
                             </span>
@@ -201,6 +216,9 @@ const Guide = () => {
                               {guide.tips}
                             </span>
                           </div>
+                        )}
+                        {guide.screenshots && guide.screenshots.length > 0 && (
+                          <ScreenshotGallery images={guide.screenshots} />
                         )}
                       </CardContent>
                     </Card>
@@ -259,7 +277,7 @@ const Guide = () => {
                           ))}
                         </ol>
                         {guide.tips && (
-                          <div className="bg-[#060b14] border border-[#1a2d45] rounded-lg p-3">
+                          <div className="bg-[#060b14] border border-[#1a2d45] rounded-lg p-3 mb-5">
                             <span className="text-[#f59e0b] text-xs font-mono font-semibold">
                               Tip:{" "}
                             </span>
@@ -267,6 +285,9 @@ const Guide = () => {
                               {guide.tips}
                             </span>
                           </div>
+                        )}
+                        {guide.screenshots && guide.screenshots.length > 0 && (
+                          <ScreenshotGallery images={guide.screenshots} />
                         )}
                       </CardContent>
                     </Card>

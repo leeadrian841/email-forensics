@@ -244,6 +244,19 @@ export const GUIDE_CONTENT = {
   overview:
     "Email headers contain metadata that reveals the true origin, routing path, and authentication status of any email. Learning to read them is one of the most powerful skills in identifying phishing, spam, and spoofed messages.",
 
+  // --------------------------------------------------------------------------
+  // KEY HEADERS
+  // Each header can have an optional `examples` array of screenshots/images.
+  // Examples appear when the header is expanded, showing real-world anomalies.
+  //
+  //   examples: [
+  //     {
+  //       url: "/images/from-header-spoofed.png",   // public URL or local path
+  //       caption: "Notice the display name says 'PayPal' but the address is from a free email provider.",
+  //       alt: "Spoofed From header example",
+  //     },
+  //   ],
+  // --------------------------------------------------------------------------
   keyHeaders: [
     {
       name: "From",
@@ -252,6 +265,7 @@ export const GUIDE_CONTENT = {
       forensicValue: "Low",
       whatToLook:
         "Compare display name vs actual email address. Look for lookalike domains (paypa1 vs paypal).",
+      examples: [],
     },
     {
       name: "Reply-To",
@@ -260,6 +274,7 @@ export const GUIDE_CONTENT = {
       forensicValue: "High",
       whatToLook:
         "Should match the From domain for legitimate email. Mismatch indicates Reply-To manipulation attack.",
+      examples: [],
     },
     {
       name: "Received",
@@ -268,6 +283,7 @@ export const GUIDE_CONTENT = {
       forensicValue: "Critical",
       whatToLook:
         "Read from bottom to top. Check if originating IP matches claimed sender's infrastructure.",
+      examples: [],
     },
     {
       name: "Authentication-Results",
@@ -276,6 +292,7 @@ export const GUIDE_CONTENT = {
       forensicValue: "Critical",
       whatToLook:
         "All three should pass for legitimate email. DMARC fail with SPF/DKIM pass can indicate domain spoofing.",
+      examples: [],
     },
     {
       name: "X-Originating-IP",
@@ -284,6 +301,7 @@ export const GUIDE_CONTENT = {
       forensicValue: "High",
       whatToLook:
         "Look up in threat intelligence databases (VirusTotal, AbuseIPDB). Check geolocation consistency.",
+      examples: [],
     },
     {
       name: "Message-ID",
@@ -291,6 +309,7 @@ export const GUIDE_CONTENT = {
       forensicValue: "Medium",
       whatToLook:
         "Domain portion should match sender's domain. Mismatch suggests third-party sending service.",
+      examples: [],
     },
     {
       name: "X-Mailer",
@@ -298,9 +317,23 @@ export const GUIDE_CONTENT = {
       forensicValue: "Medium",
       whatToLook:
         "PHPMailer, mass mailer scripts suggest bulk/automated sending. Enterprise systems use different signatures.",
+      examples: [],
     },
   ],
 
+  // --------------------------------------------------------------------------
+  // DESKTOP GUIDES
+  // Each guide can have an optional `screenshots` array.
+  // Screenshots appear below the steps to visually show how to access headers.
+  //
+  //   screenshots: [
+  //     {
+  //       url: "/images/gmail-show-original.png",
+  //       caption: "Click the three-dot menu and select 'Show original'.",
+  //       alt: "Gmail Show Original menu option",
+  //     },
+  //   ],
+  // --------------------------------------------------------------------------
   desktopGuides: [
     {
       client: "Gmail (Web Browser)",
@@ -312,6 +345,7 @@ export const GUIDE_CONTENT = {
         "Look for headers starting with 'Received:', 'Authentication-Results:', 'From:', 'Reply-To:'",
       ],
       tips: "Gmail also provides a 'Copy to clipboard' button in the Show Original view. You can paste headers into online tools like MXToolbox Header Analyzer for automated analysis.",
+      screenshots: [],
     },
     {
       client: "Outlook Web App (OWA)",
@@ -323,6 +357,7 @@ export const GUIDE_CONTENT = {
         "Scroll through to find authentication results and routing information",
       ],
       tips: "In Outlook desktop app: double-click to open email, then go to File tab, then Properties, then look in the Internet headers section.",
+      screenshots: [],
     },
     {
       client: "Apple Mail (macOS)",
@@ -334,6 +369,7 @@ export const GUIDE_CONTENT = {
         "The full header block will appear above the email body",
       ],
       tips: "You can also use View > Message > Raw Source (Shift + Cmd + U) to see the complete raw email including headers and encoded body.",
+      screenshots: [],
     },
     {
       client: "Mozilla Thunderbird",
@@ -345,9 +381,14 @@ export const GUIDE_CONTENT = {
         "Use Ctrl+F to search for specific headers like 'Authentication-Results'",
       ],
       tips: "Thunderbird's raw source view is particularly useful — it shows the complete MIME structure including all parts of multipart emails.",
+      screenshots: [],
     },
   ],
 
+  // --------------------------------------------------------------------------
+  // MOBILE GUIDES
+  // Same optional `screenshots` array as desktop guides above.
+  // --------------------------------------------------------------------------
   mobileGuides: [
     {
       client: "Gmail (Android / iOS App)",
@@ -361,6 +402,7 @@ export const GUIDE_CONTENT = {
         "Workaround: Forward the email to yourself and open on desktop",
       ],
       tips: "In a mobile browser (not the app), you may access Gmail's 'Show original' for raw headers on some devices — but results are inconsistent.",
+      screenshots: [],
     },
     {
       client: "Outlook (Android / iOS App)",
@@ -374,6 +416,7 @@ export const GUIDE_CONTENT = {
         "Full forensic headers are NOT available in the mobile app",
       ],
       tips: "Outlook mobile does show the originating server in some cases. For full analysis, use Outlook on desktop or OWA on a desktop browser.",
+      screenshots: [],
     },
     {
       client: "Apple Mail (iPhone / iPad)",
@@ -387,6 +430,7 @@ export const GUIDE_CONTENT = {
         "To analyze headers, forward the email to a desktop email client",
       ],
       tips: "Power users on iOS can use third-party apps that allow pasting forwarded email content for analysis.",
+      screenshots: [],
     },
   ],
 

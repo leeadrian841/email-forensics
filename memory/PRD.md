@@ -16,6 +16,8 @@ Build a frontend-only portfolio website for cybersecurity (email forensics focus
 - `frontend/src/index.jsx` — App entry point
 - `frontend/src/App.jsx` — Router setup (HashRouter)
 - `frontend/src/mock.js` — All content (case studies, guide, personal info)
+- `frontend/src/pages/Guide.jsx` — Guide page with header examples + guide screenshots
+- `frontend/src/components/ScreenshotGallery.jsx` — Reusable image gallery with lightbox
 - `frontend/tailwind.config.cjs` — Tailwind config (CJS for compatibility with TW3)
 - `frontend/postcss.config.cjs` — PostCSS config
 - `.github/workflows/deploy.yml` — GitHub Actions deploy (outputs to `dist/`)
@@ -28,14 +30,37 @@ Build a frontend-only portfolio website for cybersecurity (email forensics focus
 - Emergent branding removed
 - CI/CD: GitHub Actions deploy + Dependabot auto-merge configured
 - Fixed GitHub Actions build failure (removed yarn cache dependency)
-- **Migrated from CRA/CRACO to Vite 7** — removed deprecated react-scripts, @craco/craco, cra-template
-- **Updated all dependencies** to latest compatible versions (React 19.2.4, Radix UI, lucide-react 0.577, etc.)
-- Build output changed from `build/` to `dist/` (Vite convention)
-- Config files use `.cjs` extension for TailwindCSS 3 compatibility with ESM package
+- Migrated from CRA/CRACO to Vite 7
+- Updated all dependencies to latest compatible versions
+- **Added `examples` support to Critical Email Headers** — each header entry in mock.js accepts an optional `examples` array of `{ url, caption, alt }` objects, rendered via ScreenshotGallery when expanded
+- **Added `screenshots` support to How to Access Email Headers** — each desktop/mobile guide entry accepts an optional `screenshots` array, rendered below the steps/tips
+
+## How to Add Content (for Adrian)
+### Header examples (mock.js > keyHeaders)
+```js
+{
+  name: "From",
+  // ... existing fields ...
+  examples: [
+    { url: "/images/from-spoofed.png", caption: "Notice the display name vs actual email address.", alt: "Spoofed From header" },
+  ],
+}
+```
+
+### Guide screenshots (mock.js > desktopGuides / mobileGuides)
+```js
+{
+  client: "Gmail (Web Browser)",
+  // ... existing fields ...
+  screenshots: [
+    { url: "/images/gmail-show-original.png", caption: "Click 'Show original' from the menu.", alt: "Gmail menu" },
+  ],
+}
+```
 
 ## Setup Notes
 - GitHub Pages: Repo Settings > Pages > Source = "GitHub Actions"
 - Allow auto-merge: Repo Settings > General > enable
 
 ## Backlog
-- None. User scope complete. User to populate `mock.js` with real case study content.
+- None. User scope complete. User to populate mock.js with real content and images.
