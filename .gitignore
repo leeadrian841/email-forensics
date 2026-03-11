@@ -31,3 +31,7 @@ memory/
 test_reports/
 test_result.md
 tests/
+-e 
+# Environment files
+*.env
+*.env.*
