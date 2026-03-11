@@ -15,6 +15,10 @@ node_modules/
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+# Always commit lockfiles — required for reproducible CI builds
+!yarn.lock
+!package-lock.json
+!frontend/yarn.lock
 
 # Testing
 /coverage
