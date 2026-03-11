@@ -1,0 +1,85 @@
+# Dependabot Auto-Merge
+# Runs a build test on every Dependabot PR.
+# If the build passes AND the update is patch or minor, it auto-merges.
+# Major version updates are left for manual review.
+#
+# Requires: Allow auto-merge must be enabled in repo Settings → General.
+
+name: Dependabot Auto-Merge
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  # ── Build test ─────────────────────────────────────────────────────────────
+  build-test:
+    name: Build test
+    # Only run on Dependabot-authored PRs
+    if: github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "yarn"
+          cache-dependency-path: frontend/yarn.lock
+
+      - name: Install dependencies
+        working-directory: frontend
+        run: yarn install --frozen-lockfile
+
+      - name: Build
+        working-directory: frontend
+        run: yarn build
+        env:
+          CI: false
+
+  # ── Auto-merge ─────────────────────────────────────────────────────────────
+  auto-merge:
+    name: Auto-merge patch / minor
+    needs: build-test
+    # Only run after a successful build, and only on Dependabot PRs
+    if: github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Fetch Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Auto-merge patch updates
+        if: steps.metadata.outputs.update-type == 'version-update:semver-patch'
+        run: gh pr merge --auto --squash "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Auto-merge minor updates
+        if: steps.metadata.outputs.update-type == 'version-update:semver-minor'
+        run: gh pr merge --auto --squash "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Skip major updates (manual review required)
+        if: steps.metadata.outputs.update-type == 'version-update:semver-major'
+        run: |
+          echo "Major update detected — skipping auto-merge."
+          echo "Please review PR $PR_URL manually before merging."
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}

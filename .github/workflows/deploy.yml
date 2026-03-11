@@ -1,0 +1,78 @@
+# Deploy to GitHub Pages
+# Triggered on every push to main, or manually via workflow_dispatch.
+#
+# SETUP REQUIRED — before this workflow runs you must:
+#   1. Go to your repo → Settings → Pages
+#   2. Under "Build and deployment", set Source to "GitHub Actions"
+#
+# The site will be available at:
+#   https://<your-username>.github.io/<your-repo-name>/
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  # Allow manual trigger from the Actions tab
+  workflow_dispatch:
+
+# Required permissions for the deploy-pages action
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only allow one deployment at a time; cancel in-progress runs on new push
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  # ── Build ──────────────────────────────────────────────────────────────────
+  build:
+    name: Build React app
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "yarn"
+          cache-dependency-path: frontend/yarn.lock
+
+      - name: Install dependencies
+        working-directory: frontend
+        run: yarn install --frozen-lockfile
+
+      - name: Build
+        working-directory: frontend
+        run: yarn build
+        env:
+          # Suppress CI=true treating warnings as errors
+          CI: false
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # The React CRA build output directory
+          path: frontend/build
+
+  # ── Deploy ─────────────────────────────────────────────────────────────────
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

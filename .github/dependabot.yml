@@ -1,0 +1,42 @@
+# Dependabot configuration
+# https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+
+updates:
+  # ── Frontend npm dependencies ─────────────────────────────────────────────
+  - package-ecosystem: "npm"
+    # Path to the package.json relative to the repo root
+    directory: "/frontend"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Singapore"
+    # Limit open PRs to avoid noise
+    open-pull-requests-limit: 10
+    # Group all non-major updates into a single PR per week
+    groups:
+      all-dependencies:
+        update-types:
+          - "minor"
+          - "patch"
+    # Labels applied to all Dependabot PRs
+    labels:
+      - "dependencies"
+      - "automated"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+
+  # ── GitHub Actions ────────────────────────────────────────────────────────
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    labels:
+      - "dependencies"
+      - "github-actions"
+      - "automated"
+    commit-message:
+      prefix: "chore(actions)"
