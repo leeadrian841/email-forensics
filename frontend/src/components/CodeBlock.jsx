@@ -1,3 +1,10 @@
+// -----------------------------------------------------------------------------
+// CodeBlock.jsx — Syntax-highlighted code/text display
+//
+// Used in CaseStudyDetail.jsx to render raw headers, WHOIS output, etc.
+// No content to edit here — content comes from the `codeBlock` field
+// in each analysis step of a case study in mock.js.
+// -----------------------------------------------------------------------------
 import React, { useState } from "react";
 import { Copy, CheckCircle, Terminal } from "lucide-react";
 

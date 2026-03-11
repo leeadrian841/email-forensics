@@ -1,3 +1,12 @@
+// -----------------------------------------------------------------------------
+// CaseStudies.jsx — Case study list page with search & filters
+//
+// Displays all entries from the CASE_STUDIES array in mock.js as cards.
+// Supports filtering by category, severity, and free-text search.
+//
+// Content source: CASE_STUDIES from mock.js
+// To add a new case: add an entry to the CASE_STUDIES array in mock.js.
+// -----------------------------------------------------------------------------
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import {

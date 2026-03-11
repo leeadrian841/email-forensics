@@ -1,3 +1,13 @@
+// -----------------------------------------------------------------------------
+// CaseStudyDetail.jsx — Single case study detail page
+//
+// Renders one investigation in full: screenshots, email headers, red flags,
+// step-by-step forensic analysis (with code blocks and images), recommendations,
+// attack techniques, and IOCs.
+//
+// Content source: CASE_STUDIES from mock.js (matched by URL param :id)
+// To edit: update the matching entry in the CASE_STUDIES array in mock.js.
+// -----------------------------------------------------------------------------
 import React, { useState } from "react";
 import { useParams, NavLink } from "react-router-dom";
 import {

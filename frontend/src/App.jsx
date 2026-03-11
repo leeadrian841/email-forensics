@@ -1,3 +1,10 @@
+// -----------------------------------------------------------------------------
+// App.jsx — Main router setup
+//
+// Defines all page routes using HashRouter (required for GitHub Pages).
+// To add a new page: import the component and add a <Route> below.
+// Navigation links are managed separately in Navbar.jsx and Footer.jsx.
+// -----------------------------------------------------------------------------
 import "./App.css";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";

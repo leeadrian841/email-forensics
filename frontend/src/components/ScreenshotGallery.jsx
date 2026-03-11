@@ -1,3 +1,10 @@
+// -----------------------------------------------------------------------------
+// ScreenshotGallery.jsx — Responsive image grid with click-to-zoom lightbox
+//
+// Used in CaseStudyDetail.jsx, Guide.jsx (header examples & guide screenshots).
+// No content to edit here — images come from `screenshots`, `examples`, or
+// `images` arrays in mock.js. Each entry: { url, caption, alt }.
+// -----------------------------------------------------------------------------
 import React, { useState } from "react";
 import { X, ZoomIn, ChevronLeft, ChevronRight, Image } from "lucide-react";
 

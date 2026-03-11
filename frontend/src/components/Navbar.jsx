@@ -1,3 +1,9 @@
+// -----------------------------------------------------------------------------
+// Navbar.jsx — Top navigation bar
+//
+// To add/remove pages: edit the `navLinks` array below (line ~22).
+// The site brand name "EmailForensics.sh" is hardcoded here — edit if needed.
+// -----------------------------------------------------------------------------
 import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { Shield, Menu, X, Terminal } from "lucide-react";

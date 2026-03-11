@@ -1,3 +1,10 @@
+// -----------------------------------------------------------------------------
+// Footer.jsx — Site footer
+//
+// Contains: brand description, section links, and external tool links.
+// To edit external tool links: update the array starting around line ~58.
+// To edit section links: update the array starting around line ~35.
+// -----------------------------------------------------------------------------
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { Shield, ExternalLink, Terminal } from "lucide-react";

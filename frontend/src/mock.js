@@ -1,6 +1,14 @@
 // =============================================================================
-// MOCK DATA — EmailForensics.sh Portfolio
-// Edit this file to personalise your portfolio content.
+// mock.js — SINGLE SOURCE OF TRUTH FOR ALL WEBSITE CONTENT
+//
+// Edit this file to add, remove, or update content on the portfolio.
+// You should NOT need to touch any other file for content changes.
+//
+// Sections:
+//   ANALYST_INFO   → Home page: name, title, bio, certs, skills
+//   CASE_STUDIES   → Case Studies pages: investigations & forensic analysis
+//   GUIDE_CONTENT  → Identification Guide page: headers, platform guides,
+//                     checklist, tools, and comparison table
 // =============================================================================
 
 // -----------------------------------------------------------------------------

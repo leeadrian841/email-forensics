@@ -1,3 +1,13 @@
+// -----------------------------------------------------------------------------
+// Home.jsx — Landing page
+//
+// Displays: hero section, certifications, featured case studies,
+// "What is Email Forensics?" section, skills, and CTA.
+//
+// Content source: ANALYST_INFO and CASE_STUDIES from mock.js
+// To edit: update ANALYST_INFO (name, bio, certs, skills) and
+//          CASE_STUDIES (featured cases are the first 3 entries) in mock.js.
+// -----------------------------------------------------------------------------
 import React from "react";
 import { NavLink } from "react-router-dom";
 import {

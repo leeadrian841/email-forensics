@@ -1,3 +1,14 @@
+// -----------------------------------------------------------------------------
+// Guide.jsx — Email identification guide page
+//
+// Sections: Critical Email Headers (expandable, with optional example images),
+// How to Access Email Headers (desktop/mobile tabs, with optional screenshots),
+// Desktop vs Mobile comparison table, Phishing Email Checklist, and Tools.
+//
+// Content source: GUIDE_CONTENT from mock.js
+// To edit: update GUIDE_CONTENT in mock.js. Add images via the `examples`
+// field on keyHeaders, or `screenshots` field on desktop/mobile guides.
+// -----------------------------------------------------------------------------
 import React, { useState } from "react";
 import {
   Monitor,
