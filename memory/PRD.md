@@ -6,7 +6,8 @@ Frontend-only portfolio website for cybersecurity (email forensics) for Adrian L
 ## Architecture
 - React 19 + Vite 7 + TailwindCSS 3 + Shadcn UI
 - All content in `frontend/src/mock.js`
-- HashRouter for GitHub Pages compatibility
+- BrowserRouter with clean URLs (SPA redirect via 404.html for GitHub Pages)
+- Base path: `/email-forensics/` in production, `/` in dev
 
 ## Completed
 - Multi-page app: Home, Case Studies, Case Study Detail, Guide
@@ -16,14 +17,17 @@ Frontend-only portfolio website for cybersecurity (email forensics) for Adrian L
 - CI/CD: GitHub Actions + Dependabot
 - Migrated CRA to Vite 7, updated all deps
 - Guide page: `examples` on headers, `screenshots` on guides
-- Repo cleanup: removed unnecessary files, cleaned .gitignore, added README.md
-- Added header comments to all source files
-- Added 5 editable case studies covering different attack types:
-  1. Fake Microsoft 365 Login (Credential Harvesting / Phishing)
-  2. CEO Wire Transfer Request (BEC)
-  3. Fake Package Delivery Notification (Phishing / Malicious Link)
-  4. Fake Invoice with Updated Bank Details (Scam / Invoice Fraud)
-  5. PayPal Account Suspension Notice (Phishing / Account Takeover)
+- Repo cleanup, README.md, header comments on all files
+- 5 editable case studies (Phishing, BEC, Scam)
+- Increased root font size to 18px for large displays
+- Switched HashRouter to BrowserRouter for clean URLs (no /#/)
+- Added public/404.html SPA redirect for GitHub Pages compatibility
+
+## Key Config
+- `vite.config.js`: base is `/email-forensics/` for build, `/` for dev
+- `App.jsx`: BrowserRouter basename from `import.meta.env.BASE_URL`
+- `public/404.html`: Saves path to sessionStorage, redirects to index
+- `index.html`: Restores path from sessionStorage on load
 
 ## Backlog
 None. User to replace placeholder text in mock.js with real investigation findings.

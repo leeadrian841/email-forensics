@@ -25,6 +25,16 @@
         </style>
     </head>
     <body>
+        <!-- GitHub Pages SPA redirect restore: picks up the path saved by 404.html -->
+        <script>
+            (function(){
+                var redir = sessionStorage.getItem('spa-redirect');
+                if (redir) {
+                    sessionStorage.removeItem('spa-redirect');
+                    window.history.replaceState(null, '', redir);
+                }
+            })();
+        </script>
         <noscript>You need to enable JavaScript to run this app.</noscript>
         <div id="root"></div>
         <script type="module" src="/src/index.jsx"></script>
