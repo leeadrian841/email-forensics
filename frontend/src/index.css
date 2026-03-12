@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Base font size — bump from browser default (16px) for readability on larger screens.
+   All Tailwind text classes (text-sm, text-base, etc.) use rem, so everything scales. */
+html {
+    font-size: 18px;
+}
+
 body {
     margin: 0;
     font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
