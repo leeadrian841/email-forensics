@@ -235,7 +235,6 @@ Registrant: REDACTED FOR PRIVACY`,
 
     emailHeaders: [
       // ── Delivery & Routing ──────────────────────────────────────────────────
-      { key: "Delivered-To",           value: "leeadrian841@gmail.com",                                                                                                                                                           flagged: false },
       { key: "Delivered-To",           value: "me@gmail.com",                                                                                                                                                                     flagged: true  }, // duplicate/conflicting recipient — template substitution failure
       { key: "Return-Path",            value: "<qequmwqucakzc@uuenenodiel.melbrotech.co.za>",                                                                                                                                      flagged: true  }, // gibberish address on unrelated .co.za domain
       { key: "Received",               value: "from ecobee.com (dhjh.dhgate.com. [89.252.161.234]) by mx.google.com with ESMTPS id 4fb4d7f45d1cf-65eabb5d536si2391912a12; Sat, 21 Feb 2026 15:04:48 -0800 (PST)",                flagged: true  }, // claimed hostname ecobee.com is falsified — actual PTR resolves to dhgate.com
@@ -248,7 +247,6 @@ Registrant: REDACTED FOR PRIVACY`,
       // ── Sender Identity ─────────────────────────────────────────────────────
       { key: "From",                   value: "Payment-Declined <nooreply@rytfotrwegt.us>",                                                                                                                                        flagged: true  }, // display name and domain unrelated to any cloud service
       { key: "Sender",                 value: "kmdujraaiwisprgafeiarffzeeftwo",                                                                                                                                                    flagged: true  }, // not a valid email address — gibberish string, violates RFC 5322
-      { key: "To",                     value: "leeadrian841@gmail.com",                                                                                                                                                           flagged: false },
   
       // ── Content ─────────────────────────────────────────────────────────────
       { key: "Subject",                value: "leeadrian841, Your Cloud Account has been locked on 02-21-2026. Your photos and videos will be removed!",                                                                          flagged: true  }, // urgency/fear tactic with harvested username as personalisation
@@ -316,7 +314,7 @@ Registrant: REDACTED FOR PRIVACY`,
     {
       step: "2. Routing & Infrastructure Analysis",
       content:
-        "The email passed through three suspicious hops before reaching Gmail. The outermost Received header claims the sending host is ecobee.com (a smart-thermostat brand), but the IP 89.252.161.234 resolves to dhjh.dhgate.com — a completely different company. This hostname was attacker-injected and is meaningless as an authentication signal. The second hop reveals the true infrastructure: Sailthru (njmta-53.sailthru.com), a legitimate bulk marketing ESP, was used to send the email — a platform that has no business relationship with cloud storage billing. A third hop through efianalytics.com adds click/open tracking.",
+        "The email passed through three suspicious hops before reaching my email account. The outermost Received header claims the sending host is ecobee.com (a smart-thermostat brand), but the IP 89.252.161.234 resolves to dhjh.dhgate.com — a completely different company. This hostname was attacker-injected and is meaningless as an authentication signal. The second hop reveals the true infrastructure: Sailthru (njmta-53.sailthru.com), a legitimate bulk marketing ESP, was used to send the email — a platform that has no business relationship with cloud storage billing. A third hop through efianalytics.com adds click/open tracking.",
       codeBlock: {
         language: "text",
         title: "Received Chain (oldest to newest)",
@@ -335,19 +333,17 @@ Registrant: REDACTED FOR PRIVACY`,
       codeBlock: {
         language: "text",
         title: "Phishing URLs extracted from email body",
-        code: `CTA Button:
-https://storage.googleapis.com/whilewait/comessuccess.html
-  #index.php?search=4&d145906&ryzio=802-1938&lm=516037NPUR46646&sd=1&page=17NSznnUsGpVVhl
+        code:
+          `CTA Button:
+            https://storage.googleapis.com/whilewait/comessuccess.html#index.php?search=4&d145906&ryzio=802-1938&lm=516037NPUR46646&sd=1&page=17NSznnUsGpVVhl
 
-Contact Support:
-https://storage.googleapis.com/whilewait/comessuccess.html
-  #index.php?search=4&d145906&gmofc=802-1938&lm=516037KHNX46646&sd=1&page=2LmyDH843MtJnjO
+          Contact Support:
+            https://storage.googleapis.com/whilewait/comessuccess.html#index.php?search=4&d145906&gmofc=802-1938&lm=516037KHNX46646&sd=1&page=2LmyDH843MtJnjO
 
-Account Settings:
-https://storage.googleapis.com/whilewait/comessuccess.html
-  #index.php?search=4&d145906&ajpdp=802-1938&lm=516037LYGD46646&sd=1&page=WsS2EUvgMK7q6nF
+          Account Settings:
+            https://storage.googleapis.com/whilewait/comessuccess.html#index.php?search=4&d145906&ajpdp=802-1938&lm=516037LYGD46646&sd=1&page=WsS2EUvgMK7q6nF
 
-GCS Bucket: whilewait (storage.googleapis.com)`,
+          GCS Bucket: whilewait (storage.googleapis.com)`,
       },
     },
     {
@@ -374,7 +370,7 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
 
     recommendations: [
       "Never click 'Update Payment' or 'Verify Account' links in unsolicited emails — navigate to the service directly via a bookmarked URL.",
-      "Treat any email where SPF passes but DKIM and DMARC are absent as unverified, regardless of the visible From address.",
+      "Treat any email as spam/phishing where SPF passes but DKIM and DMARC are absent as unverified, regardless of the visible From address.",
       "Be suspicious of Google Cloud Storage URLs (storage.googleapis.com) used as landing pages — attackers abuse free GCS buckets specifically because the domain has a high reputation score.",
       "Report the GCS bucket to Google at https://support.google.com/code/contact/cloud_platform_report.",
       "Enable multi-factor authentication on all cloud accounts so stolen credentials alone cannot grant access.",
