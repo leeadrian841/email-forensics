@@ -1,9 +1,10 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
 
 export default defineConfig(({ command }) => ({
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
   // Production build uses /email-forensics/ for GitHub Pages.
   // Dev server uses / so the preview environment works normally.
   // IMPORTANT: Change "email-forensics" if your repo name is different.

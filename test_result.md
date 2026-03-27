@@ -102,7 +102,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-user_problem_statement: "Fix dependency peer warnings: react-day-picker (React 19 + date-fns v4 incompatible), recharts (missing react-is), ESLint plugins (incompatible with ESLint 10)"
+user_problem_statement: "Fix dependency peer warnings and upgrade TailwindCSS v3 to v4"
 
 frontend:
   - task: "Fix react-day-picker peer dependency warnings"
@@ -115,7 +115,7 @@ frontend:
     status_history:
         - working: true
           agent: "main"
-          comment: "Upgraded react-day-picker from 8.10.1 to ^9.6.0 (installed 9.14.0). Updated calendar.jsx component for v9 API (classNames, Chevron component). Resolves both React 19 and date-fns v4 peer dep warnings."
+          comment: "Upgraded react-day-picker from 8.10.1 to ^9.6.0 (installed 9.14.0). Updated calendar.jsx component for v9 API."
 
   - task: "Fix recharts react-is unmet peer dependency"
     implemented: true
@@ -127,7 +127,7 @@ frontend:
     status_history:
         - working: true
           agent: "main"
-          comment: "Added react-is@^19.0.0 as direct dependency. Installed 19.2.4."
+          comment: "Added react-is@^19.0.0 as direct dependency."
 
   - task: "Fix ESLint plugin peer dependency warnings"
     implemented: true
@@ -139,7 +139,19 @@ frontend:
     status_history:
         - working: true
           agent: "main"
-          comment: "Downgraded eslint from 10.1.0 to 9.23.0 to match plugin compatibility (all plugins support up to eslint ^9)."
+          comment: "Downgraded eslint from 10.1.0 to 9.23.0."
+
+  - task: "Upgrade TailwindCSS v3 to v4"
+    implemented: true
+    working: true
+    file: "frontend/package.json, frontend/src/index.css, frontend/vite.config.js, frontend/src/**/*.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "main"
+          comment: "Upgraded tailwindcss from v3.4.17 to v4.2.2. Used official @tailwindcss/upgrade tool. Switched to @tailwindcss/vite plugin. Migrated config from tailwind.config.cjs to CSS @theme. Renamed utilities (shadow-sm→shadow-xs, outline-none→outline-hidden, etc). Added v3 compat styles (border-color, cursor:pointer). All pages visually identical."
 
 metadata:
   created_by: "main_agent"
@@ -149,11 +161,11 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Verify no peer dependency warnings on yarn install"
+    - "Verify TailwindCSS v4 migration visual parity"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
 
 agent_communication:
     - agent: "main"
-      message: "Fixed all 4 peer dependency warnings. Clean yarn install now produces zero warnings."
+      message: "Completed TailwindCSS v3→v4 migration. All pages verified visually identical."

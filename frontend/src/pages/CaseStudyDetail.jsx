@@ -202,11 +202,11 @@ const CaseStudyDetail = () => {
                           header.flagged ? "bg-[#fb7185]/3" : ""
                         }`}
                       >
-                        <div className="w-44 flex-shrink-0 flex items-center gap-2">
+                        <div className="w-44 shrink-0 flex items-center gap-2">
                           {header.flagged ? (
-                            <AlertTriangle className="w-3 h-3 text-[#fb7185] flex-shrink-0" />
+                            <AlertTriangle className="w-3 h-3 text-[#fb7185] shrink-0" />
                           ) : (
-                            <span className="w-3 h-3 flex-shrink-0" />
+                            <span className="w-3 h-3 shrink-0" />
                           )}
                           <span
                             className={`text-xs font-mono font-semibold ${
@@ -263,7 +263,7 @@ const CaseStudyDetail = () => {
                           {rf.flag}
                         </p>
                         <span
-                          className={`flex-shrink-0 text-xs font-mono font-semibold ${flagTextColor[rf.severity] || "text-[#8899aa]"}`}
+                          className={`shrink-0 text-xs font-mono font-semibold ${flagTextColor[rf.severity] || "text-[#8899aa]"}`}
                         >
                           {rf.severity}
                         </span>
@@ -296,9 +296,9 @@ const CaseStudyDetail = () => {
                           {step.step}
                         </span>
                         {expandedAnalysis === i ? (
-                          <ChevronUp className="w-4 h-4 text-[#22d3ee] flex-shrink-0" />
+                          <ChevronUp className="w-4 h-4 text-[#22d3ee] shrink-0" />
                         ) : (
-                          <ChevronDown className="w-4 h-4 text-[#4a5568] flex-shrink-0" />
+                          <ChevronDown className="w-4 h-4 text-[#4a5568] shrink-0" />
                         )}
                       </button>
                       {expandedAnalysis === i && (
@@ -336,7 +336,7 @@ const CaseStudyDetail = () => {
                 <div className="bg-[#0d1526] border border-[#1a2d45] rounded-xl p-5 space-y-3">
                   {caseStudy.recommendations.map((rec, i) => (
                     <div key={i} className="flex items-start gap-3">
-                      <div className="w-5 h-5 rounded-full bg-[#10b981]/10 border border-[#10b981]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <div className="w-5 h-5 rounded-full bg-[#10b981]/10 border border-[#10b981]/20 flex items-center justify-center shrink-0 mt-0.5">
                         <span className="text-[#10b981] text-xs font-mono font-bold">
                           {i + 1}
                         </span>

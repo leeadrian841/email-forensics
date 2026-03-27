@@ -101,7 +101,7 @@ const ScreenshotGallery = ({ images = [], title = "Screenshots" }) => {
       {/* Lightbox */}
       {lightboxIndex !== null && (
         <div
-          className="fixed inset-0 z-[100] bg-[#030712]/95 backdrop-blur-sm flex items-center justify-center p-4"
+          className="fixed inset-0 z-100 bg-[#030712]/95 backdrop-blur-xs flex items-center justify-center p-4"
           onClick={closeLightbox}
           onKeyDown={handleKeyDown}
           tabIndex={0}
@@ -151,7 +151,7 @@ const ScreenshotGallery = ({ images = [], title = "Screenshots" }) => {
               <p className="text-[#8899aa] text-sm font-mono">
                 {images[lightboxIndex].caption || ""}
               </p>
-              <span className="text-[#4a5568] text-xs font-mono flex-shrink-0">
+              <span className="text-[#4a5568] text-xs font-mono shrink-0">
                 {lightboxIndex + 1} / {images.length}
               </span>
             </div>

@@ -88,21 +88,21 @@ const Guide = () => {
                       setExpandedHeader(expandedHeader === i ? null : i)
                     }
                   >
-                    <code className="text-[#22d3ee] font-mono text-sm font-bold w-44 flex-shrink-0">
+                    <code className="text-[#22d3ee] font-mono text-sm font-bold w-44 shrink-0">
                       {header.name}:
                     </code>
                     <span className="text-[#8899aa] text-sm font-mono flex-1 text-left line-clamp-1">
                       {header.description}
                     </span>
                     <span
-                      className={`flex-shrink-0 px-2.5 py-1 rounded-full text-xs font-mono border ${forensicValueColor[header.forensicValue] || forensicValueColor.Low}`}
+                      className={`shrink-0 px-2.5 py-1 rounded-full text-xs font-mono border ${forensicValueColor[header.forensicValue] || forensicValueColor.Low}`}
                     >
                       {header.forensicValue}
                     </span>
                     {expandedHeader === i ? (
-                      <ChevronUp className="w-4 h-4 text-[#22d3ee] flex-shrink-0" />
+                      <ChevronUp className="w-4 h-4 text-[#22d3ee] shrink-0" />
                     ) : (
-                      <ChevronDown className="w-4 h-4 text-[#4a5568] flex-shrink-0" />
+                      <ChevronDown className="w-4 h-4 text-[#4a5568] shrink-0" />
                     )}
                   </button>
                   {expandedHeader === i && (
@@ -178,7 +178,7 @@ const Guide = () => {
 
               <TabsContent value="desktop">
                 <div className="mb-6 bg-[#10b981]/5 border border-[#10b981]/20 rounded-xl p-4 flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-[#10b981] flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-[#10b981] shrink-0 mt-0.5" />
                   <div>
                     <p className="text-[#10b981] font-mono text-sm font-semibold mb-1">
                       Full Header Access Available
@@ -209,7 +209,7 @@ const Guide = () => {
                         <ol className="space-y-2.5 mb-5">
                           {guide.steps.map((step, j) => (
                             <li key={j} className="flex items-start gap-3">
-                              <span className="w-5 h-5 rounded flex items-center justify-center bg-[#22d3ee]/10 border border-[#22d3ee]/20 text-[#22d3ee] text-xs font-mono font-bold flex-shrink-0 mt-0.5">
+                              <span className="w-5 h-5 rounded flex items-center justify-center bg-[#22d3ee]/10 border border-[#22d3ee]/20 text-[#22d3ee] text-xs font-mono font-bold shrink-0 mt-0.5">
                                 {j + 1}
                               </span>
                               <p className="text-[#8899aa] text-sm font-mono leading-relaxed">
@@ -239,7 +239,7 @@ const Guide = () => {
 
               <TabsContent value="mobile">
                 <div className="mb-6 bg-[#fb7185]/5 border border-[#fb7185]/20 rounded-xl p-4 flex items-start gap-3">
-                  <AlertTriangle className="w-5 h-5 text-[#fb7185] flex-shrink-0 mt-0.5" />
+                  <AlertTriangle className="w-5 h-5 text-[#fb7185] shrink-0 mt-0.5" />
                   <div>
                     <p className="text-[#fb7185] font-mono text-sm font-semibold mb-1">
                       Limited Header Access on Mobile
@@ -278,7 +278,7 @@ const Guide = () => {
                         <ol className="space-y-2.5 mb-5">
                           {guide.steps.map((step, j) => (
                             <li key={j} className="flex items-start gap-3">
-                              <span className="w-5 h-5 rounded flex items-center justify-center bg-[#f59e0b]/10 border border-[#f59e0b]/20 text-[#f59e0b] text-xs font-mono font-bold flex-shrink-0 mt-0.5">
+                              <span className="w-5 h-5 rounded flex items-center justify-center bg-[#f59e0b]/10 border border-[#f59e0b]/20 text-[#f59e0b] text-xs font-mono font-bold shrink-0 mt-0.5">
                                 {j + 1}
                               </span>
                               <p className="text-[#8899aa] text-sm font-mono leading-relaxed">
@@ -410,7 +410,7 @@ const Guide = () => {
                   }`}
                 >
                   <div
-                    className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 mt-0.5 transition-colors duration-200 ${
+                    className={`w-5 h-5 rounded border-2 flex items-center justify-center shrink-0 mt-0.5 transition-colors duration-200 ${
                       checklist[i]
                         ? "bg-[#10b981] border-[#10b981]"
                         : "border-[#1a2d45]"
@@ -455,7 +455,7 @@ const Guide = () => {
                   }}
                 />
               </div>
-              <span className="text-[#22d3ee] text-sm font-mono flex-shrink-0">
+              <span className="text-[#22d3ee] text-sm font-mono shrink-0">
                 {checkedCount} / {GUIDE_CONTENT.quickChecklist.length} verified
               </span>
             </div>
@@ -491,7 +491,7 @@ const Guide = () => {
                     <h3 className="text-[#f0f4f8] font-semibold font-mono text-sm group-hover:text-[#22d3ee] transition-colors duration-200">
                       {tool.name}
                     </h3>
-                    <ExternalLink className="w-3.5 h-3.5 text-[#4a5568] group-hover:text-[#22d3ee] flex-shrink-0 mt-0.5 transition-colors duration-200" />
+                    <ExternalLink className="w-3.5 h-3.5 text-[#4a5568] group-hover:text-[#22d3ee] shrink-0 mt-0.5 transition-colors duration-200" />
                   </div>
                   <p className="text-[#8899aa] text-xs font-mono leading-relaxed">
                     {tool.description}

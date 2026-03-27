@@ -131,7 +131,7 @@ const Home = () => {
                     key={cert.name}
                     className="flex items-center gap-3 px-5 py-4 rounded-xl border border-[#22d3ee]/20 bg-[#22d3ee]/5 hover:bg-[#22d3ee]/10 transition-colors duration-200"
                   >
-                    <div className="w-8 h-8 rounded-lg bg-[#22d3ee]/10 border border-[#22d3ee]/20 flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 rounded-lg bg-[#22d3ee]/10 border border-[#22d3ee]/20 flex items-center justify-center shrink-0">
                       <Award className="w-4 h-4 text-[#22d3ee]" />
                     </div>
                     <div>

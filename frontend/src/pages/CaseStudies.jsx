@@ -99,7 +99,7 @@ const CaseStudies = () => {
                 placeholder="Search cases, tags..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 bg-[#0d1526] border border-[#1a2d45] rounded-lg text-[#f0f4f8] placeholder-[#4a5568] text-sm font-mono focus:outline-none focus:border-[#22d3ee]/50 focus:ring-1 focus:ring-[#22d3ee]/20 transition-colors duration-200"
+                className="w-full pl-10 pr-4 py-2.5 bg-[#0d1526] border border-[#1a2d45] rounded-lg text-[#f0f4f8] placeholder-[#4a5568] text-sm font-mono focus:outline-hidden focus:border-[#22d3ee]/50 focus:ring-1 focus:ring-[#22d3ee]/20 transition-colors duration-200"
               />
             </div>
 
