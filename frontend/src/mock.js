@@ -235,22 +235,21 @@ Registrant: REDACTED FOR PRIVACY`,
 
     emailHeaders: [
       // ── Delivery & Routing ──────────────────────────────────────────────────
-      { key: "Delivered-To",           value: "me@gmail.com",                                                                                                                                                                     flagged: true  }, // duplicate/conflicting recipient — template substitution failure
-      { key: "Return-Path",            value: "<qequmwqucakzc@uuenenodiel.melbrotech.co.za>",                                                                                                                                      flagged: true  }, // gibberish address on unrelated .co.za domain
-      { key: "Received",               value: "from ecobee.com (dhjh.dhgate.com. [89.252.161.234]) by mx.google.com with ESMTPS id 4fb4d7f45d1cf-65eabb5d536si2391912a12; Sat, 21 Feb 2026 15:04:48 -0800 (PST)",                flagged: true  }, // claimed hostname ecobee.com is falsified — actual PTR resolves to dhgate.com
-      { key: "Received",               value: "from nj1-madbrick.flt (172.18.20.7) by njmta-53.sailthru.com id h1t7vc1qqbsf for <leeadrian841@gmail.com>; 02-21-2026 (envelope-from <delivery@mx.sailthru.com>)",                flagged: true  }, // bulk marketing ESP (Sailthru) — never used by legitimate cloud billing
-      { key: "Received",               value: "from efianalytics.com (efianalytics.com. 216.244.76.116)",                                                                                                                         flagged: true  }, // third-party analytics tracking hop
-      { key: "X-Received",             value: "by 2002:a17:907:7211:b0:b88:241e:693c with SMTP id a640c23a62f3a-b9081aedf8amr262581966b; Sat, 21 Feb 2026 15:04:48 -0800 (PST)",                                                 flagged: false },
-      { key: "X-Originating-IP",       value: "89.252.161.234",                                                                                                                                                                   flagged: true  }, // resolves to dhgate.com, not the claimed ecobee.com
-      { key: "X-Destination-ID",       value: "1938-516037",                                                                                                                                                                      flagged: false },
+      { key: "Delivered-To", value: "me@gmail.com", flagged: true  }, // duplicate/conflicting recipient — template substitution failure
+      { key: "Return-Path", value: "<qequmwqucakzc@uuenenodiel.melbrotech.co.za>", flagged: true  }, // gibberish address on unrelated .co.za domain
+      { key: "Received", value: "ecobee.com (dhjh.dhgate.com. [89.252.161.234]) by mx.google.com with ESMTPS id 4fb4d7f45d1cf-65eabb5d536si2391912a12; Sat, 21 Feb 2026 15:04:48 -0800 (PST)", flagged: true }, // claimed hostname ecobee.com is falsified — actual PTR resolves to dhgate.com
+      { key: "Received", value: "nj1-madbrick.flt (172.18.20.7) by njmta-53.sailthru.com id h1t7vc1qqbsf for <leeadrian841@gmail.com>; 02-21-2026 (envelope-from <delivery@mx.sailthru.com>)", flagged: true }, // bulk marketing ESP (Sailthru) — never used by legitimate cloud billing
+      { key: "Received", value: "efianalytics.com (216.244.76.116)", flagged: true }, // third-party analytics tracking hop
+      { key: "X-Received", value: "by 2002:a17:907:7211:b0:b88:241e:693c with SMTP id a640c23a62f3a-b9081aedf8amr262581966b; Sat, 21 Feb 2026 15:04:48 -0800 (PST)", flagged: false },
+      { key: "X-Originating-IP", value: "89.252.161.234", flagged: true }, // resolves to dhgate.com, not the claimed ecobee.com
+      { key: "X-Destination-ID", value: "1938-516037", flagged: false },
   
       // ── Sender Identity ─────────────────────────────────────────────────────
-      { key: "From",                   value: "Payment-Declined <nooreply@rytfotrwegt.us>",                                                                                                                                        flagged: true  }, // display name and domain unrelated to any cloud service
-      { key: "Sender",                 value: "kmdujraaiwisprgafeiarffzeeftwo",                                                                                                                                                    flagged: true  }, // not a valid email address — gibberish string, violates RFC 5322
+      { key: "From", value: "Payment-Declined <nooreply@rytfotrwegt.us>", flagged: true  }, // display name and domain unrelated to any cloud service
+      { key: "Sender", value: "kmdujraaiwisprgafeiarffzeeftwo", flagged: true  }, // not a valid email address — gibberish string, violates RFC 5322
   
       // ── Content ─────────────────────────────────────────────────────────────
-      { key: "Subject",                value: "leeadrian841, Your Cloud Account has been locked on 02-21-2026. Your photos and videos will be removed!",                                                                          flagged: true  }, // urgency/fear tactic with harvested username as personalisation
-      { key: "Date",                   value: "02-21-2026",                                                                                                                                                                       flagged: false },
+      { key: "Subject", value: "leeadrian841, Your Cloud Account has been locked on 02-21-2026. Your photos and videos will be removed!", flagged: true }, // urgency/fear tactic with harvested username as personalisation
   
       // ── Authentication ───────────────────────────────────────────────────────
       { key: "Authentication-Results", value: "mx.google.com; spf=pass smtp.mailfrom=qequmwqucakzc@uuenenodiel.melbrotech.co.za; dkim=none; dmarc=none",                                                                         flagged: true  }, // SPF passes only on attacker-owned domain; DKIM and DMARC entirely absent
@@ -259,14 +258,14 @@ Registrant: REDACTED FOR PRIVACY`,
       { key: "ARC-Authentication-Results", value: "i=1; mx.google.com; spf=pass smtp.mailfrom=qequmwqucakzc@uuenenodiel.melbrotech.co.za",                                                                                      flagged: false },
   
       // ── Suspicious / Fabricated Headers ─────────────────────────────────────
-      { key: "X-Google-Sender-Delegation", value: "trusted email",                                                                                                                                                                flagged: true  }, // fabricated — real Google delegation headers contain a domain name, not a freeform phrase
-      { key: "List-Unsubscribe",           value: "<http://ecobee.com/LEAVE=To>",                                                                                                                                                 flagged: true  }, // abuses ecobee.com brand to appear legitimate
+      { key: "X-Google-Sender-Delegation", value: "trusted email", flagged: true }, // fabricated — real Google delegation headers contain a domain name, not a freeform phrase
+      { key: "List-Unsubscribe", value: "<http://ecobee.com/LEAVE=To>", flagged: true }, // abuses ecobee.com brand to appear legitimate
   
       // ── Message Structure ────────────────────────────────────────────────────
-      { key: "Message-ID",             value: "<90556134.02581880.ko4z9.bad1smtpin_added_broken@mx.google.com>",                                                                                                                   flagged: true  }, // "bad1smtpin_added_broken" — Google flagged structural violation on ingress
-      { key: "MIME-Version",           value: "1.0",                                                                                                                                                                              flagged: false },
-      { key: "Content-Type",           value: "multipart/digest; boundary=\"----=_Part_qxRazlRjQOiS_1129434735014.frqkvRcwiCF\"",                                                                                                 flagged: false },
-      { key: "Content-Transfer-Encoding", value: "amazonses",                                                                                                                                                                     flagged: true  }, // not a valid MIME encoding — must be base64, quoted-printable, 7bit, 8bit, or binary
+      { key: "Message-ID", value: "<90556134.02581880.ko4z9.bad1smtpin_added_broken@mx.google.com>", flagged: true }, // "bad1smtpin_added_broken" — Google flagged structural violation on ingress
+      { key: "MIME-Version", value: "1.0", flagged: false },
+      { key: "Content-Type", value: "multipart/digest; boundary=\"----=_Part_qxRazlRjQOiS_1129434735014.frqkvRcwiCF\"", flagged: false },
+      { key: "Content-Transfer-Encoding", value: "amazonses", flagged: true }, // not a valid MIME encoding — must be base64, quoted-printable, 7bit, 8bit, or binary
     ],
 
     redFlags: [
