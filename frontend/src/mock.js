@@ -168,9 +168,9 @@ export const CASE_STUDIES = [
           language: "text",
           title: "Example: WHOIS Output",
           code: `Domain Name: suspicious-domain.com
-Registrar: Namecheap, Inc.
-Creation Date: 2024-12-29
-Registrant: REDACTED FOR PRIVACY`,
+          Registrar: Namecheap, Inc.
+          Creation Date: 2024-12-29
+          Registrant: REDACTED FOR PRIVACY`,
         },
         // Optional: Add images for this specific step.
         // images: [
@@ -252,10 +252,10 @@ Registrant: REDACTED FOR PRIVACY`,
       { key: "Subject", value: "leeadrian841, Your Cloud Account has been locked on 02-21-2026. Your photos and videos will be removed!", flagged: true }, // urgency/fear tactic with harvested username as personalisation
   
       // ── Authentication ───────────────────────────────────────────────────────
-      { key: "Authentication-Results", value: "mx.google.com; spf=pass smtp.mailfrom=qequmwqucakzc@uuenenodiel.melbrotech.co.za; dkim=none; dmarc=none",                                                                         flagged: true  }, // SPF passes only on attacker-owned domain; DKIM and DMARC entirely absent
-      { key: "Received-SPF",           value: "pass (google.com: domain of qequmwqucakzc@uuenenodiel.melbrotech.co.za designates 89.252.161.234 as permitted sender) client-ip=89.252.161.234",                                  flagged: false }, // technically passes but misleading — attacker controls this domain
-      { key: "ARC-Seal",               value: "i=1; a=rsa-sha256; t=1771715088; cv=none; d=google.com; s=arc-20240605",                                                                                                          flagged: false },
-      { key: "ARC-Authentication-Results", value: "i=1; mx.google.com; spf=pass smtp.mailfrom=qequmwqucakzc@uuenenodiel.melbrotech.co.za",                                                                                      flagged: false },
+      { key: "Authentication-Results", value: "mx.google.com; spf=pass smtp.mailfrom=qequmwqucakzc@uuenenodiel.melbrotech.co.za; dkim=none; dmarc=none", flagged: true }, // SPF passes only on attacker-owned domain; DKIM and DMARC entirely absent
+      { key: "Received-SPF", value: "pass (google.com: domain of qequmwqucakzc@uuenenodiel.melbrotech.co.za designates 89.252.161.234 as permitted sender) client-ip=89.252.161.234", flagged: false }, // technically passes but misleading — attacker controls this domain
+      { key: "ARC-Seal", value: "i=1; a=rsa-sha256; t=1771715088; cv=none; d=google.com; s=arc-20240605", flagged: false },
+      { key: "ARC-Authentication-Results", value: "i=1; mx.google.com; spf=pass smtp.mailfrom=qequmwqucakzc@uuenenodiel.melbrotech.co.za", flagged: false },
   
       // ── Suspicious / Fabricated Headers ─────────────────────────────────────
       { key: "X-Google-Sender-Delegation", value: "trusted email", flagged: true }, // fabricated — real Google delegation headers contain a domain name, not a freeform phrase
@@ -303,11 +303,9 @@ Registrant: REDACTED FOR PRIVACY`,
         language: "text",
         title: "Authentication-Results Header",
         code: `Authentication-Results: mx.google.com;
-  spf=pass (google.com: domain of qequmwqucakzc@uuenenodiel.melbrotech.co.za
-            designates 89.252.161.234 as permitted sender)
-            smtp.mailfrom=qequmwqucakzc@uuenenodiel.melbrotech.co.za;
-  dkim=none;
-  dmarc=none`,
+          spf=pass (google.com: domain of qequmwqucakzc@uuenenodiel.melbrotech.co.za designates 89.252.161.234 as permitted sender) smtp.mailfrom=qequmwqucakzc@uuenenodiel.melbrotech.co.za;
+          dkim=none;
+          dmarc=none`,
       },
     },
     {
@@ -318,11 +316,11 @@ Registrant: REDACTED FOR PRIVACY`,
         language: "text",
         title: "Received Chain (oldest to newest)",
         code: `1. from efianalytics.com (216.244.76.116)          ← analytics tracking
-2. from nj1-madbrick.flt (172.18.20.7)
-     by njmta-53.sailthru.com                        ← bulk ESP (Sailthru)
-     envelope-from <delivery@mx.sailthru.com>
-3. from ecobee.com (dhjh.dhgate.com [89.252.161.234])
-     by mx.google.com                                ← falsified hostname`,
+          2. from nj1-madbrick.flt (172.18.20.7)
+            by njmta-53.sailthru.com                        ← bulk ESP (Sailthru)
+            envelope-from <delivery@mx.sailthru.com>
+          3. from ecobee.com (dhjh.dhgate.com [89.252.161.234])
+            by mx.google.com                                ← falsified hostname`,
       },
     },
     {
