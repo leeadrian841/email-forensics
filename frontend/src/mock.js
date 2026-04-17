@@ -446,7 +446,7 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
     { key: "Message-ID", value: "<726578122.17898607.1770971886977.JavaMail.zimbra@rcn.com>", flagged: false },
     { key: "MIME-Version", value: "1.0", flagged: false },
     { key: "Content-Type", value: "multipart/alternative; boundary=\"=_bc2553ec-4435-4d0a-ad64-a6a9cc12e624\"", flagged: false },
-    { key: "Content-Transfer-Encoding", value: "quoted-printable", flagged: false },
+    { key: "Content-Transfer-Encoding", value: "quoted-printable", flagged: true },
     ],
 
     redFlags: [
@@ -530,11 +530,11 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
     ],
 
     iocs: [
-      { type: "Email",   value: "wmcclean@rcn.com" },
-      { type: "IP",      value: "162.243.8.41" },
-      { type: "IP",      value: "129.213.13.252" },
-      { type: "Domain",  value: "rcn.com" },
-      { type: "Name",    value: "CEO (impersonated)" },
+      { type: "Email", value: "wmcclean@rcn.com" },
+      { type: "IP", value: "162.243.8.41" },
+      { type: "IP", value: "129.213.13.252" },
+      { type: "Domain", value: "rcn.com" },
+      { type: "Name", value: "CEO (impersonated)" },
       { type: "Company", value: "My Company (impersonated)" },
     ],
   },
@@ -563,7 +563,7 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
       { key: "Received", value: "from BL6PEPF0001AB54.namprd02.prod.outlook.com by BN6PR17CA0043.outlook.office365.com via Frontend Transport; Tue, 17 Dec 2024 19:24:30 +0000", flagged: false },
       { key: "Received", value: "from BN6PR17CA0043.namprd17.prod.outlook.com by SEYPR04MB6631.apcprd04.prod.outlook.com; Tue, 17 Dec 2024 19:24:32 +0000", flagged: false },
       { key: "X-Sender-IP", value: "23.230.37.82", flagged: true }, // IP of actual sending host (boyerfinancialplanning.com) — not a Hotmail/Microsoft IP
-      { key: "Return-Path", value: "leeadrian841@hotmail.com", flagged: true  }, // spoofed to match recipient's own address — creates illusion of self-send / account compromise
+      { key: "Return-Path", value: "leeadrian841@hotmail.com", flagged: true }, // spoofed to match recipient's own address — creates illusion of self-send / account compromise
   
       // ── Sender Identity ─────────────────────────────────────────────────────
       { key: "From", value: "\"leeadrian841@hotmail.com\" <leeadrian841@hotmail.com>", flagged: true }, // forged — email is not actually from this Hotmail account; SPF failure confirms this
@@ -573,26 +573,26 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
       { key: "X-MS-Exchange-Organization-AuthAs", value: "Anonymous", flagged: true }, // Exchange confirmed the sender is unauthenticated — not a logged-in Hotmail user
   
       // ── Content ─────────────────────────────────────────────────────────────
-      { key: "Subject",         value: "You have been hacked (leeadrian841@hotmail.com)",                                                                                                       flagged: true  }, // fear tactic; recipient's own email in subject to simulate proof of access
-      { key: "Date",            value: "Tue, 17 Dec 2024 11:24:29 -0800",                                                                                                                      flagged: false },
+      { key: "Subject", value: "You have been hacked (leeadrian841@hotmail.com)", flagged: true }, // fear tactic; recipient's own email in subject to simulate proof of access
+      { key: "Date", value: "Tue, 17 Dec 2024 11:24:29 -0800", flagged: false },
   
       // ── Authentication ───────────────────────────────────────────────────────
-      { key: "Authentication-Results", value: "spf=fail (sender IP is 23.230.37.82) smtp.mailfrom=hotmail.com; dkim=none (message not signed) header.d=none; dmarc=fail action=none header.from=hotmail.com", flagged: true  }, // all three fail — definitive proof the From address is forged
-      { key: "Received-SPF",           value: "Fail (protection.outlook.com: domain of hotmail.com does not designate 23.230.37.82 as permitted sender) client-ip=23.230.37.82; helo=boyerfinancialplanning.com", flagged: true  }, // SPF explicitly fails; HELO reveals actual sending domain
-      { key: "X-MS-Exchange-Organization-AuthSource", value: "BL6PEPF0001AB54.namprd02.prod.outlook.com",                                                                                     flagged: false },
+      { key: "Authentication-Results", value: "spf=fail (sender IP is 23.230.37.82) smtp.mailfrom=hotmail.com; dkim=none (message not signed) header.d=none; dmarc=fail action=none header.from=hotmail.com", flagged: true }, // all three fail — definitive proof the From address is forged
+      { key: "Received-SPF", value: "Fail (protection.outlook.com: domain of hotmail.com does not designate 23.230.37.82 as permitted sender) client-ip=23.230.37.82; helo=boyerfinancialplanning.com", flagged: true }, // SPF explicitly fails; HELO reveals actual sending domain
+      { key: "X-MS-Exchange-Organization-AuthSource", value: "BL6PEPF0001AB54.namprd02.prod.outlook.com", flagged: false },
   
       // ── Microsoft Exchange Metadata ──────────────────────────────────────────
-      { key: "X-MS-Exchange-Organization-SCL",         value: "-1",                                                                                                                            flagged: true  }, // SCL -1 means bypassed spam filtering — likely whitelisted or misconfigured; dangerous for a failed-auth message
-      { key: "X-MS-Exchange-AtpMessageProperties",     value: "SA|SL",                                                                                                                        flagged: false },
-      { key: "X-MS-Exchange-Organization-MessageDirectionality", value: "Incoming",                                                                                                           flagged: false },
-      { key: "X-EOPAttributedMessage",                 value: "0",                                                                                                                             flagged: false },
-      { key: "X-MS-UserLastLogonTime",                 value: "12/17/2024 2:41:52 PM",                                                                                                        flagged: false },
+      { key: "X-MS-Exchange-Organization-SCL", value: "-1", flagged: true }, // SCL -1 means bypassed spam filtering — likely whitelisted or misconfigured; dangerous for a failed-auth message
+      { key: "X-MS-Exchange-AtpMessageProperties", value: "SA|SL", flagged: false },
+      { key: "X-MS-Exchange-Organization-MessageDirectionality", value: "Incoming", flagged: false },
+      { key: "X-EOPAttributedMessage", value: "0", flagged: false },
+      { key: "X-MS-UserLastLogonTime", value: "12/17/2024 2:41:52 PM", flagged: false },
   
       // ── Message Structure ────────────────────────────────────────────────────
-      { key: "Message-ID",      value: "<0c6c2c2eda48cf1d3e91e843b7c8d2d8d5f016e8@hotmail.com>",                                                                                               flagged: true  }, // domain matches forged From — not a genuine Hotmail-generated Message-ID
-      { key: "Content-Type",    value: "multipart/alternative; boundary=\"01abb4b29f5b744f6cc634af5ab010b636\"",                                                                               flagged: false },
-      { key: "Content-Transfer-Encoding", value: "quoted-printable",                                                                                                                          flagged: true  }, // used to fragment keywords (e.g. "а" via =D0=B0 Cyrillic) to evade content filters
-      { key: "X-IncomingTopHeaderMarker", value: "OriginalChecksum:B3E22F525890F20166F2AD39C46F52CCD90A23A7BA9727DC9CDA50584B2D40F3; SizeAsReceived:361; Count:7", flagged: true  }, // only 7 headers on arrival — unusually sparse for a legitimate Hotmail message; consistent with a minimal spoofed submission
+      { key: "Message-ID", value: "<0c6c2c2eda48cf1d3e91e843b7c8d2d8d5f016e8@hotmail.com>", flagged: true }, // domain matches forged From — not a genuine Hotmail-generated Message-ID
+      { key: "Content-Type", value: "multipart/alternative; boundary=\"01abb4b29f5b744f6cc634af5ab010b636\"", flagged: false },
+      { key: "Content-Transfer-Encoding", value: "quoted-printable", flagged: true }, // used to fragment keywords (e.g. "а" via =D0=B0 Cyrillic) to evade content filters
+      { key: "X-IncomingTopHeaderMarker", value: "OriginalChecksum:B3E22F525890F20166F2AD39C46F52CCD90A23A7BA9727DC9CDA50584B2D40F3; SizeAsReceived:361; Count:7", flagged: true }, // only 7 headers on arrival — unusually sparse for a legitimate Hotmail message; consistent with a minimal spoofed submission
     ],
 
     redFlags: [
