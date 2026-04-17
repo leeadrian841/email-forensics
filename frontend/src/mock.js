@@ -270,28 +270,28 @@ export const CASE_STUDIES = [
 
     redFlags: [
       // Critical
-      { flag: "Sender domain unrelated to claimed service",        severity: "Critical" },
-      { flag: "Envelope sender is a different unrelated domain",   severity: "Critical" },
+      { flag: "Sender domain unrelated to claimed service", severity: "Critical" },
+      { flag: "Envelope sender is a different unrelated domain", severity: "Critical" },
       { flag: "Received hostname is falsified (ecobee.com spoof)", severity: "Critical" },
-      { flag: "DKIM and DMARC completely absent",                  severity: "Critical" },
-      { flag: "Fabricated X-Google-Sender-Delegation header",      severity: "Critical" },
-      { flag: "Body padded with fake credentials and junk text",   severity: "Critical" },
+      { flag: "DKIM and DMARC completely absent", severity: "Critical" },
+      { flag: "Fabricated X-Google-Sender-Delegation header", severity: "Critical" },
+      { flag: "Body padded with fake credentials and junk text", severity: "Critical" },
   
       // High
-      { flag: "Fear/urgency subject with harvested username",      severity: "High" },
-      { flag: "Routed through bulk marketing ESP (Sailthru)",      severity: "High" },
-      { flag: "List-Unsubscribe abuses ecobee.com domain",         severity: "High" },
-      { flag: "Invalid Sender header (not an email address)",      severity: "High" },
-      { flag: "Phishing page hosted on legitimate GCS bucket",     severity: "High" },
+      { flag: "Fear/urgency subject with harvested username", severity: "High" },
+      { flag: "Routed through bulk marketing ESP (Sailthru)", severity: "High" },
+      { flag: "List-Unsubscribe abuses ecobee.com domain", severity: "High" },
+      { flag: "Invalid Sender header (not an email address)", severity: "High" },
+      { flag: "Phishing page hosted on legitimate GCS bucket", severity: "High" },
   
       // Medium
-      { flag: "Duplicate conflicting Delivered-To headers",        severity: "Medium" },
-      { flag: "Extra analytics hop in routing chain",              severity: "Medium" },
-      { flag: "SPF pass on attacker-owned domain (misleading)",    severity: "Medium" },
+      { flag: "Duplicate conflicting Delivered-To headers", severity: "Medium" },
+      { flag: "Extra analytics hop in routing chain", severity: "Medium" },
+      { flag: "SPF pass on attacker-owned domain (misleading)", severity: "Medium" },
   
       // Low
-      { flag: "Invalid Content-Transfer-Encoding value",           severity: "Low" },
-      { flag: "Message-ID flagged broken by Google on ingress",    severity: "Low" },
+      { flag: "Invalid Content-Transfer-Encoding value", severity: "Low" },
+      { flag: "Message-ID flagged broken by Google on ingress", severity: "Low" },
     ],
 
   analysis: [
@@ -384,29 +384,29 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
     ],
 
     iocs: [
-      { type: "Domain",  value: "rytfotrwegt.us" },
-      { type: "Domain",  value: "uuenenodiel.melbrotech.co.za" },
-      { type: "Domain",  value: "dhjh.dhgate.com" },
-      { type: "Email",   value: "nooreply@rytfotrwegt.us" },
-      { type: "Email",   value: "qequmwqucakzc@uuenenodiel.melbrotech.co.za" },
-      { type: "IP",      value: "89.252.161.234" },
-      { type: "URL",     value: "https://storage.googleapis.com/whilewait/comessuccess.html" },
+      { type: "Domain", value: "rytfotrwegt.us" },
+      { type: "Domain", value: "uuenenodiel.melbrotech.co.za" },
+      { type: "Domain", value: "dhjh.dhgate.com" },
+      { type: "Email", value: "nooreply@rytfotrwegt.us" },
+      { type: "Email", value: "qequmwqucakzc@uuenenodiel.melbrotech.co.za" },
+      { type: "IP", value: "89.252.161.234" },
+      { type: "URL", value: "https://storage.googleapis.com/whilewait/comessuccess.html" },
       { type: "GCS Bucket", value: "whilewait (storage.googleapis.com)" },
-      { type: "ESP",     value: "njmta-53.sailthru.com" },
+      { type: "ESP", value: "njmta-53.sailthru.com" },
     ],
   },
 
   // ── CASE 2: Business Email Compromise ──────────────────────────────────────
   {
-    id: "rfnet-technologies-bec-probe",
-    title: "RFNet Technologies Pte Ltd — BEC Probe",
+    id: "corporate-bec-probe",
+    title: "Corporate BEC Probe",
     subtitle: "Business email compromise reconnaissance via display name spoofing",
     date: "2026-02-13",
     severity: "High",
     category: "Business Email Compromise",
     tags: ["BEC", "Display Name Spoofing", "Social Engineering", "Reconnaissance", "Compromised Account"],
     summary:
-      "A single-line probe email impersonating 'Deric Lee' of RFNet Technologies Pte Ltd was sent from a personal US ISP address (wmcclean@rcn.com) to the recipient. The body contains only 'Are you there?' — a classic BEC opener designed to confirm inbox activity and establish a conversation thread before launching a financial fraud request. Unlike mass phishing, this email passes SPF, DKIM, and DMARC fully, making it significantly harder to detect automatically. A read receipt was silently requested via Disposition-Notification-To to further confirm the address is active. The X-Originating-IP differs from the sending SMTP relay, indicating the message was composed from a separate host — consistent with a compromised or purpose-created account being operated remotely.",
+      "A single-line probe email impersonating my CEO from my company was sent from a personal US ISP address (wmcclean@rcn.com) to the recipient. The body contains only 'Are you there?' — a classic BEC opener designed to confirm inbox activity and establish a conversation thread before launching a financial fraud request. Unlike mass phishing, this email passes SPF, DKIM, and DMARC fully, making it significantly harder to detect automatically. A read receipt was silently requested via Disposition-Notification-To to further confirm the address is active. The X-Originating-IP differs from the sending SMTP relay, indicating the message was composed from a separate host — consistent with a compromised or purpose-created account being operated remotely.",
     verdict: "Suspected BEC / Social Engineering Probe",
     tldr: "One-line 'Are you there?' probe impersonating a Singapore tech company employee, sent from a US ISP personal account. Passes all authentication. Classic BEC first-contact pattern.",
 
@@ -416,7 +416,7 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
 
     emailHeaders: [
     // ── Delivery & Routing ──────────────────────────────────────────────────
-    { key: "Delivered-To", value: "leeadrian841@gmail.com", flagged: false },
+    { key: "Delivered-To", value: "My Personal Email", flagged: false },
     { key: "Return-Path", value: "<wmcclean@rcn.com>", flagged: true }, // personal US ISP address — not a corporate domain for a Singapore tech company
     { key: "Received", value: "from smtp.rcn.com (mail.rcn.syn-alias.com. [129.213.13.252]) by mx.google.com with ESMTPS id d75a77b69052e-506ac337d51si3327421cf; Fri, 13 Feb 2026 00:38:07 -0800 (PST)", flagged: false },
     { key: "X-Received", value: "by 2002:a05:622a:18a9:b0:501:1795:9d52 with SMTP id d75a77b69052e-506a6a4a183mr16728211cf; Fri, 13 Feb 2026 00:38:07 -0800 (PST)", flagged: false },
@@ -424,8 +424,7 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
     { key: "X-Mailer", value: "Zimbra 10.1.16_GA_4850 (ZimbraModernWebClient - FF147 (Windows)/10.1.16_GA_4850)", flagged: false },
 
     // ── Sender Identity ─────────────────────────────────────────────────────
-    { key: "From", value: "Deric Lee <wmcclean@rcn.com>", flagged: true }, // display name "Deric Lee" doesn't match rcn.com personal ISP account — classic display name spoofing to impersonate RFNet Technologies staff
-    { key: "To", value: "leeadrian841 <leeadrian841@gmail.com>", flagged: false },
+    { key: "From", value: "My CEO <wmcclean@rcn.com>", flagged: true }, // display name "My CEO" doesn't match rcn.com personal ISP account — classic display name spoofing to impersonate corporate staff
     { key: "X-Authed-Username", value: "d21jY2xlYW5AcmNuLmNvbQ==", flagged: true }, // base64 decodes to wmcclean@rcn.com — confirms authenticated send; account may be compromised or purpose-created
 
     // ── Content ─────────────────────────────────────────────────────────────
@@ -440,9 +439,7 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
     { key: "ARC-Authentication-Results", value: "i=1; mx.google.com; dkim=pass header.i=@rcn.com; spf=pass smtp.mailfrom=wmcclean@rcn.com; dmarc=pass (p=NONE sp=NONE dis=NONE)", flagged: false },
 
     // ── Suspicious Headers ───────────────────────────────────────────────────
-    { key: "Disposition-Notification-To", value: "Deric Lee <wmcclean@rcn.com>", flagged: true }, // silent read receipt request — used to confirm the inbox is active without the recipient realising
-    { key: "Thread-Index", value: "WYCp+2G6GCPoUdtV+3zSn9x5iM4O2w==", flagged: false },
-    { key: "Thread-Topic", value: "RFNet Technologies Pte Ltd", flagged: false },
+    { key: "Disposition-Notification-To", value: "My CEO <wmcclean@rcn.com>", flagged: true }, // silent read receipt request — used to confirm the inbox is active without the recipient realising
     { key: "X-Vade-Verdict", value: "clean", flagged: true }, // Vade email security marked this clean — illustrates why BEC is effective; passing auth evades automated filters
 
     // ── Message Structure ────────────────────────────────────────────────────
@@ -462,7 +459,7 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
   
       // Medium
       { flag: "All authentication passes — will bypass most automated filters", severity: "Medium" },
-      { flag: "DKIM signed with deprecated rsa-sha1 algorithm", severity: "Medium" },
+      { flag: "DKIM signed with deprecated RSA-SHA1 algorithm", severity: "Medium" },
       { flag: "X-Vade-Verdict marked clean — security tooling failed to flag", severity: "Medium" },
   
       // Low
@@ -510,7 +507,7 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
         codeBlock: {
           language: "text",
           title: "Read receipt header",
-          code: `Disposition-Notification-To: Deric Lee <wmcclean@rcn.com>`,
+          code: `Disposition-Notification-To: CEO <wmcclean@rcn.com>`,
         },
       },
     ],
@@ -519,7 +516,7 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
       "Do not reply to unsolicited 'Are you there?' or 'Is this Adrian?' emails from unknown senders, even if the display name looks familiar.",
       "Always verify the actual email address domain — not just the display name — before engaging with any business contact.",
       "Disable automatic read receipt responses in your email client to prevent silent inbox confirmation.",
-      "Look up the claimed company (RFNet Technologies Pte Ltd) independently and contact them through official channels to verify if this person sent the email.",
+      "Look up the claimed company independently and contact them through official channels to verify if this person sent the email.",
       "Report the originating IP (162.243.8.41) to AbuseIPDB and check it against VirusTotal for prior BEC associations.",
       "If you manage a corporate domain, set your DMARC policy to p=reject (not p=NONE) to prevent display name spoofing of your own domain.",
     ],
@@ -537,8 +534,8 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
       { type: "IP",      value: "162.243.8.41" },
       { type: "IP",      value: "129.213.13.252" },
       { type: "Domain",  value: "rcn.com" },
-      { type: "Name",    value: "Deric Lee (impersonated)" },
-      { type: "Company", value: "RFNet Technologies Pte Ltd (impersonated)" },
+      { type: "Name",    value: "CEO (impersonated)" },
+      { type: "Company", value: "My Company (impersonated)" },
     ],
   },
 
