@@ -471,7 +471,7 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
       {
         step: "1. BEC Pattern Recognition",
         content:
-          "This is not mass phishing — it is a targeted Business Email Compromise probe. The attacker set the display name to 'Deric Lee' and the subject to 'RFNet Technologies Pte Ltd', impersonating a specific individual at a real Singapore-based IT company. The entire body is a single line: 'Hello Adrian, Are you there?' This is a textbook BEC opener: make first contact, establish a thread, confirm the inbox is monitored, then in a follow-up message introduce a financial request (invoice fraud, wire transfer, gift card purchase, or payroll redirect). The absence of any link or attachment is deliberate — there is nothing for a security tool to scan.",
+          "This is not mass phishing — it is a targeted Business Email Compromise probe. The attacker set the display name to 'CEO' and the subject to 'My Company', impersonating a specific individual at a real Singapore-based IT company. The entire body is a single line: 'Hello Adrian, Are you there?' This is a textbook BEC opener: make first contact, establish a thread, confirm the inbox is monitored, then in a follow-up message introduce a financial request (invoice fraud, wire transfer, gift card purchase, or payroll redirect). The absence of any link or attachment is deliberate — there is nothing for a security tool to scan.",
       },
       {
         step: "2. Why Authentication Passing Makes This More Dangerous",
