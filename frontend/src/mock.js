@@ -416,34 +416,34 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
 
     emailHeaders: [
     // ── Delivery & Routing ──────────────────────────────────────────────────
-    { key: "Delivered-To", value: "leeadrian841@gmail.com",                                                                                                                                     flagged: false },
-    { key: "Return-Path", value: "<wmcclean@rcn.com>",                                                                                                                                         flagged: true  }, // personal US ISP address — not a corporate domain for a Singapore tech company
+    { key: "Delivered-To", value: "leeadrian841@gmail.com", flagged: false },
+    { key: "Return-Path", value: "<wmcclean@rcn.com>", flagged: true }, // personal US ISP address — not a corporate domain for a Singapore tech company
     { key: "Received", value: "from smtp.rcn.com (mail.rcn.syn-alias.com. [129.213.13.252]) by mx.google.com with ESMTPS id d75a77b69052e-506ac337d51si3327421cf; Fri, 13 Feb 2026 00:38:07 -0800 (PST)", flagged: false },
-    { key: "X-Received", value: "by 2002:a05:622a:18a9:b0:501:1795:9d52 with SMTP id d75a77b69052e-506a6a4a183mr16728211cf; Fri, 13 Feb 2026 00:38:07 -0800 (PST)",                          flagged: false },
-    { key: "X-Originating-IP", value: "[162.243.8.41]",                                                                                                                                          flagged: true  }, // differs from SMTP relay (129.213.13.252) — email composed from a separate host, consistent with remote account operation
-    { key: "X-Mailer", value: "Zimbra 10.1.16_GA_4850 (ZimbraModernWebClient - FF147 (Windows)/10.1.16_GA_4850)",                                                                          flagged: false },
+    { key: "X-Received", value: "by 2002:a05:622a:18a9:b0:501:1795:9d52 with SMTP id d75a77b69052e-506a6a4a183mr16728211cf; Fri, 13 Feb 2026 00:38:07 -0800 (PST)", flagged: false },
+    { key: "X-Originating-IP", value: "[162.243.8.41]", flagged: true }, // differs from SMTP relay (129.213.13.252) — email composed from a separate host, consistent with remote account operation
+    { key: "X-Mailer", value: "Zimbra 10.1.16_GA_4850 (ZimbraModernWebClient - FF147 (Windows)/10.1.16_GA_4850)", flagged: false },
 
     // ── Sender Identity ─────────────────────────────────────────────────────
-    { key: "From",           value: "Deric Lee <wmcclean@rcn.com>",                                                                                                                               flagged: true  }, // display name "Deric Lee" doesn't match rcn.com personal ISP account — classic display name spoofing to impersonate RFNet Technologies staff
-    { key: "To",             value: "leeadrian841 <leeadrian841@gmail.com>",                                                                                                                      flagged: false },
-    { key: "X-Authed-Username", value: "d21jY2xlYW5AcmNuLmNvbQ==",                                                                                                                              flagged: true  }, // base64 decodes to wmcclean@rcn.com — confirms authenticated send; account may be compromised or purpose-created
+    { key: "From", value: "Deric Lee <wmcclean@rcn.com>", flagged: true }, // display name "Deric Lee" doesn't match rcn.com personal ISP account — classic display name spoofing to impersonate RFNet Technologies staff
+    { key: "To", value: "leeadrian841 <leeadrian841@gmail.com>", flagged: false },
+    { key: "X-Authed-Username", value: "d21jY2xlYW5AcmNuLmNvbQ==", flagged: true }, // base64 decodes to wmcclean@rcn.com — confirms authenticated send; account may be compromised or purpose-created
 
     // ── Content ─────────────────────────────────────────────────────────────
-    { key: "Subject",        value: "RFNet Technologies Pte Ltd",                                                                                                                                 flagged: true  }, // company name used as subject to establish false legitimacy — no context, no ask, pure social engineering opener
-    { key: "Date",           value: "Fri, 13 Feb 2026 03:38:06 -0500 (EST)",                                                                                                                     flagged: false },
+    { key: "Subject", value: "RFNet Technologies Pte Ltd", flagged: true }, // company name used as subject to establish false legitimacy — no context, no ask, pure social engineering opener
+    { key: "Date", value: "Fri, 13 Feb 2026 03:38:06 -0500 (EST)", flagged: false },
 
     // ── Authentication ───────────────────────────────────────────────────────
     { key: "Authentication-Results", value: "mx.google.com; dkim=pass header.i=@rcn.com header.s=20180516; spf=pass smtp.mailfrom=wmcclean@rcn.com; dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=rcn.com", flagged: false }, // all three pass — dangerous because automated filters will not flag this
-    { key: "Received-SPF",           value: "pass (google.com: domain of wmcclean@rcn.com designates 129.213.13.252 as permitted sender) client-ip=129.213.13.252",                              flagged: false },
-    { key: "DKIM-Signature",         value: "v=1; a=rsa-sha1; d=rcn.com; s=20180516; h=From:Subject:Date:To:MIME-Version:Content-Type",                                                         flagged: true  }, // uses deprecated rsa-sha1 algorithm (SHA-1 is cryptographically weak); modern senders use rsa-sha256
-    { key: "ARC-Seal",               value: "i=1; a=rsa-sha256; t=1770971887; cv=none; d=google.com; s=arc-20240605",                                                                           flagged: false },
-    { key: "ARC-Authentication-Results", value: "i=1; mx.google.com; dkim=pass header.i=@rcn.com; spf=pass smtp.mailfrom=wmcclean@rcn.com; dmarc=pass (p=NONE sp=NONE dis=NONE)",              flagged: false },
+    { key: "Received-SPF", value: "pass (google.com: domain of wmcclean@rcn.com designates 129.213.13.252 as permitted sender) client-ip=129.213.13.252", flagged: false },
+    { key: "DKIM-Signature", value: "v=1; a=rsa-sha1; d=rcn.com; s=20180516; h=From:Subject:Date:To:MIME-Version:Content-Type", flagged: true }, // uses deprecated rsa-sha1 algorithm (SHA-1 is cryptographically weak); modern senders use rsa-sha256
+    { key: "ARC-Seal", value: "i=1; a=rsa-sha256; t=1770971887; cv=none; d=google.com; s=arc-20240605", flagged: false },
+    { key: "ARC-Authentication-Results", value: "i=1; mx.google.com; dkim=pass header.i=@rcn.com; spf=pass smtp.mailfrom=wmcclean@rcn.com; dmarc=pass (p=NONE sp=NONE dis=NONE)", flagged: false },
 
     // ── Suspicious Headers ───────────────────────────────────────────────────
-    { key: "Disposition-Notification-To", value: "Deric Lee <wmcclean@rcn.com>",                                                                                                                 flagged: true  }, // silent read receipt request — used to confirm the inbox is active without the recipient realising
-    { key: "Thread-Index",               value: "WYCp+2G6GCPoUdtV+3zSn9x5iM4O2w==",                                                                                                            flagged: false },
-    { key: "Thread-Topic",               value: "RFNet Technologies Pte Ltd",                                                                                                                    flagged: false },
-    { key: "X-Vade-Verdict",             value: "clean",                                                                                                                                         flagged: true  }, // Vade email security marked this clean — illustrates why BEC is effective; passing auth evades automated filters
+    { key: "Disposition-Notification-To", value: "Deric Lee <wmcclean@rcn.com>", flagged: true }, // silent read receipt request — used to confirm the inbox is active without the recipient realising
+    { key: "Thread-Index", value: "WYCp+2G6GCPoUdtV+3zSn9x5iM4O2w==", flagged: false },
+    { key: "Thread-Topic", value: "RFNet Technologies Pte Ltd", flagged: false },
+    { key: "X-Vade-Verdict", value: "clean", flagged: true }, // Vade email security marked this clean — illustrates why BEC is effective; passing auth evades automated filters
 
     // ── Message Structure ────────────────────────────────────────────────────
     { key: "Message-ID", value: "<726578122.17898607.1770971886977.JavaMail.zimbra@rcn.com>", flagged: false },
@@ -455,19 +455,19 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
     redFlags: [
       // High
       { flag: "Display name impersonates named individual at a real Singapore company", severity: "High" },
-      { flag: "Sending domain (rcn.com) is a US personal ISP, not a corporate domain",  severity: "High" },
-      { flag: "Single-line probe body ('Are you there?') — classic BEC first-contact",  severity: "High" },
-      { flag: "Silent read receipt requested via Disposition-Notification-To",           severity: "High" },
+      { flag: "Sending domain (rcn.com) is a US personal ISP, not a corporate domain", severity: "High" },
+      { flag: "Single-line probe body ('Are you there?') — classic BEC first-contact", severity: "High" },
+      { flag: "Silent read receipt requested via Disposition-Notification-To", severity: "High" },
       { flag: "X-Originating-IP differs from SMTP relay — composed on a separate host", severity: "High" },
   
       // Medium
-      { flag: "All authentication passes — will bypass most automated filters",         severity: "Medium" },
-      { flag: "DKIM signed with deprecated rsa-sha1 algorithm",                         severity: "Medium" },
-      { flag: "X-Vade-Verdict marked clean — security tooling failed to flag",          severity: "Medium" },
+      { flag: "All authentication passes — will bypass most automated filters", severity: "Medium" },
+      { flag: "DKIM signed with deprecated rsa-sha1 algorithm", severity: "Medium" },
+      { flag: "X-Vade-Verdict marked clean — security tooling failed to flag", severity: "Medium" },
   
       // Low
-      { flag: "No email signature or company branding for a claimed business contact",  severity: "Low" },
-      { flag: "Recipient addressed by first name only — harvested from email prefix",   severity: "Low" },
+      { flag: "No email signature or company branding for a claimed business contact", severity: "Low" },
+      { flag: "Recipient addressed by first name only — harvested from email prefix", severity: "Low" },
     ],
 
     analysis: [
