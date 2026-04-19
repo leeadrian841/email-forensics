@@ -1026,12 +1026,12 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
           language: "text",
           title: "Authentication-Results — all pass legitimately",
           code: `dkim=pass  header.i=@gr-mail5.com         (GetResponse platform DKIM)
-  dkim=pass  header.i=@tradefinancedirect.com (sender domain DKIM — properly configured)
-  spf=pass   smtp.mailfrom=bounce-197450001@bounce.gr-mail5.com
-  dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tradefinancedirect.com
-  
-  Assessment: Authentication signals are useless for detection here.
-              The fraud is entirely in the content and financial claims.`,
+          dkim=pass  header.i=@tradefinancedirect.com (sender domain DKIM — properly configured)
+          spf=pass   smtp.mailfrom=bounce-197450001@bounce.gr-mail5.com
+          dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tradefinancedirect.com
+          
+          Assessment: Authentication signals are useless for detection here.
+                      The fraud is entirely in the content and financial claims.`,
         },
       },
       {
@@ -1043,8 +1043,8 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
           title: "Email harvest date exposed in header",
           code: `Require-Recipient-Valid-Since: leeadrian841@gmail.com; Thu, 19 Jun 2025 23:36:05 +0000
                                                 ↑
-                                Date address was added to GetResponse list
-                                Recipient never subscribed — address was harvested`,
+                              Date address was added to GetResponse list
+                              Recipient never subscribed — address was harvested`,
         },
       },
       {
@@ -1054,19 +1054,20 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
         codeBlock: {
           language: "text",
           title: "Fabricated financial claims extracted from email body",
-          code: `Entry fee:       $400,000 USD per individual spot
-                 OR $50,000 USD per person (pool of 8 clients = $400K combined)
-  
-  Promised returns (individual):
-    20–30 days:   $3,500,000 USD   (7,000% return in under 1 month)
-    10 months:    ~$56,250,000 USD (112,500% total return)
-  
-  Promised returns (full $400K spot):
-    20–30 days:   $28,000,000 USD
-    10 months:    $478,000,000 USD
-  
-  "Issuing Bank": BNP Paribas (logo used — no actual affiliation)
-  "Non-Recourse": No repayment required — framing designed to justify the upfront fee`,
+          code: `Entry fee:
+          $400,000 USD per individual spot
+          OR $50,000 USD per person (pool of 8 clients = $400K combined)
+          
+          Promised returns (individual):
+          20–30 days:   $3,500,000 USD   (7,000% return in under 1 month)
+          10 months:    ~$56,250,000 USD (112,500% total return)
+          
+          Promised returns (full $400K spot):
+          20–30 days:   $28,000,000 USD
+          10 months:    $478,000,000 USD
+          
+          "Issuing Bank": BNP Paribas (logo used — no actual affiliation)
+          "Non-Recourse": No repayment required — framing designed to justify the upfront fee`,
         },
       },
       {
@@ -1077,15 +1078,15 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
           language: "text",
           title: "Operator details extracted from email footer",
           code: `Disclosed operator: Grayku LLC
-  Address:            16192 Coastal Highway, Lewes, DE 19958, USA
+          Address:  16192 Coastal Highway, Lewes, DE 19958, USA
                       ↑ Delaware registered-agent address (not a real office)
-  
-  Domains:
-    tradefinancedirect.com  ← sender/front domain
-    grayku.com              ← image hosting / actual campaign infrastructure
-  
-  ESP account:        GetResponse (Feedback-ID: c=o1may4:u=bvgaev)
-  Regulated?          No — not registered with FCA, SEC, MAS, or any known regulator`,
+          
+          Domains:
+          tradefinancedirect.com  ← sender/front domain
+          grayku.com              ← image hosting / actual campaign infrastructure
+          
+          ESP account:        GetResponse (Feedback-ID: c=o1may4:u=bvgaev)
+          Regulated?          No — not registered with FCA, SEC, MAS, or any known regulator`,
         },
       },
     ],
