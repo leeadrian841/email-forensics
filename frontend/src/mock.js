@@ -953,18 +953,17 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
 
     emailHeaders: [
       // ── Delivery & Routing ──────────────────────────────────────────────────
-      { key: "Return-Path",    value: "<bounce-197450001@bounce.gr-mail5.com>",                                                                                                                                 flagged: false }, // legitimate GetResponse bounce address — consistent with paid ESP use
-      { key: "Received",       value: "from mta-10.theta.gr-mail5.com ([104.160.68.233]) by mx.google.com with ESMTPS id 6a1803df08f44-8b02af0e1f8si16485536d6; Fri, 17 Apr 2026 06:57:56 -0700 (PDT)",        flagged: false }, // legitimate GetResponse MTA
+      { key: "Return-Path", value: "<bounce-197450001@bounce.gr-mail5.com>", flagged: false }, // legitimate GetResponse bounce address — consistent with paid ESP use
+      { key: "Received", value: "from mta-10.theta.gr-mail5.com ([104.160.68.233]) by mx.google.com with ESMTPS id 6a1803df08f44-8b02af0e1f8si16485536d6; Fri, 17 Apr 2026 06:57:56 -0700 (PDT)", flagged: false }, // legitimate GetResponse MTA
   
       // ── Sender Identity ─────────────────────────────────────────────────────
-      { key: "From",           value: "\"Trade Finance Team\" <info@tradefinancedirect.com>",                                                                                                                   flagged: true  }, // domain is a purpose-registered fraudulent finance site, not a regulated institution
-      { key: "Reply-To",       value: "info@tradefinancedirect.com",                                                                                                                                           flagged: false },
-      { key: "To",             value: "leeadrian841@gmail.com",                                                                                                                                                flagged: false },
+      { key: "From", value: "\"Trade Finance Team\" <info@tradefinancedirect.com>", flagged: true  }, // domain is a purpose-registered fraudulent finance site, not a regulated institution
+      { key: "Reply-To", value: "info@tradefinancedirect.com", flagged: false },
   
       // ── Content ─────────────────────────────────────────────────────────────
-      { key: "Subject",        value: "Important Confirmation Needed - Funding Request",                                                                                                                        flagged: true  }, // false urgency — "confirmation needed" implies a prior request the recipient never made
-      { key: "Date",           value: "Fri, 17 Apr 2026 13:07:25 +0000",                                                                                                                                       flagged: false },
-      { key: "Precedence",     value: "bulk",                                                                                                                                                                  flagged: true  }, // self-identified as bulk mail — recipient never opted in
+      { key: "Subject", value: "Important Confirmation Needed - Funding Request", flagged: true  }, // false urgency — "confirmation needed" implies a prior request the recipient never made
+      { key: "Date", value: "Fri, 17 Apr 2026 13:07:25 +0000", flagged: false },
+      { key: "Precedence", value: "bulk", flagged: true  }, // self-identified as bulk mail — recipient never opted in
   
       // ── Authentication ───────────────────────────────────────────────────────
       { key: "Authentication-Results", value: "mx.google.com; dkim=pass header.i=@gr-mail5.com; dkim=pass header.i=@tradefinancedirect.com; spf=pass smtp.mailfrom=bounce-197450001@bounce.gr-mail5.com; dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tradefinancedirect.com", flagged: false }, // all pass — attacker paid for a real domain and real ESP; authentication is not a detection signal here
@@ -973,12 +972,12 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
       { key: "DKIM-Signature", value: "a=rsa-sha256; d=tradefinancedirect.com; s=ac01a113; h=Sender:From:To:Subject:Message-ID:List-Unsubscribe",                                                             flagged: false }, // legitimate sender domain signature — domain was properly configured
   
       // ── ESP & Campaign Metadata ──────────────────────────────────────────────
-      { key: "Feedback-ID",    value: "c=o1may4:u=bvgaev:broadcast:getresponse",                                                                                                                               flagged: false }, // legitimate GetResponse campaign ID
-      { key: "Message-ID",     value: "<getresponse.xserial.s56bGG6SOxSka...@gr-mail5.com>",                                                                                                                   flagged: false }, // legitimate GetResponse Message-ID format
+      { key: "Feedback-ID", value: "c=o1may4:u=bvgaev:broadcast:getresponse", flagged: false }, // legitimate GetResponse campaign ID
+      { key: "Message-ID", value: "<getresponse.xserial.s56bGG6SOxSka...@gr-mail5.com>", flagged: false }, // legitimate GetResponse Message-ID format
       { key: "List-Unsubscribe", value: "<https://app.getresponse.com/one_click_unsubscribe.html?...>, <mailto:listunsubscribe@gr-mail5.com?...>",                                                             flagged: false }, // legitimate GetResponse unsubscribe mechanism
-      { key: "List-Unsubscribe-Post", value: "List-Unsubscribe=One-Click",                                                                                                                                     flagged: false },
-      { key: "X-Complaints-To", value: "abuse@gr-mail5.com",                                                                                                                                                  flagged: false }, // legitimate abuse reporting address for GetResponse
-      { key: "X-CSA-Complaints", value: "csa-complaints@eco.de",                                                                                                                                              flagged: false },
+      { key: "List-Unsubscribe-Post", value: "List-Unsubscribe=One-Click", flagged: false },
+      { key: "X-Complaints-To", value: "abuse@gr-mail5.com", flagged: false }, // legitimate abuse reporting address for GetResponse
+      { key: "X-CSA-Complaints", value: "csa-complaints@eco.de", flagged: false },
   
       // ── Suspicious Headers ───────────────────────────────────────────────────
       { key: "Require-Recipient-Valid-Since", value: "leeadrian841@gmail.com; Thu, 19 Jun 2025 23:36:05 +0000", flagged: true }, // reveals recipient was added to the attacker's GetResponse list on 19 Jun 2025 — without consent; email address was harvested
@@ -1025,13 +1024,13 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
         codeBlock: {
           language: "text",
           title: "Authentication-Results — all pass legitimately",
-          code: `dkim=pass  header.i=@gr-mail5.com         (GetResponse platform DKIM)
-          dkim=pass  header.i=@tradefinancedirect.com (sender domain DKIM — properly configured)
-          spf=pass   smtp.mailfrom=bounce-197450001@bounce.gr-mail5.com
-          dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tradefinancedirect.com
+          code: `dkim=pass  header.i=@gr-mail5.com     (GetResponse platform DKIM)
+dkim=pass  header.i=@tradefinancedirect.com (sender domain DKIM — properly configured)
+spf=pass   smtp.mailfrom=bounce-197450001@bounce.gr-mail5.com
+dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tradefinancedirect.com
           
-          Assessment: Authentication signals are useless for detection here.
-                      The fraud is entirely in the content and financial claims.`,
+Assessment: Authentication signals are useless for detection here.
+            The fraud is entirely in the content and financial claims.`,
         },
       },
       {
@@ -1043,8 +1042,8 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
           title: "Email harvest date exposed in header",
           code: `Require-Recipient-Valid-Since: leeadrian841@gmail.com; Thu, 19 Jun 2025 23:36:05 +0000
                                                 ↑
-                              Date address was added to GetResponse list
-                              Recipient never subscribed — address was harvested`,
+                                Date address was added to GetResponse list
+                                Recipient never subscribed — address was harvested`,
         },
       },
       {
@@ -1055,19 +1054,19 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
           language: "text",
           title: "Fabricated financial claims extracted from email body",
           code: `Entry fee:
-          $400,000 USD per individual spot
-          OR $50,000 USD per person (pool of 8 clients = $400K combined)
+$400,000 USD per individual spot
+OR $50,000 USD per person (pool of 8 clients = $400K combined)
           
-          Promised returns (individual):
-          20–30 days:   $3,500,000 USD   (7,000% return in under 1 month)
-          10 months:    ~$56,250,000 USD (112,500% total return)
+Promised returns (individual):
+20–30 days:   $3,500,000 USD   (7,000% return in under 1 month)
+10 months:    ~$56,250,000 USD (112,500% total return)
           
-          Promised returns (full $400K spot):
-          20–30 days:   $28,000,000 USD
-          10 months:    $478,000,000 USD
+Promised returns (full $400K spot):
+20–30 days:   $28,000,000 USD
+10 months:    $478,000,000 USD
           
-          "Issuing Bank": BNP Paribas (logo used — no actual affiliation)
-          "Non-Recourse": No repayment required — framing designed to justify the upfront fee`,
+"Issuing Bank": BNP Paribas (logo used — no actual affiliation)
+"Non-Recourse": No repayment required — framing designed to justify the upfront fee`,
         },
       },
       {
@@ -1078,15 +1077,15 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
           language: "text",
           title: "Operator details extracted from email footer",
           code: `Disclosed operator: Grayku LLC
-          Address:  16192 Coastal Highway, Lewes, DE 19958, USA
-                      ↑ Delaware registered-agent address (not a real office)
+Address:  16192 Coastal Highway, Lewes, DE 19958, USA
+            ↑ Delaware registered-agent address (not a real office)
           
-          Domains:
-          tradefinancedirect.com  ← sender/front domain
-          grayku.com              ← image hosting / actual campaign infrastructure
+Domains:
+tradefinancedirect.com  ← sender/front domain
+grayku.com              ← image hosting / actual campaign infrastructure
           
-          ESP account:        GetResponse (Feedback-ID: c=o1may4:u=bvgaev)
-          Regulated?          No — not registered with FCA, SEC, MAS, or any known regulator`,
+ESP account:        GetResponse (Feedback-ID: c=o1may4:u=bvgaev)
+Regulated?          No — not registered with FCA, SEC, MAS, or any known regulator`,
         },
       },
     ],
