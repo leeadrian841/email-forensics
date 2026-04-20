@@ -1144,7 +1144,6 @@ Regulated?          No — not registered with FCA, SEC, MAS, or any known regul
   
     emailHeaders: [
       // ── Delivery & Routing ──────────────────────────────────────────────────
-      { key: "Delivered-To",     value: "leeadrian841@gmail.com",                                                                                                                                                flagged: false },
       { key: "Return-Path",      value: "<brs1944@sccoast.net>",                                                                                                                                                 flagged: true  }, // personal South Carolina ISP account — not an IMF or INTERPOL address
       { key: "Received",         value: "from mail.gci.net ([129.80.43.150]) by mx.google.com with ESMTPS id 6a1803df08f44-8a593ee312asi122586996d6; Sat, 04 Apr 2026 15:18:44 -0700 (PDT)",                    flagged: false }, // legitimate sccoast.net / GCI mail relay
       { key: "Received",         value: "from [10.219.153.78] helo=md01.beryl.email-ash1.sync.lan by smtp.beryl.email-ash1.sync.lan (envelope-from <brs1944@sccoast.net>); Sat, 04 Apr 2026 18:18:39 -0400",    flagged: true  }, // routed through Beryl commercial mailing platform (sync.lan) before hitting sccoast.net SMTP
@@ -1152,25 +1151,25 @@ Regulated?          No — not registered with FCA, SEC, MAS, or any known regul
       { key: "X-Mailer",         value: "Zimbra 10.1.16_GA_4850 (ZimbraWebClient - GC146 (Win)/10.1.16_GA_4863)",                                                                                               flagged: true  }, // identical Zimbra version and client type to Case 2 (RFNet BEC probe) — possible shared tooling or same actor
   
       // ── Sender Identity ─────────────────────────────────────────────────────
-      { key: "From",             value: "c <brs1944@sccoast.net>",                                                                                                                                               flagged: true  }, // display name is a single letter "c" — placeholder never populated; South Carolina ISP not affiliated with IMF or INTERPOL
-      { key: "Reply-To",         value: "c <charlesflanagan221@yahoo.com>",                                                                                                                                      flagged: true  }, // Reply-To redirects to a Yahoo account distinct from the sending address — classic misdirection to receive replies on attacker-controlled inbox
-      { key: "To",               value: "(not present — likely BCC or undisclosed recipients)",                                                                                                                  flagged: true  }, // absence of To header suggests mass BCC send to harvested list
-      { key: "X-Vade-Verdict",   value: "clean",                                                                                                                                                                 flagged: true  }, // Vade security marked this clean — same failure as Case 2; all auth passes so automated filters do not flag it
+      { key: "From", value: "c <brs1944@sccoast.net>", flagged: true }, // display name is a single letter "c" — placeholder never populated; South Carolina ISP not affiliated with IMF or INTERPOL
+      { key: "Reply-To", value: "c <charlesflanagan221@yahoo.com>", flagged: true }, // Reply-To redirects to a Yahoo account distinct from the sending address — classic misdirection to receive replies on attacker-controlled inbox
+      { key: "To", value: "(not present — likely BCC or undisclosed recipients)", flagged: true }, // absence of To header suggests mass BCC send to harvested list
+      { key: "X-Vade-Verdict", value: "clean", flagged: true }, // Vade security marked this clean — same failure as Case 2; all auth passes so automated filters do not flag it
   
       // ── Content ─────────────────────────────────────────────────────────────
-      { key: "Subject",          value: "ATTENTION",                                                                                                                                                             flagged: true  }, // single-word all-caps subject — no context; designed to create urgency and curiosity without triggering keyword filters
-      { key: "Date",             value: "Sat, 4 Apr 2026 18:18:39 -0400 (EDT)",                                                                                                                                 flagged: false },
+      { key: "Subject", value: "ATTENTION",                                                                                                                                                             flagged: true  }, // single-word all-caps subject — no context; designed to create urgency and curiosity without triggering keyword filters
+      { key: "Date", value: "Sat, 4 Apr 2026 18:18:39 -0400 (EDT)",                                                                                                                                 flagged: false },
   
       // ── Authentication ───────────────────────────────────────────────────────
       { key: "Authentication-Results", value: "mx.google.com; dkim=pass header.i=@sccoast.net header.s=20180516; spf=pass smtp.mailfrom=brs1944@sccoast.net; dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=sccoast.net", flagged: false }, // all three pass — account is legitimate; authentication cannot detect this fraud
-      { key: "Received-SPF",           value: "pass (google.com: domain of brs1944@sccoast.net designates 129.80.43.150 as permitted sender) client-ip=129.80.43.150",                                         flagged: false },
-      { key: "DKIM-Signature",         value: "v=1; a=rsa-sha256; d=sccoast.net; s=20180516; h=From:Subject:Date:To:MIME-Version:Content-Type",                                                                flagged: false }, // legitimate rsa-sha256 — unlike Cases 4/5 which used deprecated rsa-sha1
+      { key: "Received-SPF", value: "pass (google.com: domain of brs1944@sccoast.net designates 129.80.43.150 as permitted sender) client-ip=129.80.43.150",                                         flagged: false },
+      { key: "DKIM-Signature", value: "v=1; a=rsa-sha256; d=sccoast.net; s=20180516; h=From:Subject:Date:To:MIME-Version:Content-Type",                                                                flagged: false }, // legitimate rsa-sha256 — unlike Cases 4/5 which used deprecated rsa-sha1
   
       // ── Campaign / Platform Metadata ─────────────────────────────────────────
-      { key: "Feedback-ID",      value: "bos:htc:res:beryl",                                                                                                                                                    flagged: true  }, // Beryl commercial mailing platform used to route the send — same pattern as Case 2's use of legitimate relay infrastructure
-      { key: "X-Vade-Client",    value: "BERYL",                                                                                                                                                                 flagged: false },
-      { key: "Thread-Index",     value: "A5C61+tSbJ9IPeN3uREZIV4YbLmBHg==",                                                                                                                                    flagged: false },
-      { key: "Thread-Topic",     value: "ATTENTION",                                                                                                                                                            flagged: false },
+      { key: "Feedback-ID", value: "bos:htc:res:beryl",                                                                                                                                                    flagged: true  }, // Beryl commercial mailing platform used to route the send — same pattern as Case 2's use of legitimate relay infrastructure
+      { key: "X-Vade-Client", value: "BERYL",                                                                                                                                                                 flagged: false },
+      { key: "Thread-Index", value: "A5C61+tSbJ9IPeN3uREZIV4YbLmBHg==",                                                                                                                                    flagged: false },
+      { key: "Thread-Topic", value: "ATTENTION",                                                                                                                                                            flagged: false },
   
       // ── Message Structure ────────────────────────────────────────────────────
       { key: "Message-ID",       value: "<2004971955.123888740.1775341119597.JavaMail.zimbra@sccoast.net>",                                                                                                      flagged: false },
@@ -1298,6 +1297,155 @@ Regulated?          No — not registered with FCA, SEC, MAS, or any known regul
       { type: "Domain",  value: "sccoast.net (South Carolina ISP — account likely compromised)" },
       { type: "Org",     value: "IMF (impersonated — no affiliation)" },
       { type: "Org",     value: "INTERPOL (impersonated — no affiliation)" },
+    ],
+  },
+
+  // ── CASE 7: UN Compensation Fraud ────────────────────────────────────
+  {
+    id: "un-compensation-advance-fee-fraud",
+    title: "Fake UN Compensation — Advance Fee Fraud",
+    subtitle: "Crude 419 fraud impersonating the United Nations via a compromised Argentine ISP account",
+    date: "2026-04-12",
+    severity: "High",
+    category: "Advance Fee Fraud / PII Harvesting",
+    tags: ["419 Fraud", "Advance Fee", "UN Impersonation", "Compromised Account", "PII Harvesting"],
+    summary:
+      "A crude 419-style advance fee fraud sent from a compromised Argentine residential ISP account (omarcapone@fibertel.com.ar) impersonating the United Nations. The email claims the UN has approved $50 million USD in 'compensation' for the recipient being a victim of a prior scam, and directs them to contact a Gmail address or US phone number to claim it — at which point a delivery or processing fee will be demanded. DKIM and SPF both pass for fibertel.com.ar; DMARC is absent. The X-Originating-IP (129.222.206.18) differs from the Fibertel SMTP relay, confirming the account was operated remotely. The subject line is entirely blank, the display name is literally set to the word 'compensation', and the body contains multiple grammar errors — hallmarks of a low-effort, high-volume 419 template. A built-in spam filter deflection ('if you found this in junk, it's because of your internet IP server') is an attempt to suppress the recipient's scepticism. Compared to Case 7 (IMF/INTERPOL fraud), this email uses an older Zimbra version (8.6.0 vs 10.1.16), a South American ISP rather than a US one, and lacks any Reply-To misdirection — suggesting a different, less sophisticated operator.",
+    verdict: "Confirmed 419 Advance Fee Fraud — United Nations Impersonation",
+    tldr: "Fake UN '$50 million compensation' from a compromised Argentine ISP account. Blank subject, display name set to 'compensation', multiple grammar errors. Classic 419 template. Do not contact, do not pay any fee.",
+  
+    screenshots: [
+      // { url: "/images/un-compensation-email.png", caption: "The UN compensation fraud email", alt: "UN fraud email screenshot" },
+    ],
+  
+    emailHeaders: [
+      // ── Delivery & Routing ──────────────────────────────────────────────────
+      { key: "Return-Path",      value: "<omarcapone@fibertel.com.ar>",                                                                                                                                             flagged: true  }, // Argentine residential ISP account — not a UN or bank address
+      { key: "Received",         value: "from smtp.fibertel.com.ar (avasmr03-slo1.fibertel.com.ar. [24.232.0.196]) by mx.google.com with ESMTPS id a92af1059eb24-12c345a133csi26838434c88; Sun, 12 Apr 2026 03:05:04 -0700 (PDT)", flagged: false }, // legitimate Fibertel Argentina SMTP relay
+      { key: "Received",         value: "from vzmbox09-fc.int.fibertel.com.ar ([10.120.162.6]) by vzmta02-fc.int.fibertel.com.ar; Sun, 12 Apr 2026 07:03:36 -0300 (ART)",                                          flagged: false }, // internal Fibertel Zimbra relay chain — consistent with legitimate ISP webmail submission
+      { key: "X-Originating-IP", value: "[129.222.206.18]",                                                                                                                                                        flagged: true  }, // differs from Fibertel relay (24.232.0.196) — email composed from a separate remote host, consistent with compromised account
+  
+      // ── Sender Identity ─────────────────────────────────────────────────────
+      { key: "From", value: "compensation <omarcapone@fibertel.com.ar>",                                                                                                                                flagged: true  }, // display name is literally the word "compensation" — a template field left as-is; Argentine ISP account not affiliated with the UN
+      { key: "To", value: "(absent)",                                                                                                                                                                 flagged: true  }, // no To header present — mass BCC send to harvested list
+      { key: "Subject", value: "(blank)",                                                                                                                                                                  flagged: true  }, // subject line is completely empty — template error or deliberate keyword filter evasion
+      { key: "Thread-Topic", value: "(blank)",                                                                                                                                                                  flagged: true  }, // Thread-Topic also blank — confirms subject was intentionally or carelessly left empty
+      { key: "X-Mailer", value: "Zimbra 8.6.0_GA_1191 (ZimbraWebClient - GC146 (Win)/8.6.0_GA_1191)", flagged: true  }, // significantly older Zimbra version than Cases 2 and 7 (10.1.16) — suggests a different, older compromised account; Zimbra 8.6.0 reached end-of-life in 2018
+  
+      // ── Authentication ───────────────────────────────────────────────────────
+      { key: "Authentication-Results", value: "mx.google.com; dkim=pass header.i=@fibertel.com.ar header.s=mail; spf=pass smtp.mailfrom=omarcapone@fibertel.com.ar",                                               flagged: false }, // DKIM and SPF pass — legitimate ISP account; no DMARC result because fibertel.com.ar has no DMARC record
+      { key: "Received-SPF",           value: "pass (google.com: domain of omarcapone@fibertel.com.ar designates 24.232.0.196 as permitted sender) client-ip=24.232.0.196",                                       flagged: false },
+      { key: "DKIM-Signature",         value: "v=1; a=rsa-sha256; c=relaxed/simple; d=fibertel.com.ar; s=mail; h=content-type:mime-version:subject:message-id:from:date",                                         flagged: false }, // legitimate fibertel.com.ar DKIM — no DMARC alignment possible since fibertel has no DMARC record
+  
+      // ── Message Structure ────────────────────────────────────────────────────
+      { key: "Message-ID", value: "<501530683.70105152.1775988216568.JavaMail.zimbra@fibertel.com.ar>",                                                                                                       flagged: false },
+      { key: "Date", value: "Sun, 12 Apr 2026 07:03:36 -0300 (ART)",                                                                                                                                   flagged: false },
+      { key: "MIME-Version", value: "1.0", flagged: false },
+      { key: "Content-Type", value: "multipart/alternative; boundary=\"----=_Part_70105151_1278397881.1775988216567\"", flagged: false },
+      { key: "Content-Transfer-Encoding", value: "7bit", flagged: false },
+    ],
+  
+    redFlags: [
+      // Critical
+      { flag: "UN impersonation — the United Nations has no programme disbursing $50M to individuals", severity: "Critical" },
+      { flag: "Advance fee hook — a 'processing' or 'delivery' fee will be demanded on contact", severity: "Critical" },
+      { flag: "Redirects to attacker-controlled Gmail and US phone — not any UN contact channel", severity: "Critical" },
+  
+      // High
+      { flag: "Sending account (omarcapone@fibertel.com.ar) is a residential Argentine ISP — no UN affiliation", severity: "High" },
+      { flag: "X-Originating-IP differs from Fibertel relay — account operated remotely from a separate host", severity: "High" },
+      { flag: "Display name set to 'compensation' — template placeholder never populated", severity: "High" },
+      { flag: "Subject line is completely blank — keyword filter evasion or template error", severity: "High" },
+      { flag: "Built-in spam deflection script ('if in junk, it's your IP server') to suppress victim scepticism", severity: "High" },
+  
+      // Medium
+      { flag: "DMARC absent for fibertel.com.ar — no alignment check performed", severity: "Medium" },
+      { flag: "Zimbra 8.6.0 reached end-of-life in 2018 — severely outdated, likely unpatched", severity: "Medium" },
+      { flag: "Multiple grammar errors confirm low-effort mass template ('for been a victim', 'process online bank')", severity: "Medium" },
+      { flag: "No To header — mass BCC send to harvested address list", severity: "Medium" },
+  
+      // Low
+      { flag: "No Reply-To misdirection — less sophisticated than Case 7; replies go to sending account", severity: "Low" },
+      { flag: "Vague 'victim of scam' pretext with no specifics — spray-and-pray template", severity: "Low" },
+    ],
+  
+    analysis: [
+      {
+        step: "1. The UN Compensation Scam Variant",
+        content:
+          "This is a variant of the same 419 advance fee fraud family as Case 7 (IMF/INTERPOL compensation), but significantly cruder in execution. The United Nations is substituted as the authorising body, and the claimed amount is inflated to $50 million — a larger figure than Case 7's $2.5M, which is counterintuitively a weaker lure as it strains credibility further. The pretext ('compensating victims of prior scams') is a common 419 hook that specifically targets people who have already been defrauded once, exploiting both their financial vulnerability and their hope of recovering prior losses. On first contact via the Gmail address or phone, the operator will introduce a fee — 'processing', 'tax clearance', 'bank transfer charges' — typically in the $200–$2,000 range, with additional fees invented as long as the victim keeps paying.",
+      },
+      {
+        step: "2. Operational Sloppiness Compared to Case 7",
+        content:
+          "Where Case 7 (IMF fraud) showed moderate operational care — a populated display name, a subject line, a Reply-To redirect, specific PII requests — this email is markedly less polished. The display name was left as the literal word 'compensation' rather than a person's name. The subject line is entirely blank. There is no Reply-To redirect — replies go directly to the sending ISP account. The body contains grammar errors that would be caught immediately by any native English speaker ('compensate you for been a victim', 'approved our Bank to process online bank with valid cash'). The Zimbra version (8.6.0, released ~2014, EOL 2018) is far older than the 10.1.16 used in Cases 2 and 7, suggesting a less maintained or older compromised account. This is consistent with a lower-tier operator or a more automated, less quality-controlled campaign.",
+        codeBlock: {
+          language: "text",
+          title: "Operational comparison: Case 7 (IMF) vs Case 8 (UN)",
+          code: `Indicator                   Case 7 (IMF Fraud)              Case 8 (UN Fraud)
+  ────────────────────────────────────────────────────────────────────────────
+  Display name                "c" (placeholder — not ideal)   "compensation" (literal word)
+  Subject line                "ATTENTION"                     (blank)
+  Reply-To misdirection       Yes → Yahoo account             No — replies go to sender
+  Grammar quality             Competent                       Multiple errors
+  PII requested               Full name, phone, address       None explicitly — just "contact us"
+  Zimbra version              10.1.16_GA_4850 (2024)          8.6.0_GA_1191 (2014, EOL 2018)
+  Amount claimed              $2,500,000                      $50,000,000
+  Org impersonated            IMF + INTERPOL (two orgs)       "UNITED NATION" (singular, misspelled)
+  Contact channels            Yahoo + Gmail + phone (3)       Gmail + phone (2)`,
+        },
+      },
+      {
+        step: "3. The Spam Filter Deflection Script",
+        content:
+          "The body includes a preemptive script to address spam filter placement: 'Note: if you found this email in your junk/spam, it's because of your internet IP server.' This is a standard 419 template insert with two psychological goals. First, it provides a false technical explanation that sounds plausible to a non-technical reader, preventing them from treating the spam classification as a warning. Second, it creates an in-group dynamic — the email is explaining something to the recipient, positioning the sender as knowledgeable and trustworthy. The explanation is technically meaningless: spam folder placement is determined by the recipient's email provider's filters, not by the recipient's IP address.",
+      },
+      {
+        step: "4. Compromised Argentine ISP Account",
+        content:
+          "The sending account omarcapone@fibertel.com.ar belongs to Fibertel, a major Argentine broadband ISP (now part of Telecom Argentina). DKIM and SPF both pass because the account is a legitimate Fibertel account — either compromised via credential theft or purpose-created by someone with an Argentine connection. The X-Originating-IP (129.222.206.18) differs from the Fibertel relay (24.232.0.196), confirming the Zimbra webmail interface was accessed remotely from a third location — consistent with a fraud operator using a VPN or proxy to operate a compromised account. The internal Fibertel relay chain (four hops through vzmbox, vzmta, avasmr hosts) is entirely normal for their infrastructure and confirms no external relay injection occurred.",
+        codeBlock: {
+          language: "text",
+          title: "Routing chain and IP discrepancy",
+          code: `Composition host:   129.222.206.18           ← where email was typed (remote/VPN)
+  Internal relay 1:   vzmbox09-fc (10.120.162.6) ← Fibertel Zimbra mailbox server
+  Internal relay 2:   vzmta02-fc (201.212.7.85)  ← Fibertel MTA
+  Internal relay 3:   avasmr03-slo1 (127.0.0.1)  ← Fibertel amavisd AV/spam scanner
+  External relay:     24.232.0.196               ← Fibertel outbound SMTP to internet
+  Receipt:            mx.google.com              ← Gmail
+  
+  129.222.206.18 ≠ 24.232.0.196 → account operated from a different host than the ISP`,
+        },
+      },
+    ],
+  
+    recommendations: [
+      "Do not contact charleswscharf593@gmail.com or call +1 (213) 357-2744 — any contact confirms your address is active and will escalate targeting.",
+      "Do not pay any fee described as processing, insurance, tax, clearance, or transfer charge — this is the fraud mechanism itself.",
+      "Report the Gmail contact (charleswscharf593@gmail.com) to Google at support.google.com/mail/answer/8253.",
+      "Report the phone number (+1 213-357-2744) to the FTC at reportfraud.ftc.gov.",
+      "Report the sending account (omarcapone@fibertel.com.ar) to Fibertel/Telecom Argentina abuse at abuse@fibertel.com.ar — the account owner may be unaware it has been compromised.",
+      "If you are in Singapore, file a report with the Singapore Police Force Anti-Scam Command via the I-Witness portal at eservices.police.gov.sg.",
+      "If you have previously lost money to a scam and received this email as a 'recovery compensation' lure, be aware this is a common second-stage targeting of known fraud victims — report both incidents.",
+    ],
+  
+    techniques: [
+      "419 Advance Fee Fraud (UN Compensation Variant)",
+      "United Nations Impersonation",
+      "Compromised / Purpose-Created ISP Account",
+      "Spam Filter Deflection Script",
+      "Fake Urgency ('Get back as soon as possible')",
+      "Prior Victim Re-Targeting ('compensate you for being a victim of scam')",
+      "Mass BCC Send to Harvested List",
+    ],
+  
+    iocs: [
+      { type: "Email", value: "omarcapone@fibertel.com.ar (sending account — likely compromised)" },
+      { type: "Email", value: "charleswscharf593@gmail.com (attacker contact Gmail)" },
+      { type: "Phone", value: "+1 (213) 357-2744 (Los Angeles area code — attacker phone)" },
+      { type: "IP", value: "129.222.206.18 (X-Originating-IP — remote composition host)" },
+      { type: "Domain", value: "fibertel.com.ar (Argentine ISP — account likely compromised)" },
+      { type: "Org", value: "United Nations (impersonated — no affiliation)" },
     ],
   },
 ];
