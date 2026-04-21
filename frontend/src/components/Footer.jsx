@@ -23,7 +23,7 @@ const Footer = () => {
                 <Shield className="w-5 h-5 text-[#22d3ee]" />
               </div>
               <span className="text-[#f0f4f8] font-semibold font-mono">
-                EmailForensics<span className="text-[#22d3ee]">.sh</span>
+                EmailForensics<span className="text-[#22d3ee]">.io</span>
               </span>
             </div>
             <p className="text-[#8899aa] text-sm leading-relaxed">
@@ -71,8 +71,14 @@ const Footer = () => {
                   label: "Google Messageheader Tool",
                   url: "https://toolbox.googleapps.com/apps/messageheader/",
                 },
-                { label: "VirusTotal", url: "https://www.virustotal.com" },
-                { label: "AbuseIPDB", url: "https://www.abuseipdb.com" },
+                {
+                  label: "VirusTotal",
+                  url: "https://www.virustotal.com"
+                },
+                {
+                  label: "AbuseIPDB",
+                  url: "https://www.abuseipdb.com"
+                },
               ].map((resource) => (
                 <li key={resource.label}>
                   <a
@@ -94,7 +100,7 @@ const Footer = () => {
           <div className="flex items-center gap-2 text-[#8899aa] text-xs font-mono">
             <Terminal className="w-3.5 h-3.5 text-[#22d3ee]" />
             <span>
-              &copy; {currentYear} EmailForensics.sh &mdash; Educational &amp;
+              &copy; {currentYear} EmailForensics.io &mdash; Educational &amp;
               Research Portfolio
             </span>
           </div>
