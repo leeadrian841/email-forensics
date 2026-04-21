@@ -4,4 +4,5 @@ A portfolio website focused on email forensics, phishing investigation case stud
 
 ## License
 
+MIT License - feel free to use this project for your own purposes.
 Educational & research portfolio. All case studies are anonymized.
