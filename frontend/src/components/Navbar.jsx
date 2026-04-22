@@ -45,10 +45,10 @@ const Navbar = () => {
               <Shield className="w-5 h-5 text-[#22d3ee]" />
             </div>
             <div>
-              <span className="text-[#22d3ee] font-semibold text-sm font-mono tracking-wide">
+              <span className="text-[#f0f4f8] font-semibold text-sm font-mono tracking-wide">
                 EmailForensics
               </span>
-              {/* <span className="text-[#f0f4f8] font-mono text-sm">.sh</span> */}
+              {/* <span className="text-[#22d3ee] font-mono text-sm">.sh</span> */}
             </div>
           </NavLink>
 
