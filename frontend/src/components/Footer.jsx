@@ -72,12 +72,20 @@ const Footer = () => {
                   url: "https://toolbox.googleapps.com/apps/messageheader/",
                 },
                 {
-                  label: "VirusTotal",
-                  url: "https://www.virustotal.com"
+                  label: "VirusTotal (File/URL Analysis)",
+                  url: "https://www.virustotal.com/gui/home/"
                 },
                 {
                   label: "AbuseIPDB",
                   url: "https://www.abuseipdb.com"
+                },
+                {
+                  label: "Autopsy",
+                  url: "https://www.autopsy.com/"
+                },
+                {
+                  label: "SIFT Workstation",
+                  url: "https://www.sans.org/tools/sift-workstation"
                 },
               ].map((resource) => (
                 <li key={resource.label}>
