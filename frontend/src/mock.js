@@ -302,10 +302,11 @@ export const CASE_STUDIES = [
       codeBlock: {
         language: "text",
         title: "Authentication-Results Header",
-        code: `Authentication-Results: mx.google.com;
-          spf=pass (google.com: domain of qequmwqucakzc@uuenenodiel.melbrotech.co.za designates 89.252.161.234 as permitted sender) smtp.mailfrom=qequmwqucakzc@uuenenodiel.melbrotech.co.za;
-          dkim=none;
-          dmarc=none`,
+        code:
+          `Authentication-Results: mx.google.com;
+spf=pass (google.com: domain of qequmwqucakzc@uuenenodiel.melbrotech.co.za designates 89.252.161.234 as permitted sender) smtp.mailfrom=qequmwqucakzc@uuenenodiel.melbrotech.co.za;
+dkim=none;
+dmarc=none`,
       },
     },
     {
@@ -315,12 +316,13 @@ export const CASE_STUDIES = [
       codeBlock: {
         language: "text",
         title: "Received Chain (oldest to newest)",
-        code: `1. from efianalytics.com (216.244.76.116)          ← analytics tracking
-          2. from nj1-madbrick.flt (172.18.20.7)
-            by njmta-53.sailthru.com                        ← bulk ESP (Sailthru)
-            envelope-from <delivery@mx.sailthru.com>
-          3. from ecobee.com (dhjh.dhgate.com [89.252.161.234])
-            by mx.google.com                                ← falsified hostname`,
+        code:
+          `1.  from efianalytics.com (216.244.76.116)          ← analytics tracking
+2.  from nj1-madbrick.flt (172.18.20.7)
+    by njmta-53.sailthru.com                        ← bulk ESP (Sailthru)
+    envelope-from <delivery@mx.sailthru.com>
+3.  from ecobee.com (dhjh.dhgate.com [89.252.161.234])
+    by mx.google.com                                ← falsified hostname`,
       },
     },
     {
@@ -332,15 +334,15 @@ export const CASE_STUDIES = [
         title: "Phishing URLs extracted from email body",
         code:
           `CTA Button:
-            https://storage.googleapis.com/whilewait/comessuccess.html#index.php?search=4&d145906&ryzio=802-1938&lm=516037NPUR46646&sd=1&page=17NSznnUsGpVVhl
+https://storage.googleapis.com/whilewait/comessuccess.html#index.php?search=4&d145906&ryzio=802-1938&lm=516037NPUR46646&sd=1&page=17NSznnUsGpVVhl
 
-          Contact Support:
-            https://storage.googleapis.com/whilewait/comessuccess.html#index.php?search=4&d145906&gmofc=802-1938&lm=516037KHNX46646&sd=1&page=2LmyDH843MtJnjO
+Contact Support:
+https://storage.googleapis.com/whilewait/comessuccess.html#index.php?search=4&d145906&gmofc=802-1938&lm=516037KHNX46646&sd=1&page=2LmyDH843MtJnjO
 
-          Account Settings:
-            https://storage.googleapis.com/whilewait/comessuccess.html#index.php?search=4&d145906&ajpdp=802-1938&lm=516037LYGD46646&sd=1&page=WsS2EUvgMK7q6nF
+Account Settings:
+https://storage.googleapis.com/whilewait/comessuccess.html#index.php?search=4&d145906&ajpdp=802-1938&lm=516037LYGD46646&sd=1&page=WsS2EUvgMK7q6nF
 
-          GCS Bucket: whilewait (storage.googleapis.com)`,
+GCS Bucket: whilewait (storage.googleapis.com)`,
       },
     },
     {
@@ -480,11 +482,12 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
         codeBlock: {
           language: "text",
           title: "Authentication-Results — all pass",
-          code: `Authentication-Results: mx.google.com;
-            dkim=pass  header.i=@rcn.com header.s=20180516 header.b="Rf1Db9M/";
-            spf=pass   (wmcclean@rcn.com → 129.213.13.252 is permitted sender);
-            dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=rcn.com
-            X-Vade-Verdict: clean   ← security filter saw nothing wrong`,
+          code:
+            `Authentication-Results: mx.google.com;
+dkim=pass  header.i=@rcn.com header.s=20180516 header.b="Rf1Db9M/";
+spf=pass   (wmcclean@rcn.com → 129.213.13.252 is permitted sender);
+dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=rcn.com
+X-Vade-Verdict: clean   ← security filter saw nothing wrong`,
         },
       },
       {
@@ -494,10 +497,11 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
         codeBlock: {
           language: "text",
           title: "IP discrepancy",
-          code: `X-Originating-IP:  [162.243.8.41]        ← where email was composed/submitted
-  SMTP relay:         129.213.13.252        ← rcn.com mail server (legitimate)
-  X-Authed-Username:  d21jY2xlYW5AcmNuLmNvbQ==
-                      → base64 → wmcclean@rcn.com  (authenticated sender)`,
+          code: 
+            `X-Originating-IP:  [162.243.8.41]        ← where email was composed/submitted
+SMTP relay:         129.213.13.252        ← rcn.com mail server (legitimate)
+X-Authed-Username:  d21jY2xlYW5AcmNuLmNvbQ==
+                    → base64 → wmcclean@rcn.com  (authenticated sender)`,
         },
       },
       {
@@ -819,16 +823,17 @@ Threat:  Distribute fabricated/non-existent videos to all contacts`,
         codeBlock: {
           language: "text",
           title: "Fabricated sender identity headers",
-          code: `From:              leeadrian841 <leeadrian841-4393@Xd3nc.sb100014.cozycook.biz.ua>
-  Sender:            leeadrian841@Xd3nc.WVksarv.sb100014.cozycook.biz.ua
-  Return-Path:       <leeadrian841@sb100014.cozycook.biz.ua>
-  X-Original-Sender: <leeadrian841@gmail.com>           ← fabricated
-  X-Google-Sender-Delegation: leeadrian841@gmail.com Trusted Sender  ← fabricated
+          code:
+            `From:              leeadrian841 <leeadrian841-4393@Xd3nc.sb100014.cozycook.biz.ua>
+Sender:            leeadrian841@Xd3nc.WVksarv.sb100014.cozycook.biz.ua
+Return-Path:       <leeadrian841@sb100014.cozycook.biz.ua>
+X-Original-Sender: <leeadrian841@gmail.com>           ← fabricated
+X-Google-Sender-Delegation: leeadrian841@gmail.com Trusted Sender  ← fabricated
   
-  Actual sending infrastructure:
-    SMTP relay:   sb100014.cozycook.biz.ua
-    IP:           89.252.175.150  →  dashboard.freedommobile.ca (Canadian mobile carrier)
-    Origin IP:    217.18.210.147  (separate composition host)`,
+Actual sending infrastructure:
+SMTP relay:   sb100014.cozycook.biz.ua
+IP:           89.252.175.150  →  dashboard.freedommobile.ca (Canadian mobile carrier)
+Origin IP:    217.18.210.147  (separate composition host)`,
         },
       },
       {
@@ -838,11 +843,12 @@ Threat:  Distribute fabricated/non-existent videos to all contacts`,
         codeBlock: {
           language: "text",
           title: "DKIM subdomain mismatch and absence of DMARC",
-          code: `DKIM-Signature: d=Xd3nc.WVksarv.sb100014.cozycook.biz.ua   ← signing domain
-  From:              leeadrian841-4393@Xd3nc.sb100014.cozycook.biz.ua  ← different subdomain
-  DMARC:             (absent — no alignment check performed)
+          code:
+            `DKIM-Signature: d=Xd3nc.WVksarv.sb100014.cozycook.biz.ua   ← signing domain
+From:              leeadrian841-4393@Xd3nc.sb100014.cozycook.biz.ua  ← different subdomain
+DMARC:             (absent — no alignment check performed)
   
-  Result: DKIM pass is technically valid but entirely meaningless for trust.`,
+Result: DKIM pass is technically valid but entirely meaningless for trust.`,
         },
       },
       {
@@ -852,11 +858,11 @@ Threat:  Distribute fabricated/non-existent videos to all contacts`,
         codeBlock: {
           language: "text",
           title: "GCS phishing URL",
-          code: `https://storage.googleapis.com/noonchi/noon.html
-    #?act=cl&pid=3471_md&uid=2&vid=25295&ofid=198&lid=160&cid=533743
-  
-  GCS Bucket: noonchi  (storage.googleapis.com)
-  Tracking params: act, pid, uid, vid, ofid, lid, cid`,
+          code:
+            `https://storage.googleapis.com/noonchi/noon.html#?act=cl&pid=3471_md&uid=2&vid=25295&ofid=198&lid=160&cid=533743
+
+GCS Bucket: noonchi  (storage.googleapis.com)
+Tracking params: act, pid, uid, vid, ofid, lid, cid`,
         },
       },
       {
@@ -867,19 +873,19 @@ Threat:  Distribute fabricated/non-existent videos to all contacts`,
           language: "text",
           title: "Evasion techniques in the HTML body",
           code: `1. Invalid custom HTML tag names (not rendered, confuse parsers):
-     <kxxpurb4dw>...</e3e6cglzk4>  <gijx40pdyq>...</g1gt46hh1k>
-     <gspqr87frp class="TitleMessageTableStyle">...
-  
-  2. Structured junk token blocks (Bayesian poisoning):
-     <kxxpurb4dw>..._____[14_14_Aa]__..._-_..._[14_14_Aa]_...
-     [hundreds of blocks with identical delimiter pattern]
-  
-  3. Scraped voter registration table (legitimacy padding):
-     <gspqr87frp class="TitleMessageTableStyle">Voter Information</...>
-     [empty table rows with GenLabelBold CSS class from a government web app]
-  
-  4. Fabricated Content-Transfer-Encoding:
-     Content-Transfer-Encoding: AAreoGVrkJ  (not a valid MIME encoding)`,
+   <kxxpurb4dw>...</e3e6cglzk4>  <gijx40pdyq>...</g1gt46hh1k>
+   <gspqr87frp class="TitleMessageTableStyle">...
+
+2. Structured junk token blocks (Bayesian poisoning):
+   <kxxpurb4dw>..._____[14_14_Aa]__..._-_..._[14_14_Aa]_...
+   [hundreds of blocks with identical delimiter pattern]
+
+3. Scraped voter registration table (legitimacy padding):
+   <gspqr87frp class="TitleMessageTableStyle">Voter Information</...>
+   [empty table rows with GenLabelBold CSS class from a government web app]
+
+4. Fabricated Content-Transfer-Encoding:
+   Content-Transfer-Encoding: AAreoGVrkJ  (not a valid MIME encoding)`,
         },
       },
       {
@@ -890,12 +896,12 @@ Threat:  Distribute fabricated/non-existent videos to all contacts`,
           language: "text",
           title: "Infrastructure overlap with Case 1",
           code: `Shared indicator               Case 1                    This email
-  ─────────────────────────────────────────────────────────────────
-  efianalytics.com hop           216.244.76.116             216.244.76.116  ✓
-  SMTP IP /16 subnet             89.252.161.234             89.252.175.150  ✓ (same /16)
-  Content-Transfer-Encoding      amazonses (fake)           AAreoGVrkJ (fake) ✓
-  Duplicate Delivered-To         me@gmail.com               me@gmail.com    ✓
-  GCS bucket abuse               whilewait                  noonchi         ✓ (same technique)`,
+─────────────────────────────────────────────────────────────────
+efianalytics.com hop           216.244.76.116             216.244.76.116  ✓
+SMTP IP /16 subnet             89.252.161.234             89.252.175.150  ✓ (same /16)
+Content-Transfer-Encoding      amazonses (fake)           AAreoGVrkJ (fake) ✓
+Duplicate Delivered-To         me@gmail.com               me@gmail.com    ✓
+GCS bucket abuse               whilewait                  noonchi         ✓ (same technique)`,
         },
       },
     ],
