@@ -50,6 +50,7 @@ Each investigation includes: full email header walkthrough, authentication resul
 | 4 | **Failure Notice Camouflage** | Credential Harvesting | 🔴 Critical | Fabricated Google delegation headers + subject/body mismatch |
 | 5 | **SBLC Turnkey Funding** | Advance Fee Fraud | 🟠 High | Legitimate ESP (GetResponse) abused to pass all auth checks |
 | 6 | **IMF/INTERPOL Compensation** | 419 Fraud | 🟡 Medium | Compromised ISP account + Reply-To hijacking |
+| 7 | **UN Compensation** | 419 Fraud | 🟡 Medium | Compromised ISP account + Reply-To hijacking |
 
 ---
 
