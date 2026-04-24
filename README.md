@@ -12,7 +12,7 @@
 [![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)](https://mongodb.com/)
 
 > **A full-stack cybersecurity portfolio built to showcase real-world email threat analysis.**  
-> Six anonymised case studies. Dozens of IOCs. One mission — make phishing attacks transparent.
+> Anonymised case studies. Dozens of IOCs. One mission — make phishing attacks transparent.
 
 </div>
 
@@ -33,7 +33,7 @@ The site serves as both a **living portfolio** and a **public reference tool** f
 | Page | Description |
 |------|-------------|
 | 🏠 **Home** | Portfolio overview, certifications, skills, and featured investigations |
-| 🗂️ **Case Studies** | Six full-length threat analyses with IOC tables and severity ratings |
+| 🗂️ **Case Studies** | Full-length threat analyses with IOC tables and severity ratings |
 | 📖 **Identification Guide** | Interactive phishing checklist + header reference for analysts |
 
 ---
