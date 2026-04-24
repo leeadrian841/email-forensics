@@ -45,7 +45,7 @@ Each investigation includes: full email header walkthrough, authentication resul
 | # | Campaign | Attack Type | Severity | Notable Technique |
 |---|-----------|-------------|----------|-------------------|
 | 1 | **Fake Cloud Storage Payment** | Credential Harvesting | 🔴 Critical | GCS bucket abuse + Sailthru ESP relay |
-| 2 | **Corporate BEC Probe** | Business Email Compromise | 🔴 Critical | Silent read receipt + CEO impersonation |
+| 2 | **Corporate BEC Probe** | Business Email Compromise | 🟠 High | Silent read receipt + CEO impersonation |
 | 3 | **Sextortion Scam** | Extortion | 🟠 High | Cyrillic lookalike chars + white-on-white HTML injection |
 | 4 | **Failure Notice Camouflage** | Credential Harvesting | 🔴 Critical | Fabricated Google delegation headers + subject/body mismatch |
 | 5 | **SBLC Turnkey Funding** | Advance Fee Fraud | 🟠 High | Legitimate ESP (GetResponse) abused to pass all auth checks |
