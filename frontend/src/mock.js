@@ -627,15 +627,16 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
         codeBlock: {
           language: "text",
           title: "Authentication-Results — all three fail",
-          code: `Authentication-Results:
-    spf=fail   (sender IP 23.230.37.82 is NOT authorised for hotmail.com)
-               smtp.mailfrom=hotmail.com
-               helo=boyerfinancialplanning.com   ← actual sending domain
-    dkim=none  (message not signed)
-    dmarc=fail action=none header.from=hotmail.com
-  
-  X-SID-Result: FAIL
-  X-MS-Exchange-Organization-AuthAs: Anonymous`,
+          code:
+            `Authentication-Results:
+            spf=fail    (sender IP 23.230.37.82 is NOT authorised for hotmail.com)
+                        smtp.mailfrom=hotmail.com
+                        helo=boyerfinancialplanning.com   ← actual sending domain
+            dkim=none   (message not signed)
+            dmarc=fail  action=none header.from=hotmail.com
+            
+            X-SID-Result: FAIL
+            X-MS-Exchange-Organization-AuthAs: Anonymous`,
         },
       },
       {
@@ -650,20 +651,21 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
         codeBlock: {
           language: "text",
           title: "Evasion techniques in the HTML body",
-          code: `1. Cyrillic substitution (looks identical, different bytes):
-     "аddress"  → а = U+0430 (Cyrillic а), not U+0061 (Latin a)
-     "trаnsfer" → same substitution
-     "рublished"→ р = U+0440 (Cyrillic р)
-  
-  2. White-on-white hidden junk text (invisible to reader):
-     <font color="#ffffff">G4jlDki 8T0Bf3 6G79SV6A 0Dmj3E4K mPbqqG4i 2ef32.</font>
-     <font color="#ffffff">hk0xv2a eO0V Dv9vBI U5ZOztvk x05N P20U3.</font>
-     [dozens more instances throughout]
-  
-  3. Quoted-printable encoding of Cyrillic characters:
-     =D0=B0 → а (Cyrillic а)
-     =D0=B5 → е (Cyrillic е)
-     =D1=80 → р (Cyrillic р)`,
+          code:
+            `1. Cyrillic substitution (looks identical, different bytes):
+            "аddress"  → а = U+0430 (Cyrillic а), not U+0061 (Latin a)
+            "trаnsfer" → same substitution
+            "рublished"→ р = U+0440 (Cyrillic р)
+            
+            2. White-on-white hidden junk text (invisible to reader):
+            <font color="#ffffff">G4jlDki 8T0Bf3 6G79SV6A 0Dmj3E4K mPbqqG4i 2ef32.</font>
+            <font color="#ffffff">hk0xv2a eO0V Dv9vBI U5ZOztvk x05N P20U3.</font>
+            [dozens more instances throughout]
+            
+            3. Quoted-printable encoding of Cyrillic characters:
+            =D0=B0 → а (Cyrillic а)
+            =D0=B5 → е (Cyrillic е)
+            =D1=80 → р (Cyrillic р)`,
         },
       },
       {
@@ -673,11 +675,12 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
         codeBlock: {
           language: "text",
           title: "Extortion demand extracted from body",
-          code: `Amount:  $1,850 USD
-  Currency: Litecoin (LTC)
-  Wallet:   ltc1qcdz3jh8zqhq3vapaudk2wkx9a8q9mtszty0pzk
-  Deadline: 48 hours from email open
-  Threat:   Distribute fabricated/non-existent videos to all contacts`,
+          code:
+            `Amount:  $1,850 USD
+            Currency:  Litecoin (LTC)
+            Wallet:  ltc1qcdz3jh8zqhq3vapaudk2wkx9a8q9mtszty0pzk
+            Deadline:  48 hours from email open
+            Threat:  Distribute fabricated/non-existent videos to all contacts`,
         },
       },
     ],
