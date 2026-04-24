@@ -554,7 +554,7 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
     tldr: "Fake 'sent from your own account' sextortion demanding $1,850 in Litecoin. Pegasus claim is fabricated. SPF/DKIM/DMARC all fail. Actual sender is a hijacked third-party domain.",
 
     screenshots: [
-      { url: "/email-forensics/images/sextortion-email.png", caption: "The sextortion email as rendered in Outlook", alt: "Sextortion email screenshot" },
+      { url: "/email-forensics/images/case3-email.png", caption: "The sextortion email as rendered in Outlook", alt: "Sextortion email screenshot" },
     ],
 
     emailHeaders: [
