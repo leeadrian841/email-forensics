@@ -554,7 +554,7 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
     tldr: "Fake 'sent from your own account' sextortion demanding $1,850 in Litecoin. Pegasus claim is fabricated. SPF/DKIM/DMARC all fail. Actual sender is a hijacked third-party domain.",
 
     screenshots: [
-      { url: "/email-forensics/images/case3-email.png", caption: "The sextortion email as rendered in Outlook", alt: "Sextortion email screenshot" },
+      { url: "/email-forensics/images/case3-email.png", caption: "The sextortion email as rendered in Outlook", alt: "Sextortion email" },
     ],
 
     emailHeaders: [
@@ -563,17 +563,17 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
       { key: "Received", value: "from BL6PEPF0001AB54.namprd02.prod.outlook.com by BN6PR17CA0043.outlook.office365.com via Frontend Transport; Tue, 17 Dec 2024 19:24:30 +0000", flagged: false },
       { key: "Received", value: "from BN6PR17CA0043.namprd17.prod.outlook.com by SEYPR04MB6631.apcprd04.prod.outlook.com; Tue, 17 Dec 2024 19:24:32 +0000", flagged: false },
       { key: "X-Sender-IP", value: "23.230.37.82", flagged: true }, // IP of actual sending host (boyerfinancialplanning.com) — not a Hotmail/Microsoft IP
-      { key: "Return-Path", value: "leeadrian841@hotmail.com", flagged: true }, // spoofed to match recipient's own address — creates illusion of self-send / account compromise
+      { key: "Return-Path", value: "My Personal Email", flagged: true }, // spoofed to match recipient's own address — creates illusion of self-send / account compromise
   
       // ── Sender Identity ─────────────────────────────────────────────────────
-      { key: "From", value: "\"leeadrian841@hotmail.com\" <leeadrian841@hotmail.com>", flagged: true }, // forged — email is not actually from this Hotmail account; SPF failure confirms this
-      { key: "To", value: "<leeadrian841@hotmail.com>", flagged: true }, // sent to self — deliberate tactic to suggest the attacker controls the account
-      { key: "X-SID-PRA", value: "LEEADRIAN841@HOTMAIL.COM", flagged: false },
+      { key: "From", value: "\"My Personal Email\" <My Personal Email>", flagged: true }, // forged — email is not actually from this Hotmail account; SPF failure confirms this
+      { key: "To", value: "<My Personal Email>", flagged: true }, // sent to self — deliberate tactic to suggest the attacker controls the account
+      { key: "X-SID-PRA", value: "My Personal Email", flagged: false },
       { key: "X-SID-Result", value: "FAIL", flagged: true }, // Microsoft's Sender ID check explicitly failed — From address is forged
       { key: "X-MS-Exchange-Organization-AuthAs", value: "Anonymous", flagged: true }, // Exchange confirmed the sender is unauthenticated — not a logged-in Hotmail user
   
       // ── Content ─────────────────────────────────────────────────────────────
-      { key: "Subject", value: "You have been hacked (leeadrian841@hotmail.com)", flagged: true }, // fear tactic; recipient's own email in subject to simulate proof of access
+      { key: "Subject", value: "You have been hacked (My Personal Email)", flagged: true }, // fear tactic; recipient's own email in subject to simulate proof of access
       { key: "Date", value: "Tue, 17 Dec 2024 11:24:29 -0800", flagged: false },
   
       // ── Authentication ───────────────────────────────────────────────────────
@@ -705,7 +705,7 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
     iocs: [
       { type: "Domain", value: "boyerfinancialplanning.com" },
       { type: "IP", value: "23.230.37.82" },
-      { type: "Email", value: "leeadrian841@hotmail.com (forged — not a real sender)" },
+      { type: "Email", value: "My Personal Email (forged — not a real sender)" },
       { type: "Crypto Wallet", value: "ltc1qcdz3jh8zqhq3vapaudk2wkx9a8q9mtszty0pzk (Litecoin)" },
       { type: "Crypto Amount", value: "$1,850 USD in LTC" },
     ],
