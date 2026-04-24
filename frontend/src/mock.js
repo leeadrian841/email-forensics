@@ -411,7 +411,7 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
     tldr: "One-line 'Are you there?' probe impersonating a Singapore tech company employee, sent from a US ISP personal account. Passes all authentication. Classic BEC first-contact pattern.",
 
     screenshots: [
-      // { url: "/images/case2-email.png", caption: "The BEC email requesting wire transfer", alt: "BEC email" },
+      { url: "/email-forensics/images/case2-email.png", caption: "The BEC email requesting activity/response", alt: "BEC email" },
     ],
 
     emailHeaders: [
