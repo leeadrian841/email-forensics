@@ -93,7 +93,7 @@ Built by **Adrian Lee** — Learning cybersecurity.
 
 ## ⚖️ License
 
-**Code:** Licensed under the [MIT License](LICENSE) — © 2025 Adrian Lee
+**Code:** Licensed under the [MIT License](LICENSE) — © 2026 Adrian Lee
 
 **Content & Case Studies:** Licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) —
 You may share and adapt the written content with attribution, but not for commercial purposes.
