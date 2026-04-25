@@ -1834,5 +1834,11 @@ export const GUIDE_CONTENT = {
       description:
         "Community-driven database of verified phishing URLs.",
     },
+    {
+      name: "URLVoid - Web Page Screenshot",
+      url: "https://www.urlvoid.com/web-page-screenshot/",
+      description:
+        "View web pages without getting infected by an exploit or by malicious code injected in the web page.",
+    },
   ],
 };
