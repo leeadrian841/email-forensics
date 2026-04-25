@@ -230,7 +230,7 @@ export const CASE_STUDIES = [
 
     screenshots: [
       { url: "/email-forensics/images/case1-email.png", caption: "The phishing email as it appeared in the inbox", alt: "Phishing email screenshot" },
-      // { url: "/email-forensics/images/case1-phishing-page.png", caption: "The GCS-hosted phishing landing page", alt: "Phishing landing page" },
+      { url: "/email-forensics/images/case1-phishing-page.png", caption: "The GCS-hosted phishing landing page", alt: "Phishing landing page" },
     ],
 
     emailHeaders: [
