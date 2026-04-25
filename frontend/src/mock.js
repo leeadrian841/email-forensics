@@ -958,7 +958,7 @@ GCS bucket abuse               whilewait                  noonchi         ✓ (s
     screenshots: [
       { url: "/email-forensics/images/sblc-email.png", caption: "The SBLC funding email as rendered", alt: "SBLC fraud email screenshot" },
       { url: "/email-forensics/images/sblc-phishing-link.png", caption: "Do the link looks suspicious to you? It seems that it will add you to a targeted email list.", alt: "SBLC fraud CTA button" },
-      { url: "/email-forensics/images/sblc-phishing-page.png", caption: "grayku.com/turnkey-sblc/lp2/ landing page", alt: "SBLC fraud landing page" },
+      { url: "/email-forensics/images/sblc-phishing-page.png", caption: "grayku.com Landing Page", alt: "SBLC fraud landing page" },
     ],
 
     emailHeaders: [
