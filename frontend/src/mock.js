@@ -956,8 +956,9 @@ GCS bucket abuse               whilewait                  noonchi         ✓ (s
     tldr: "Fake trade finance firm promising millions in 20-30 days for a $50K–$400K upfront fee. All auth passes — sent via GetResponse with a real domain. Classic advance fee fraud. Do not pay any fee.",
 
     screenshots: [
-    // { url: "/images/sblc-email.png", caption: "The SBLC funding email as rendered", alt: "SBLC fraud email screenshot" },
-    // { url: "/images/sblc-landing.png", caption: "grayku.com/turnkey-sblc/lp2/ landing page", alt: "SBLC fraud landing page" },
+      { url: "/email-forensics/images/sblc-email.png", caption: "The SBLC funding email as rendered", alt: "SBLC fraud email screenshot" },
+      { url: "/email-forensics/images/sblc-phishing-link.png", caption: "Do the link looks suspicious to you? It seems that it will add you to a targeted email list.", alt: "SBLC fraud CTA button" },
+      { url: "/email-forensics/images/sblc-phishing-page.png", caption: "grayku.com/turnkey-sblc/lp2/ landing page", alt: "SBLC fraud landing page" },
     ],
 
     emailHeaders: [
