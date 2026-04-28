@@ -1575,7 +1575,18 @@ export const GUIDE_CONTENT = {
       forensicValue: "Critical",
       whatToLook:
         "All three should pass for legitimate email. DMARC fail with SPF/DKIM pass can indicate domain spoofing.",
-      examples: [],
+      examples: [
+        {
+          url: "/email-forensics/images/auth-results-1.png",
+          caption: "Both SPF & DKIM passed but DMARC failed. You have to be cautious if any of these failed.",
+          alt: "Auth-Results: Example 1",
+        },
+        {
+          url: "/email-forensics/images/auth-results-2.png",
+          caption: "All of them passed. So what will you do now? You will check the other email headers too to confirm the suspicions.",
+          alt: "Auth-Results: Example 2",
+        },
+      ],
     },
     {
       name: "X-Originating-IP",
