@@ -229,8 +229,16 @@ export const CASE_STUDIES = [
     tldr: "Fake cloud storage billing alert with a GCS-hosted phishing page, multi-domain spoofing, no DKIM/DMARC, and spam filter evasion padding.",
 
     screenshots: [
-      { url: "/email-forensics/images/case1-email.png", caption: "The phishing email as it appeared in the inbox", alt: "Phishing email screenshot" },
-      { url: "/email-forensics/images/case1-phishing-page.png", caption: "The GCS-hosted phishing landing page", alt: "Phishing landing page" },
+      {
+        url: "/email-forensics/images/case1-email.png",
+        caption: "The phishing email as it appeared in the inbox",
+        alt: "Phishing email screenshot"
+      },
+      {
+        url: "/email-forensics/images/case1-phishing-page.png",
+        caption: "The GCS-hosted phishing landing page",
+        alt: "Phishing landing page"
+      },
     ],
 
     emailHeaders: [
@@ -413,7 +421,11 @@ Password:   FLSXNJUAKGWEXSGKEPIQUE
     tldr: "One-line 'Are you there?' probe impersonating a Singapore tech company employee, sent from a US ISP personal account. Passes all authentication. Classic BEC first-contact pattern.",
 
     screenshots: [
-      { url: "/email-forensics/images/case2-email.png", caption: "The BEC email requesting activity/response", alt: "BEC email" },
+      {
+        url: "/email-forensics/images/case2-email.png",
+        caption: "The BEC email requesting activity/response",
+        alt: "BEC email"
+      },
     ],
 
     emailHeaders: [
@@ -558,7 +570,11 @@ X-Authed-Username:  d21jY2xlYW5AcmNuLmNvbQ==
     tldr: "Fake 'sent from your own account' sextortion demanding $1,850 in Litecoin. Pegasus claim is fabricated. SPF/DKIM/DMARC all fail. Actual sender is a hijacked third-party domain.",
 
     screenshots: [
-      { url: "/email-forensics/images/case3-email.png", caption: "The sextortion email as rendered in Outlook", alt: "Sextortion email" },
+      {
+        url: "/email-forensics/images/case3-email.png",
+        caption: "The sextortion email as rendered in Outlook",
+        alt: "Sextortion email"
+      },
     ],
 
     emailHeaders: [
@@ -733,8 +749,16 @@ Threat:  Distribute fabricated/non-existent videos to all contacts`,
     tldr: "Fake bounce notice hiding a GCS-hosted cloud payment phishing page. Recipient's own Gmail used as fabricated sender. Four simultaneous spam evasion techniques. Shares efianalytics.com hop with Case 1.",
 
     screenshots: [
-    // { url: "/images/failure-notice-email.png", caption: "The email rendered as a cloud payment notice despite the 'Failure Notice' subject", alt: "Phishing email screenshot" },
-    // { url: "/images/failure-notice-gcs-page.png", caption: "The GCS-hosted landing page at storage.googleapis.com/noonchi/", alt: "GCS phishing page" },
+      {
+        url: "/email-forensics/images/case4-failure-notice-email.png",
+        caption: "The email rendered as a cloud payment notice despite the 'Failure Notice' subject",
+        alt: "Phishing email screenshot"
+      },
+      {
+        url: "/email-forensics/images/case4-failure-notice-cloudflare-page.png",
+        caption: "The Cloudflare/GCS-hosted landing page at storage.googleapis.com/noonchi/",
+        alt: "Cloudflare/GCS phishing page"
+      },
     ],
 
     emailHeaders: [
@@ -956,9 +980,21 @@ GCS bucket abuse               whilewait                  noonchi         ✓ (s
     tldr: "Fake trade finance firm promising millions in 20-30 days for a $50K–$400K upfront fee. All auth passes — sent via GetResponse with a real domain. Classic advance fee fraud. Do not pay any fee.",
 
     screenshots: [
-      { url: "/email-forensics/images/sblc-email.png", caption: "The SBLC funding email as rendered", alt: "SBLC fraud email screenshot" },
-      { url: "/email-forensics/images/sblc-phishing-link.png", caption: "Do the link looks suspicious to you? It seems that it will add you to a targeted email list.", alt: "SBLC fraud CTA button" },
-      { url: "/email-forensics/images/sblc-phishing-page.png", caption: "grayku.com Landing Page", alt: "SBLC fraud landing page" },
+      {
+        url: "/email-forensics/images/sblc-email.png",
+        caption: "The SBLC funding email as rendered",
+        alt: "SBLC fraud email screenshot"
+      },
+      {
+        url: "/email-forensics/images/sblc-phishing-link.png",
+        caption: "Do the link looks suspicious to you? It seems that it will add you to a targeted email list.",
+        alt: "SBLC fraud CTA button"
+      },
+      {
+        url: "/email-forensics/images/sblc-phishing-page.png",
+        caption: "grayku.com Landing Page",
+        alt: "SBLC fraud landing page"
+      },
     ],
 
     emailHeaders: [
@@ -1149,16 +1185,20 @@ Regulated?          No — not registered with FCA, SEC, MAS, or any known regul
     tldr: "Fake IMF 'compensation' of $2.5M delivered via ATM card, requiring a 'delivery fee' and your home address. Classic 419 advance fee structure. All auth passes. Do not reply, do not pay any fee, do not provide personal details.",
   
     screenshots: [
-      // { url: "/images/imf-fraud-email.png", caption: "The IMF compensation fraud email", alt: "IMF fraud email screenshot" },
+      {
+        url: "/email-forensics/images/imf-fraud-email.png",
+        caption: "The IMF compensation fraud email",
+        alt: "IMF fraud email screenshot"
+      },
     ],
   
     emailHeaders: [
       // ── Delivery & Routing ──────────────────────────────────────────────────
-      { key: "Return-Path",      value: "<brs1944@sccoast.net>",                                                                                                                                                 flagged: true  }, // personal South Carolina ISP account — not an IMF or INTERPOL address
-      { key: "Received",         value: "from mail.gci.net ([129.80.43.150]) by mx.google.com with ESMTPS id 6a1803df08f44-8a593ee312asi122586996d6; Sat, 04 Apr 2026 15:18:44 -0700 (PDT)",                    flagged: false }, // legitimate sccoast.net / GCI mail relay
-      { key: "Received",         value: "from [10.219.153.78] helo=md01.beryl.email-ash1.sync.lan by smtp.beryl.email-ash1.sync.lan (envelope-from <brs1944@sccoast.net>); Sat, 04 Apr 2026 18:18:39 -0400",    flagged: true  }, // routed through Beryl commercial mailing platform (sync.lan) before hitting sccoast.net SMTP
-      { key: "X-Originating-IP", value: "[45.144.114.204]",                                                                                                                                                     flagged: true  }, // differs from GCI/sccoast relay (129.80.43.150) — email composed on a separate host; consistent with compromised account operated remotely
-      { key: "X-Mailer",         value: "Zimbra 10.1.16_GA_4850 (ZimbraWebClient - GC146 (Win)/10.1.16_GA_4863)",                                                                                               flagged: true  }, // identical Zimbra version and client type to Case 2 (RFNet BEC probe) — possible shared tooling or same actor
+      { key: "Return-Path", value: "<brs1944@sccoast.net>", flagged: true }, // personal South Carolina ISP account — not an IMF or INTERPOL address
+      { key: "Received", value: "from mail.gci.net ([129.80.43.150]) by mx.google.com with ESMTPS id 6a1803df08f44-8a593ee312asi122586996d6; Sat, 04 Apr 2026 15:18:44 -0700 (PDT)", flagged: false }, // legitimate sccoast.net / GCI mail relay
+      { key: "Received", value: "from [10.219.153.78] helo=md01.beryl.email-ash1.sync.lan by smtp.beryl.email-ash1.sync.lan (envelope-from <brs1944@sccoast.net>); Sat, 04 Apr 2026 18:18:39 -0400", flagged: true }, // routed through Beryl commercial mailing platform (sync.lan) before hitting sccoast.net SMTP
+      { key: "X-Originating-IP", value: "[45.144.114.204]", flagged: true }, // differs from GCI/sccoast relay (129.80.43.150) — email composed on a separate host; consistent with compromised account operated remotely
+      { key: "X-Mailer", value: "Zimbra 10.1.16_GA_4850 (ZimbraWebClient - GC146 (Win)/10.1.16_GA_4863)", flagged: true }, // identical Zimbra version and client type to Case 2 (RFNet BEC probe) — possible shared tooling or same actor
   
       // ── Sender Identity ─────────────────────────────────────────────────────
       { key: "From", value: "c <brs1944@sccoast.net>", flagged: true }, // display name is a single letter "c" — placeholder never populated; South Carolina ISP not affiliated with IMF or INTERPOL
@@ -1167,24 +1207,24 @@ Regulated?          No — not registered with FCA, SEC, MAS, or any known regul
       { key: "X-Vade-Verdict", value: "clean", flagged: true }, // Vade security marked this clean — same failure as Case 2; all auth passes so automated filters do not flag it
   
       // ── Content ─────────────────────────────────────────────────────────────
-      { key: "Subject", value: "ATTENTION",                                                                                                                                                             flagged: true  }, // single-word all-caps subject — no context; designed to create urgency and curiosity without triggering keyword filters
-      { key: "Date", value: "Sat, 4 Apr 2026 18:18:39 -0400 (EDT)",                                                                                                                                 flagged: false },
+      { key: "Subject", value: "ATTENTION", flagged: true }, // single-word all-caps subject — no context; designed to create urgency and curiosity without triggering keyword filters
+      { key: "Date", value: "Sat, 4 Apr 2026 18:18:39 -0400 (EDT)", flagged: false },
   
       // ── Authentication ───────────────────────────────────────────────────────
       { key: "Authentication-Results", value: "mx.google.com; dkim=pass header.i=@sccoast.net header.s=20180516; spf=pass smtp.mailfrom=brs1944@sccoast.net; dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=sccoast.net", flagged: false }, // all three pass — account is legitimate; authentication cannot detect this fraud
-      { key: "Received-SPF", value: "pass (google.com: domain of brs1944@sccoast.net designates 129.80.43.150 as permitted sender) client-ip=129.80.43.150",                                         flagged: false },
-      { key: "DKIM-Signature", value: "v=1; a=rsa-sha256; d=sccoast.net; s=20180516; h=From:Subject:Date:To:MIME-Version:Content-Type",                                                                flagged: false }, // legitimate rsa-sha256 — unlike Cases 4/5 which used deprecated rsa-sha1
+      { key: "Received-SPF", value: "pass (google.com: domain of brs1944@sccoast.net designates 129.80.43.150 as permitted sender) client-ip=129.80.43.150", flagged: false },
+      { key: "DKIM-Signature", value: "v=1; a=rsa-sha256; d=sccoast.net; s=20180516; h=From:Subject:Date:To:MIME-Version:Content-Type", flagged: false }, // legitimate rsa-sha256 — unlike Cases 4/5 which used deprecated rsa-sha1
   
       // ── Campaign / Platform Metadata ─────────────────────────────────────────
-      { key: "Feedback-ID", value: "bos:htc:res:beryl",                                                                                                                                                    flagged: true  }, // Beryl commercial mailing platform used to route the send — same pattern as Case 2's use of legitimate relay infrastructure
-      { key: "X-Vade-Client", value: "BERYL",                                                                                                                                                                 flagged: false },
-      { key: "Thread-Index", value: "A5C61+tSbJ9IPeN3uREZIV4YbLmBHg==",                                                                                                                                    flagged: false },
-      { key: "Thread-Topic", value: "ATTENTION",                                                                                                                                                            flagged: false },
+      { key: "Feedback-ID", value: "bos:htc:res:beryl", flagged: true }, // Beryl commercial mailing platform used to route the send — same pattern as Case 2's use of legitimate relay infrastructure
+      { key: "X-Vade-Client", value: "BERYL", flagged: false },
+      { key: "Thread-Index", value: "A5C61+tSbJ9IPeN3uREZIV4YbLmBHg==", flagged: false },
+      { key: "Thread-Topic", value: "ATTENTION", flagged: false },
   
       // ── Message Structure ────────────────────────────────────────────────────
-      { key: "Message-ID",       value: "<2004971955.123888740.1775341119597.JavaMail.zimbra@sccoast.net>",                                                                                                      flagged: false },
-      { key: "MIME-Version",     value: "1.0",                                                                                                                                                                  flagged: false },
-      { key: "Content-Type",     value: "multipart/alternative; boundary=\"=_5445523c-8912-4883-a6cb-d793eac78743\"",                                                                                           flagged: false },
+      { key: "Message-ID", value: "<2004971955.123888740.1775341119597.JavaMail.zimbra@sccoast.net>", flagged: false },
+      { key: "MIME-Version", value: "1.0", flagged: false },
+      { key: "Content-Type", value: "multipart/alternative; boundary=\"=_5445523c-8912-4883-a6cb-d793eac78743\"", flagged: false },
       { key: "Content-Transfer-Encoding", value: "7bit", flagged: false },
     ],
   
@@ -1228,17 +1268,17 @@ Regulated?          No — not registered with FCA, SEC, MAS, or any known regul
           language: "text",
           title: "PII solicitation and contact channels in email body",
           code: `Requested PII (within 72 hours):
-    Full Name
-    Phone Number
-    Current Address
+Full Name
+Phone Number
+Current Address
+
+Attacker contact channels:
+Reply-To:  charlesflanagan221@yahoo.com   ← receives all replies
+Body Gmail: charlesrflanagan9@gmail.com   ← direct contact
+Body phone: +1 (724) 270-4267             ← US phone (area code: Pittsburgh, PA)
   
-  Attacker contact channels:
-    Reply-To:  charlesflanagan221@yahoo.com   ← receives all replies
-    Body Gmail: charlesrflanagan9@gmail.com   ← direct contact
-    Body phone: +1 (724) 270-4267             ← US phone (area code: Pittsburgh, PA)
-  
-  Sending account: brs1944@sccoast.net        ← compromised/purpose-created ISP account
-                                                (replies do NOT go here)`,
+Sending account: brs1944@sccoast.net      ← compromised/purpose-created ISP account
+                                            (replies do NOT go here)`,
         },
       },
       {
@@ -1265,14 +1305,14 @@ Regulated?          No — not registered with FCA, SEC, MAS, or any known regul
           language: "text",
           title: "Infrastructure comparison: Case 2 (RFNet BEC) vs Case 7 (IMF Fraud)",
           code: `Indicator                   Case 2 (RFNet BEC)              Case 7 (IMF Fraud)
-  ────────────────────────────────────────────────────────────────────────
-  Zimbra version              10.1.16_GA_4850                10.1.16_GA_4850        ✓ identical
-  X-Mailer client             ZimbraWebClient (FF/Windows)   ZimbraWebClient (GC/Windows) ≈ similar
-  X-Vade-Verdict              clean                          clean                  ✓ identical
-  Auth result                 DKIM/SPF/DMARC all pass        DKIM/SPF/DMARC all pass ✓ identical
-  Sending account type        Personal ISP (rcn.com)         Personal ISP (sccoast.net) ✓ same pattern
-  X-Orig-IP ≠ relay           162.243.8.41 vs 129.213.13.252 45.144.114.204 vs 129.80.43.150 ✓ same pattern
-  Reply-To misdirection       No (BEC probe — no reply-to)   Yes (Yahoo account)    ≈ related technique`,
+────────────────────────────────────────────────────────────────────────
+Zimbra version              10.1.16_GA_4850                10.1.16_GA_4850        ✓ identical
+X-Mailer client             ZimbraWebClient (FF/Windows)   ZimbraWebClient (GC/Windows) ≈ similar
+X-Vade-Verdict              clean                          clean                  ✓ identical
+Auth result                 DKIM/SPF/DMARC all pass        DKIM/SPF/DMARC all pass ✓ identical
+Sending account type        Personal ISP (rcn.com)         Personal ISP (sccoast.net) ✓ same pattern
+X-Orig-IP ≠ relay           162.243.8.41 vs 129.213.13.252 45.144.114.204 vs 129.80.43.150 ✓ same pattern
+Reply-To misdirection       No (BEC probe — no reply-to)   Yes (Yahoo account)    ≈ related technique`,
         },
       },
     ],
@@ -1299,14 +1339,14 @@ Regulated?          No — not registered with FCA, SEC, MAS, or any known regul
     ],
   
     iocs: [
-      { type: "Email",   value: "brs1944@sccoast.net (sending account — likely compromised)" },
-      { type: "Email",   value: "charlesflanagan221@yahoo.com (Reply-To — attacker inbox)" },
-      { type: "Email",   value: "charlesrflanagan9@gmail.com (body contact — attacker Gmail)" },
-      { type: "Phone",   value: "+1 (724) 270-4267 (Pittsburgh, PA area code — attacker phone)" },
-      { type: "IP",      value: "45.144.114.204 (X-Originating-IP — remote composition host)" },
-      { type: "Domain",  value: "sccoast.net (South Carolina ISP — account likely compromised)" },
-      { type: "Org",     value: "IMF (impersonated — no affiliation)" },
-      { type: "Org",     value: "INTERPOL (impersonated — no affiliation)" },
+      { type: "Email", value: "brs1944@sccoast.net (sending account — likely compromised)" },
+      { type: "Email", value: "charlesflanagan221@yahoo.com (Reply-To — attacker inbox)" },
+      { type: "Email", value: "charlesrflanagan9@gmail.com (body contact — attacker Gmail)" },
+      { type: "Phone", value: "+1 (724) 270-4267 (Pittsburgh, PA area code — attacker phone)" },
+      { type: "IP", value: "45.144.114.204 (X-Originating-IP — remote composition host)" },
+      { type: "Domain", value: "sccoast.net (South Carolina ISP — account likely compromised)" },
+      { type: "Org", value: "IMF (impersonated — no affiliation)" },
+      { type: "Org", value: "INTERPOL (impersonated — no affiliation)" },
     ],
   },
 
@@ -1325,7 +1365,11 @@ Regulated?          No — not registered with FCA, SEC, MAS, or any known regul
     tldr: "Crude UN compensation scam offering $50M from a compromised Argentinian ISP account. Blank subject, typos, and a Gmail contact impersonating the Wells Fargo CEO's name. Do not reply. Same fraud family as the IMF/INTERPOL compensation case.",
   
     screenshots: [
-      // { url: "/images/un-compensation-email.png", caption: "The UN compensation fraud email", alt: "UN fraud email screenshot" },
+      {
+        url: "/email-forensics/images/un-compensation-email.png",
+        caption: "The UN compensation fraud email",
+        alt: "UN fraud email screenshot"
+      },
     ],
   
     emailHeaders: [
@@ -1404,18 +1448,18 @@ Regulated?          No — not registered with FCA, SEC, MAS, or any known regul
           language: "text",
           title: "Complete email body (verbatim)",
           code: `This is a true compensation Approved by the UNITED NATION to
-  compensate you for been a victim of scam by the wrong people who
-  paraded themselves on what they are not so because of this, the United
-  Nation approved our Bank to process online bank with valid cash of
-  $50 million dollars in your favor in order to compensate you.
-  Get back as soon as possible.
+compensate you for been a victim of scam by the wrong people who
+paraded themselves on what they are not so because of this, the United
+Nation approved our Bank to process online bank with valid cash of
+$50 million dollars in your favor in order to compensate you.
+Get back as soon as possible.
   
-  Note: if you found this email in your junk/spam, it's because of your
-  internet IP server, We look forward to your prompt response
+Note: if you found this email in your junk/spam, it's because of your
+internet IP server, We look forward to your prompt response
   
-  Respond via email below:
-    Email: charleswscharf593@gmail.com
-    OR    +1(213) 357-2744`,
+Respond via email below:
+Email: charleswscharf593@gmail.com
+ OR    +1(213) 357-2744`,
         },
       },
       {
@@ -1426,14 +1470,14 @@ Regulated?          No — not registered with FCA, SEC, MAS, or any known regul
           language: "text",
           title: "Cross-continent infrastructure breakdown",
           code: `Function                    Location           Evidence
-  ─────────────────────────────────────────────────────────────────
-  Sending SMTP account        Argentina          omarcapone@fibertel.com.ar (Fibertel / Cablevisión)
-  Sending IP (relay)          Argentina          24.232.0.196 (Fibertel Buenos Aires)
-  Email composition host      Ecuador            129.222.206.18 (Claro / Ecuadorian ISP)
-  Reply Gmail address         United States      charleswscharf593@gmail.com (Google infra)
-  Contact phone number        United States      +1 213 357 2744 (Los Angeles, CA area code)
+─────────────────────────────────────────────────────────────────
+Sending SMTP account        Argentina          omarcapone@fibertel.com.ar (Fibertel / Cablevisión)
+Sending IP (relay)          Argentina          24.232.0.196 (Fibertel Buenos Aires)
+Email composition host      Ecuador            129.222.206.18 (Claro / Ecuadorian ISP)
+Reply Gmail address         United States      charleswscharf593@gmail.com (Google infra)
+Contact phone number        United States      +1 213 357 2744 (Los Angeles, CA area code)
   
-  Legitimate account owner:   Omar Capone (Argentinian residential customer — victim of compromise)`,
+Legitimate account owner:   Omar Capone (Argentinian residential customer — victim of compromise)`,
         },
       },
       {
@@ -1444,15 +1488,15 @@ Regulated?          No — not registered with FCA, SEC, MAS, or any known regul
           language: "text",
           title: "Impersonated identity",
           code: `Gmail address in email body:   charleswscharf593@gmail.com
-  Apparent impersonation of:     Charles W. Scharf
-  Real identity:                 CEO and President of Wells Fargo & Company
-                                 (since October 2019)
+Apparent impersonation of:     Charles W. Scharf
+Real identity:                 CEO and President of Wells Fargo & Company
+                               (since October 2019)
   
-  Attacker's purpose:            Victim searches the name → finds real banking executive
-                                  → perceived legitimacy increases
-                                  → conversion rate improves
+Attacker's purpose:            Victim searches the name → finds real banking executive
+                                → perceived legitimacy increases
+                                → conversion rate improves
   
-  Real Charles W. Scharf's actual contact:  via Wells Fargo corporate channels only`,
+Real Charles W. Scharf's actual contact:  via Wells Fargo corporate channels only`,
         },
       },
       {
@@ -1463,19 +1507,19 @@ Regulated?          No — not registered with FCA, SEC, MAS, or any known regul
           language: "text",
           title: "Case 7 vs Case 8 comparison — same fraud family, different effort tier",
           code: `Indicator                   IMF/INTERPOL Case       UN Compensation Case
-  ────────────────────────────────────────────────────────────────────────
-  Impersonated org            IMF + INTERPOL              United Nations
-  Compensation amount         $2,500,000 USD              $50,000,000 USD
-  Sending account type        US ISP (sccoast.net)        Argentinian ISP (fibertel.com.ar)
-  Authentication              All pass                    All pass (no DMARC)
-  Subject line                "ATTENTION"                 (empty)
-  Body length                 ~15 lines structured        8 lines ungrammatical
-  PII requested               Name, phone, address        None (initial contact only)
-  Reply-To redirect           Yes (Yahoo)                 No (body Gmail only)
-  Body contact                Gmail + US phone            Gmail + US phone
-  Deadline                    72 hours                    "as soon as possible"
-  Decoy identity              None named                  Charles W. Scharf (WF CEO)
-  Effort tier                 Medium                      Minimum`,
+────────────────────────────────────────────────────────────────────────
+Impersonated org            IMF + INTERPOL              United Nations
+Compensation amount         $2,500,000 USD              $50,000,000 USD
+Sending account type        US ISP (sccoast.net)        Argentinian ISP (fibertel.com.ar)
+Authentication              All pass                    All pass (no DMARC)
+Subject line                "ATTENTION"                 (empty)
+Body length                 ~15 lines structured        8 lines ungrammatical
+PII requested               Name, phone, address        None (initial contact only)
+Reply-To redirect           Yes (Yahoo)                 No (body Gmail only)
+Body contact                Gmail + US phone            Gmail + US phone
+Deadline                    72 hours                    "as soon as possible"
+Decoy identity              None named                  Charles W. Scharf (WF CEO)
+Effort tier                 Medium                      Minimum`,
         },
       },
     ],
