@@ -1610,7 +1610,18 @@ export const GUIDE_CONTENT = {
       forensicValue: "Critical",
       whatToLook:
         "Read from bottom to top. Check if originating IP matches claimed sender's infrastructure.",
-      examples: [],
+      examples: [
+        {
+          url: "/email-forensics/images/received-normal-example.png",   // public URL or local path
+          caption: "Notice the 'Received' header in this example. Only one 'Received' header is seen so you can assume that this email is highly safe.",
+          alt: "Received header example - Safe",
+        },
+        {
+          url: "/email-forensics/images/received-sus-example.png",   // public URL or local path
+          caption: "Notice the multiple 'Received' headers in this example. A suspicious/malicious email will have more than 1 'Received' headers showing that it was sent across multiple IP addresses.",
+          alt: "Received header example - Suspicious",
+        },
+      ],
     },
     {
       name: "Authentication-Results",
