@@ -4,9 +4,9 @@
 // Displays: hero section, certifications, featured case studies,
 // "What is Email Forensics?" section, skills, and CTA.
 //
-// Content source: ANALYST_INFO and CASE_STUDIES from mock.js
-// To edit: update ANALYST_INFO (name, bio, certs, skills) and
-//          CASE_STUDIES (featured cases are the first 3 entries) in mock.js.
+// Content source: ANALYST_INFO from analyst-info.js & CASE_STUDIES from case-studies.js
+// To edit: update ANALYST_INFO (name, bio, certs, skills) from analyst-info.js &
+//          CASE_STUDIES (featured cases are the first 3 entries) in case-studies.js.
 // -----------------------------------------------------------------------------
 import React from "react";
 import { NavLink } from "react-router-dom";
@@ -26,7 +26,8 @@ import {
   Award,
 } from "lucide-react";
 import { Card, CardContent, CardHeader } from "../components/ui/card";
-import { ANALYST_INFO, CASE_STUDIES } from "../mock";
+import { ANALYST_INFO } from "../analyst-info";
+import { CASE_STUDIES } from "../case-studies";
 
 const severityColor = (severity) => {
   switch (severity) {
