@@ -1622,6 +1622,7 @@ export const GUIDE_CONTENT = {
           url: "/email-forensics/images/reply-to-check1.png",   // public URL or local path
           caption: "Notice that the email address from the 'From' header is an invalid email address after doing a check on it. This gives you a valid reason to consider that this is phishing.",
           alt: "Invalid email address example",
+        }
       ],
     },
     {
