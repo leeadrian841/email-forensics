@@ -1592,7 +1592,18 @@ export const GUIDE_CONTENT = {
       forensicValue: "Low",
       whatToLook:
         "Compare display name vs actual email address. Look for lookalike domains (paypa1 vs paypal).",
-      examples: [],
+      examples: [
+        {
+          url: "/email-forensics/images/reply-to-example1.png",   // public URL or local path
+          caption: "Notice both 'From' and 'Reply-To' headers are different email addresses. The 'From' header is an invalid email address but the 'Reply-To' header is from a free email provider.",
+          alt: "Spoofed From header example",
+        },
+        {
+          url: "/email-forensics/images/reply-to-check1.png",   // public URL or local path
+          caption: "Notice that the email address from the 'From' header is an invalid email address after doing a check on it. This gives you a valid reason to consider that this is phishing.",
+          alt: "Invalid email address example",
+        },
+      ],
     },
     {
       name: "Reply-To",
@@ -1601,7 +1612,17 @@ export const GUIDE_CONTENT = {
       forensicValue: "High",
       whatToLook:
         "Should match the From domain for legitimate email. Mismatch indicates Reply-To manipulation attack.",
-      examples: [],
+      examples: [
+        {
+          url: "/email-forensics/images/reply-to-example1.png",   // public URL or local path
+          caption: "Notice both 'From' and 'Reply-To' headers are different email addresses. The 'From' header is an invalid email address but the 'Reply-To' header is from a free email provider.",
+          alt: "Spoofed From header example",
+        },
+        {
+          url: "/email-forensics/images/reply-to-check1.png",   // public URL or local path
+          caption: "Notice that the email address from the 'From' header is an invalid email address after doing a check on it. This gives you a valid reason to consider that this is phishing.",
+          alt: "Invalid email address example",
+      ],
     },
     {
       name: "Received",
@@ -1905,6 +1926,12 @@ export const GUIDE_CONTENT = {
       url: "https://www.urlvoid.com/web-page-screenshot/",
       description:
         "View web pages without getting infected by an exploit or by malicious code injected in the web page.",
+    },
+    {
+      name: "Hunter - Email Verifier",
+      url: "https://hunter.io/email-verifier",
+      description:
+        "Verify email addresses for both valid email and server statuses.",
     },
   ],
 };
