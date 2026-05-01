@@ -5,8 +5,8 @@
 // step-by-step forensic analysis (with code blocks and images), recommendations,
 // attack techniques, and IOCs.
 //
-// Content source: CASE_STUDIES from mock.js (matched by URL param :id)
-// To edit: update the matching entry in the CASE_STUDIES array in mock.js.
+// Content source: CASE_STUDIES from case-studies.js (matched by URL param :id)
+// To edit: update the matching entry in the CASE_STUDIES array in case-studies.js.
 // -----------------------------------------------------------------------------
 import React, { useState } from "react";
 import { useParams, NavLink } from "react-router-dom";
@@ -24,7 +24,7 @@ import {
   Images,
 } from "lucide-react";
 import { Card, CardContent, CardHeader } from "../components/ui/card";
-import { CASE_STUDIES } from "../mock";
+import { CASE_STUDIES } from "../case-studies";
 import CodeBlock from "../components/CodeBlock";
 import ScreenshotGallery from "../components/ScreenshotGallery";
 
