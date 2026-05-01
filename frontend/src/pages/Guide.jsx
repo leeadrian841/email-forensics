@@ -5,8 +5,8 @@
 // How to Access Email Headers (desktop/mobile tabs, with optional screenshots),
 // Desktop vs Mobile comparison table, Phishing Email Checklist, and Tools.
 //
-// Content source: GUIDE_CONTENT from mock.js
-// To edit: update GUIDE_CONTENT in mock.js. Add images via the `examples`
+// Content source: GUIDE_CONTENT from guide-content.js
+// To edit: update GUIDE_CONTENT in guide-content.js. Add images via the `examples`
 // field on keyHeaders, or `screenshots` field on desktop/mobile guides.
 // -----------------------------------------------------------------------------
 import React, { useState } from "react";
@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 import { Card, CardContent, CardHeader } from "../components/ui/card";
-import { GUIDE_CONTENT } from "../mock";
+import { GUIDE_CONTENT } from "../guide-content";
 import ScreenshotGallery from "../components/ScreenshotGallery";
 
 const forensicValueColor = {
