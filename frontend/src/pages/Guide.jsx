@@ -74,7 +74,7 @@ const Guide = () => {
               Header Reference
             </div>
             <h2 className="text-2xl font-bold text-[#f0f4f8] font-mono mb-6">
-              Critical Email Headers
+              Important Email Headers to Look For
             </h2>
             <div className="space-y-3">
               {GUIDE_CONTENT.keyHeaders.map((header, i) => (
@@ -153,9 +153,9 @@ const Guide = () => {
               How to Access Email Headers
             </h2>
             <p className="text-[#8899aa] font-mono text-sm mb-8 leading-relaxed max-w-2xl">
-              The method for accessing full email headers varies significantly by platform. Desktop email
-              clients and webmail on desktop browsers provide full header access. Mobile apps are deliberately
-              simplified and hide most forensic data.
+              The method for accessing full email headers varies significantly by platform.
+              Desktop email clients and webmail on desktop browsers provide full header access.
+              Mobile apps are deliberately simplified and hide most forensic data.
             </p>
 
             <Tabs defaultValue="desktop">
