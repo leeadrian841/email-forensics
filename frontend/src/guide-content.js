@@ -133,7 +133,7 @@ export const GUIDE_CONTENT = {
       name: "X-Mailer",
       description: "The software or service used to send the email.",
       forensicValue: "Medium",
-      whatToLook:c
+      whatToLook:
         "PHPMailer, mass mailer scripts suggest bulk/automated sending. Enterprise systems use different signatures.",
       examples: [
         {
