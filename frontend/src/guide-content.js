@@ -112,7 +112,7 @@ export const GUIDE_CONTENT = {
     },
     {
       name: "Message-ID",
-      description: "A unique identifier assigned by the sending server.",
+      description: "A unique identifier assigned by the sending server. Usually used by threat actors for tracking emails.",
       forensicValue: "Medium",
       whatToLook:
         "Domain portion should match sender's domain. Mismatch suggests third-party sending service.",
@@ -386,6 +386,12 @@ export const GUIDE_CONTENT = {
       url: "https://hunter.io/email-verifier",
       description:
         "Verify email addresses for both valid email and server statuses.",
+    },
+    {
+      name: "SendTrust - Email Security Best Practices",
+      url: "https://sendtrust.io/guides/email-security",
+      description:
+        "Informative articles on email security",
     },
   ],
 };
