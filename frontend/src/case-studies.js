@@ -504,7 +504,7 @@ X-Authed-Username:  d21jY2xlYW5AcmNuLmNvbQ==
     subtitle: "Fabricated device compromise claim with Litecoin extortion demand",
     date: "2024-12-17",
     severity: "High",
-    category: "Sextortion / Social Engineering",
+    category: "Social Engineering",
     tags: ["Sextortion", "Cryptocurrency Extortion", "Email Spoofing", "Spam Filter Evasion", "Cyrillic Substitution"],
     summary:
       "A sextortion email was spoofed to appear as though it was sent from my personal Hotmail address, creating a false impression of account compromise. The email claims the attacker installed Pegasus spyware on all of the recipient's devices, recorded compromising webcam footage, and will distribute it to all contacts unless $1,850 in Litecoin is paid within 48 hours. All three authentication checks — SPF, DKIM, and DMARC — failed. The actual sending infrastructure was boyerfinancialplanning.com (23.230.37.82), a hijacked or abused third-party domain entirely unrelated to the claimed sender. The body employs multiple spam evasion techniques: Cyrillic look-alike character substitution within words, white-on-white hidden junk text interspersed throughout the HTML, and quoted-printable encoding to fragment recognisable keywords. The Pegasus claim is fabricated — no real IOCs or proof of compromise are provided.",
@@ -1119,7 +1119,7 @@ Regulated?          No — not registered with FCA, SEC, MAS, or any known regul
     subtitle: "419-style fraud impersonating the IMF and INTERPOL via a compromised US ISP account",
     date: "2026-04-04",
     severity: "High",
-    category: "Advance Fee Fraud / PII Harvesting",
+    category: "Fraud",
     tags: ["419 Fraud", "Advance Fee", "IMF Impersonation", "INTERPOL Impersonation", "PII Harvesting", "Compromised Account", "Reply-To Hijack"],
     summary:
       "A classic 419-style advance fee fraud sent from a personal South Carolina ISP account (brs1944@sccoast.net) — likely compromised or purpose-created — impersonating the IMF and INTERPOL. The email claims $2,500,000 USD has been 'recovered' in the recipient's name and will be delivered via an 'ATM Visa Card', but requires a 'delivery fee' and the recipient's full name, phone number, and home address. The delivery fee is the advance fee hook — once paid, additional fees will be invented indefinitely. The PII solicitation additionally enables identity theft. All authentication passes legitimately, and Vade email security marked it clean. A Reply-To misdirection redirects responses to a separate Yahoo account (charlesflanagan221@yahoo.com) while a Gmail address and US phone number are embedded in the body as the actual contact channels. The infrastructure mirrors Case 2 (RFNet BEC) almost exactly: same Zimbra version, same X-Vade-Verdict: clean, same ISP account pattern, same originating IP / relay discrepancy.",
@@ -1299,7 +1299,7 @@ Reply-To misdirection       No (BEC probe — no reply-to)   Yes (Yahoo account)
     subtitle: "Crude 419 fraud impersonating the United Nations via a compromised Argentine ISP account",
     date: "2026-04-12",
     severity: "High",
-    category: "Advance Fee Fraud / PII Harvesting",
+    category: "Fraud",
     tags: ["419 Fraud", "Advance Fee", "UN Impersonation", "Compromised Account", "PII Harvesting", "Cross-Continent Operation"],
     summary:
       "A crude, low-effort 419 advance fee fraud impersonating the United Nations, sent from a compromised or purpose-created Argentinian ISP account (omarcapone@fibertel.com.ar — Fibertel is a Cablevisión residential broadband service in Argentina). The email claims '$50 million dollars' has been approved by the UN as compensation for being a 'victim of scam', and instructs the recipient to respond via a Gmail address (charleswscharf593@gmail.com) or US phone number (+1 213 357 2744). The email contains no proper Subject line, no Thread-Topic, no To address, no Reply-To, no display name beyond 'compensation', and only 8 lines of ungrammatical body text — the lowest effort of all cases analysed. Despite its crudeness, all authentication checks pass because the attacker operates through a real ISP webmail account. The X-Originating-IP (129.222.206.18) resolves to an Ecuadorian ISP, while the sending account is Argentinian and the contact number is US — a three-continent infrastructure pattern consistent with an organised 419 operation using proxies or compromised accounts across jurisdictions. The Gmail contact address impersonates the name of Charles W. Scharf, the CEO of Wells Fargo, as a decoy identity.",
@@ -1510,7 +1510,7 @@ Effort tier                 Medium                      Minimum`,
     subtitle: "Classic 419 inheritance fraud impersonating a real BNY Mellon executive via a compromised Taiwanese university account",
     date: "2026-04-29",
     severity: "High",
-    category: "Advance Fee Fraud / Inheritance Scam",
+    category: "Fraud",
     tags: ["419 Fraud", "Inheritance Scam", "Next-of-Kin Fraud", "BNY Mellon Impersonation", "Real Person Impersonation", "Compromised University Account", "Money Laundering Solicitation"],
     summary:
       "A textbook 'next-of-kin' inheritance fraud sent from a compromised account at the Department of Computer Science and Information Engineering, National Cheng Kung University (NCKU) in Taiwan. The email impersonates Emily Portney, the real former CFO of BNY Mellon (and head of BNY Mellon Asset Servicing during 2020–2022), and proposes a fictitious scheme to claim a $155,000,000 USD 'fixed deposit' belonging to a deceased engineer named 'Richard D. Petrelli'. The recipient is invited to be falsely named as the next-of-kin in exchange for a 50/50 split of the funds. The deceased's name appears to be fabricated — there is no public record of a Richard D. Petrelli who died in a New York car accident on 7 July 2013 with a $155M oil deposit. The recipient is asked to provide full name, address, phone, and occupation as the initial information harvest. The Reply-To redirects to a Gmail account (emily.portney37@gmail.com) distinct from the sending address. The X-Originating-IP (60.96.219.14) resolves to a residential ISP in Japan (au one net / KDDI), while the sending account is at a Taiwanese university — a Japan-to-Taiwan compromise pattern consistent with credential theft from leaked academic credential databases.",
