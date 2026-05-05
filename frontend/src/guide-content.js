@@ -119,12 +119,14 @@ export const GUIDE_CONTENT = {
       examples: [
         {
           url: "/email-forensics/images/message-id-example1.png",
-          caption: "You can see that this is sent from an Amazon SES server.\nUsually, registered companies use Amazon SES to email their clients about news or promotions.",
+          caption: "You can see that this is sent from an Amazon SES server.
+            Usually, registered companies use Amazon SES to email their clients about news or promotions.",
           alt: "Message-ID: Example 1",
         },
         {
           url: "/email-forensics/images/message-id-example2.png",
-          caption: "You can see that this is suspicious since it is sent using Zimbra Web Client.\nThreat actors like to use this platform to send phishing emails since it is easy to impersonate login pages and it aligns with most admin workflows and used by most SMEs and public institutions. This allows them easiy to lure people into clicking such phishing emails.",
+          caption: "You can see that this is suspicious since it is sent using Zimbra Web Client.
+            Threat actors like to use this platform to send phishing emails since it is easy to impersonate login pages and it aligns with most admin workflows and used by most SMEs and public institutions. This allows them easiy to lure people into clicking such phishing emails.",
           alt: "Message-ID: Example 2",
         },
       ],
