@@ -914,7 +914,7 @@ GCS bucket abuse               whilewait                  noonchi         ✓ (s
     subtitle: "Investment fraud impersonating a trade finance firm via GetResponse ESP, targeting businesses with fabricated SBLC funding promises",
     date: "2026-04-17",
     severity: "High",
-    category: "Financial Fraud / Advance Fee Scam",
+    category: "Fraud",
     tags: ["Advance Fee Fraud", "Investment Scam", "SBLC Fraud", "Unsolicited Bulk Email", "Brand Impersonation"],
     summary:
       "An unsolicited bulk email sent via the legitimate GetResponse email marketing platform on behalf of tradefinancedirect.com (operated by Grayku LLC) promotes a fabricated 'SBLC Turnkey Non-Recourse Funding' programme. The email promises returns of $3.5M–$28M USD within 20–30 days in exchange for an upfront participation fee of $50K–$400K USD per spot — a textbook advance fee fraud structure. Unlike the phishing cluster in Cases 1, 4, and 5, all authentication checks pass legitimately because the attacker registered a real domain, configured proper DKIM for it, and used a paid ESP. The BNP Paribas bank logo is displayed without any affiliation to add false institutional credibility. The recipient was silently added to the attacker's mailing list without consent on 19 June 2025, as evidenced by the Require-Recipient-Valid-Since header. The registered address (16192 Coastal Highway, Lewes, DE 19958) is a Delaware registered-agent address used by thousands of shell companies, not a real operational office.",
