@@ -388,6 +388,12 @@ export const GUIDE_CONTENT = {
         "Verify email addresses for both valid email and server statuses.",
     },
     {
+      name: "GHunt - Google OSINT",
+      url: "https://ghunt.org/",
+      description:
+        "OSINT tool designed to gather and analyze publicly available information linked to Google accounts",
+    },
+    {
       name: "SendTrust - Email Security Best Practices",
       url: "https://sendtrust.io/guides/email-security",
       description:
