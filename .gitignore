@@ -2,6 +2,9 @@
 .idea/
 .vscode/
 
+# Claude Code local preview config (keep local, don't commit)
+.claude/launch.json
+
 # Dependencies
 node_modules/
 
