@@ -23,7 +23,7 @@ const Footer = () => {
                 <Shield className="w-5 h-5 text-[#22d3ee]" />
               </div>
               <span className="text-[#f0f4f8] font-semibold font-mono">
-                EmailForensics
+                Email Forensics
               </span>
             </div>
             <p className="text-[#8899aa] text-sm leading-relaxed">
