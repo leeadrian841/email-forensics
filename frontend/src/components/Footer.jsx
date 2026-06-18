@@ -108,7 +108,7 @@ const Footer = () => {
           <div className="flex items-center gap-2 text-[#8899aa] text-xs font-mono">
             <Terminal className="w-3.5 h-3.5 text-[#22d3ee]" />
             <span>
-              &copy; {currentYear} EmailForensics &mdash; Educational &amp;
+              &copy; {currentYear} Email Forensics &mdash; Educational &amp;
               Research Portfolio
             </span>
           </div>
