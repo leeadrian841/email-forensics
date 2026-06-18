@@ -46,7 +46,7 @@ const Navbar = () => {
             </div>
             <div>
               <span className="text-[#f0f4f8] font-semibold text-sm font-mono tracking-wide">
-                EmailForensics
+                Email Forensics
               </span>
               {/* <span className="text-[#22d3ee] font-mono text-sm">.sh</span> */}
             </div>
