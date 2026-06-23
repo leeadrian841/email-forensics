@@ -69,12 +69,22 @@ async def get_status_checks():
 # Include the router in the main app
 app.include_router(api_router)
 
+# CORS — fail closed: require an explicit allow-list, never default to "*".
+# A wildcard origin combined with allow_credentials=True lets any site make
+# authenticated cross-origin requests and read the responses (CWE-942).
+CORS_ORIGINS = [o.strip() for o in os.environ.get('CORS_ORIGINS', '').split(',') if o.strip()]
+if not CORS_ORIGINS:
+    raise RuntimeError(
+        "CORS_ORIGINS must be set to an explicit allow-list "
+        "(e.g. https://leeadrian841.github.io)"
+    )
+
 app.add_middleware(
     CORSMiddleware,
-    allow_credentials=True,
-    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=CORS_ORIGINS,        # explicit hosts only
+    allow_credentials=True,            # keep True only while cookies/auth are in use
+    allow_methods=["GET", "POST"],     # only what the API serves
+    allow_headers=["Content-Type"],    # add "Authorization" if tokens are introduced
 )
 
 # Configure logging
