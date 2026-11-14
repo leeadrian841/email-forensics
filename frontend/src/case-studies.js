@@ -2245,5 +2245,5 @@ Pattern: Reply-To Gmail with name-reversal or numeric suffix
       { type: "IP",      value: "209.85.220.41 (Google relay; shared infrastructure, not an attacker IOC)" },
       { type: "IP",      value: "209.85.220.65 (Google relay; shared infrastructure, not an attacker IOC)" },
     ],
-  };
+  },
 ];
