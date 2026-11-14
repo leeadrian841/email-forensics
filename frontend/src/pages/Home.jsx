@@ -6,7 +6,8 @@
 //
 // Content source: ANALYST_INFO from analyst-info.js & CASE_STUDIES from case-studies/
 // To edit: update ANALYST_INFO (name, bio, certs, skills) from analyst-info.js &
-//          the caseN.js files in case-studies/ (featured cases are case1–case3).
+//          the caseN.js files in case-studies/ (featured cases are picked in
+//          FEATURED_CASE_IDS in case-studies/index.js).
 // -----------------------------------------------------------------------------
 import React from "react";
 import { NavLink } from "react-router-dom";
@@ -27,7 +28,7 @@ import {
 } from "lucide-react";
 import { Card, CardContent, CardHeader } from "../components/ui/card";
 import { ANALYST_INFO } from "../analyst-info";
-import { CASE_STUDIES } from "../case-studies/index.js";
+import { FEATURED_CASES } from "../case-studies/index.js";
 
 const severityColor = (severity) => {
   switch (severity) {
@@ -56,7 +57,7 @@ const categoryIcon = (category) => {
 };
 
 const Home = () => {
-  const featuredCases = CASE_STUDIES.slice(0, 3);
+  const featuredCases = FEATURED_CASES;
 
   return (
     <div className="min-h-screen bg-[#060b14]">
