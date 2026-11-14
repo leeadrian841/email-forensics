@@ -17,7 +17,6 @@ black==26.10.1
 isort==8.0.1
 flake8==7.3.0
 mypy==1.20.2
-python-jose==3.5.0
 requests==2.33.1
 pandas==3.0.2
 numpy==2.4.4
