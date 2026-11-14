@@ -4,9 +4,9 @@
 // Displays: hero section, certifications, featured case studies,
 // "What is Email Forensics?" section, skills, and CTA.
 //
-// Content source: ANALYST_INFO from analyst-info.js & CASE_STUDIES from case-studies.js
+// Content source: ANALYST_INFO from analyst-info.js & CASE_STUDIES from case-studies/
 // To edit: update ANALYST_INFO (name, bio, certs, skills) from analyst-info.js &
-//          CASE_STUDIES (featured cases are the first 3 entries) in case-studies.js.
+//          the caseN.js files in case-studies/ (featured cases are case1–case3).
 // -----------------------------------------------------------------------------
 import React from "react";
 import { NavLink } from "react-router-dom";
@@ -27,7 +27,7 @@ import {
 } from "lucide-react";
 import { Card, CardContent, CardHeader } from "../components/ui/card";
 import { ANALYST_INFO } from "../analyst-info";
-import { CASE_STUDIES } from "../case-studies";
+import { CASE_STUDIES } from "../case-studies/index.js";
 
 const severityColor = (severity) => {
   switch (severity) {

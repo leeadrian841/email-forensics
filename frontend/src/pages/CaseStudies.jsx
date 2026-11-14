@@ -1,11 +1,11 @@
 // -----------------------------------------------------------------------------
 // CaseStudies.jsx — Case study list page with search & filters
 //
-// Displays all entries from the CASE_STUDIES array in case-studies.js as cards.
+// Displays all case studies as cards.
 // Supports filtering by category, severity, and free-text search.
 //
-// Content source: CASE_STUDIES from case-studies.js
-// To add a new case: add an entry to the CASE_STUDIES array in case-studies.js.
+// Content source: CASE_STUDIES from case-studies/index.js (one caseN.js per case)
+// To add a new case: copy case-studies/_template.js to the next caseN.js.
 // -----------------------------------------------------------------------------
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
@@ -20,7 +20,7 @@ import {
   Calendar,
 } from "lucide-react";
 import { Card, CardContent, CardHeader } from "../components/ui/card";
-import { CASE_STUDIES } from "../case-studies";
+import { CASE_STUDIES } from "../case-studies/index.js";
 
 const severityColor = (severity) => {
   switch (severity) {
