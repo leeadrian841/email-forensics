@@ -3,12 +3,12 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
 
-export default defineConfig(({ command }) => ({
+export default defineConfig(() => ({
   plugins: [react(), tailwindcss()],
-  // Production build uses /email-forensics/ for GitHub Pages.
-  // Dev server uses / so the preview environment works normally.
+  // GitHub Pages serves the site under /email-forensics/, and image paths in the
+  // case data include it, so dev and preview use the same base as the build.
   // IMPORTANT: Change "email-forensics" if your repo name is different.
-  base: command === 'build' ? '/email-forensics/' : '/',
+  base: '/email-forensics/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),

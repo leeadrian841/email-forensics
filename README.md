@@ -6,12 +6,10 @@
 
 [![Live Site](https://img.shields.io/badge/🌐_Live_Site-leeadrian841.github.io/email--forensics-0ea5e9?style=for-the-badge)](https://leeadrian841.github.io/email-forensics)
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev/)
 [![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)](https://mongodb.com/)
 
-> **A full-stack cybersecurity portfolio built to showcase real-world email threat analysis.**  
+> **A cybersecurity portfolio built to showcase real-world email threat analysis.**  
 > Anonymised case studies. Dozens of IOCs. One mission — make phishing attacks transparent.
 
 </div>
@@ -52,6 +50,8 @@ Each investigation includes: full email header walkthrough, authentication resul
 | 6 | **IMF/INTERPOL Compensation** | 419 Fraud | 🟠 High | Compromised ISP account + Reply-To hijacking |
 | 7 | **UN Compensation** | 419 Fraud | 🟠 High | Compromised ISP account + Reply-To hijacking |
 | 8 | **Next-of-Kin Inheritance** | 419 Fraud | 🟠 High | Compromised university account + Reply-To hijacking |
+| 9 | **HSBC ATM Card Release** | 419 Fraud | 🟠 High | Hijacked university Google Workspace account + courier-fee pretext |
+| 10 | **Fake Recruiter Retargeting Campaign** | Recruitment Fraud / PII Harvesting | 🟠 High | Three Gmail senders linked to one operator by template fingerprints |
 
 ---
 

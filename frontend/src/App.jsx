@@ -20,7 +20,7 @@ import CaseStudies from "./pages/CaseStudies";
 import CaseStudyDetail from "./pages/CaseStudyDetail";
 import Guide from "./pages/Guide";
 
-// Use /email-forensics in production (GitHub Pages), "/" in dev
+// Follows `base` in vite.config.js (/email-forensics in dev, preview and build)
 const basename = import.meta.env.BASE_URL.replace(/\/$/, "") || "/";
 
 function App() {

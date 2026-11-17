@@ -3,7 +3,7 @@
 //
 // Used in CaseStudyDetail.jsx, Guide.jsx (header examples & guide screenshots).
 // No content to edit here — images come from `screenshots`, `examples`, or
-// `images` arrays in mock.js. Each entry: { url, caption, alt }.
+// `images` arrays in src/case-studies/ and guide-content.js. Each entry: { url, caption, alt }.
 // -----------------------------------------------------------------------------
 import React, { useState } from "react";
 import { X, ZoomIn, ChevronLeft, ChevronRight, Image } from "lucide-react";
@@ -105,6 +105,8 @@ const ScreenshotGallery = ({ images = [], title = "Screenshots" }) => {
           onClick={closeLightbox}
           onKeyDown={handleKeyDown}
           tabIndex={0}
+          // React's autoFocus skips divs; focus here so Escape and arrow keys work.
+          ref={(el) => el?.focus()}
           role="dialog"
           aria-modal="true"
           aria-label="Image lightbox"
@@ -126,7 +128,7 @@ const ScreenshotGallery = ({ images = [], title = "Screenshots" }) => {
             {images.length > 1 && (
               <button
                 onClick={prev}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-14 p-2 rounded-lg border border-[#1a2d45] bg-[#0d1526] text-[#8899aa] hover:text-[#22d3ee] hover:border-[#22d3ee]/30 transition-colors duration-200"
+                className="absolute left-2 top-1/2 -translate-y-1/2 z-10 p-2 rounded-lg border border-[#1a2d45] bg-[#0d1526] text-[#8899aa] hover:text-[#22d3ee] hover:border-[#22d3ee]/30 transition-colors duration-200"
                 aria-label="Previous image"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -160,7 +162,7 @@ const ScreenshotGallery = ({ images = [], title = "Screenshots" }) => {
             {images.length > 1 && (
               <button
                 onClick={next}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-14 p-2 rounded-lg border border-[#1a2d45] bg-[#0d1526] text-[#8899aa] hover:text-[#22d3ee] hover:border-[#22d3ee]/30 transition-colors duration-200"
+                className="absolute right-2 top-1/2 -translate-y-1/2 z-10 p-2 rounded-lg border border-[#1a2d45] bg-[#0d1526] text-[#8899aa] hover:text-[#22d3ee] hover:border-[#22d3ee]/30 transition-colors duration-200"
                 aria-label="Next image"
               >
                 <ChevronRight className="w-5 h-5" />

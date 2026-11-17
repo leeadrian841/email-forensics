@@ -3,7 +3,7 @@
 //
 // Used in CaseStudyDetail.jsx to render raw headers, WHOIS output, etc.
 // No content to edit here — content comes from the `codeBlock` field
-// in each analysis step of a case study in mock.js.
+// in each analysis step of a case file in src/case-studies/.
 // -----------------------------------------------------------------------------
 import React, { useState } from "react";
 import { Copy, CheckCircle, Terminal } from "lucide-react";

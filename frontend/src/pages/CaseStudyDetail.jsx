@@ -30,19 +30,7 @@ import { Card, CardContent, CardHeader } from "../components/ui/card";
 import { CASE_STUDIES } from "../case-studies/index.js";
 import CodeBlock from "../components/CodeBlock";
 import ScreenshotGallery from "../components/ScreenshotGallery";
-
-const severityColor = (severity) => {
-  switch (severity) {
-    case "Critical":
-      return "bg-[#fb7185]/10 text-[#fb7185] border-[#fb7185]/20";
-    case "High":
-      return "bg-[#f59e0b]/10 text-[#f59e0b] border-[#f59e0b]/20";
-    case "Medium":
-      return "bg-[#22d3ee]/10 text-[#22d3ee] border-[#22d3ee]/20";
-    default:
-      return "bg-[#8899aa]/10 text-[#8899aa] border-[#8899aa]/20";
-  }
-};
+import { severityColor } from "../components/caseBadges";
 
 const flagSeverityStyles = {
   Critical: "border-l-[#fb7185] bg-[#fb7185]/5",
