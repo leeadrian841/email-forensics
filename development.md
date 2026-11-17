@@ -14,7 +14,7 @@ Built with **React 19 + Vite 8 + Tailwind CSS 4** and deployed to
 cd frontend
 yarn install
 yarn start           # → http://localhost:3000/email-forensics/
-node --test tests/   # checks every case file (also runs before each deploy)
+node --test tests/cases.test.js   # checks every case file (also runs before each deploy)
 yarn build           # production build → frontend/dist/
 ```
 

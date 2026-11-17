@@ -1,6 +1,6 @@
 // Checks the hand-edited case files before deploy: a missing field or a
 // duplicate id builds fine but blanks the page for every visitor.
-// Run: node --test tests/
+// Run: node --test tests/cases.test.js
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readdirSync, existsSync } from "node:fs";
