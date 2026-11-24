@@ -334,7 +334,7 @@ const CaseStudyDetail = () => {
                           {fp.shared ? "Shared" : "Varies"}
                         </span>
                       </div>
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                      <div className="grid grid-cols-[repeat(auto-fit,minmax(7rem,1fr))] gap-2">
                         {fp.values.map((v, j) => (
                           <div key={j} className="bg-[#060b14] rounded-lg px-3 py-2 min-w-0">
                             <span className="text-[#4a5568] text-[10px] font-mono uppercase block">

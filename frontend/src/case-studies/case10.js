@@ -1,19 +1,19 @@
 // ── CASE 10: Fake Recruiter Campaign ────────────────────────────────────
-// Merged campaign case: three fake recruiter emails, one operator.
+// Merged campaign case: four fake recruiter emails, one operator.
 // Recipient address, tracking IDs, and message hashes are redacted. URLs are defanged.
 export default {
     id: "fake-recruiter-retargeting-campaign",
     title: "Fake Recruiter Retargeting Campaign",
-    subtitle: "Three emails, three Gmail accounts, one operator",
+    subtitle: "Four emails, four Gmail accounts, one operator",
     date: "2026-11-08",
-    dateEnd: "2026-11-13",
+    dateEnd: "2026-11-20",
     severity: "High",
     category: "Recruitment Fraud / PII Harvesting",
-    tags: ["Job Scam", "Fake Recruiter", "Campaign", "Account Rotation", "CV Harvesting", "Tracking Pixel", "OSINT Scraping", "Gmail Abuse"],
+    tags: ["Job Scam", "Fake Recruiter", "Campaign", "Account Rotation", "Persona Reuse", "CV Harvesting", "Tracking Pixel", "OSINT Scraping", "Gmail Abuse"],
     summary:
-      "Three unsolicited recruiter emails reached the same inbox within six days, each from a different free Gmail account. All three share one template: the same subject format, the same HTML structure, and the same paraphrase of the recipient's public portfolio. The first email posed as 'Ashmont Search', an agency with no discoverable registration or web presence, and asked for a CV. The second dropped the agency, added a hidden mail-merge tracking pixel, and asked for a one-word reply. The third dropped every identity marker and asked only about career interests. The operator rotated accounts and softened the ask after each non-reply. Every IP in all three emails belongs to Google, and Gmail strips the sender's client IP, so header geolocation is impossible. All authentication passes because the accounts are genuine Gmail accounts. The campaign links through template structure, not infrastructure.",
-    verdict: "Recruitment Fraud Campaign: One Operator, Three Rotated Gmail Accounts",
-    tldr: "One operator sent three fake recruiter emails from three Gmail accounts in six days, softening the ask each time: CV request, keyword reply, open question. All auth passes. Template fingerprints link them.",
+      "Four unsolicited recruiter emails reached the same inbox within 12 days, each from a different free Gmail account. All four share one template: the same subject format, the same HTML structure, and the same paraphrase of the recipient's public portfolio. The first email posed as 'Ashmont Search', an agency with no discoverable registration or web presence, and asked for a CV. The second dropped the agency, added a hidden mail-merge tracking pixel, and asked for a one-word reply. The third dropped every identity marker and asked only about career interests. A week later the fourth reused the first email's 'Gideon S' persona as 'Gideon Salau', added a salary lure, and asked for the CV again. The operator rotated accounts, softened the ask after each non-reply, then reset to the CV request. Every IP in all four emails belongs to Google, and Gmail strips the sender's client IP, so header geolocation is impossible. All authentication passes because the accounts are genuine Gmail accounts. The campaign links through template structure and persona reuse, not infrastructure.",
+    verdict: "Recruitment Fraud Campaign: One Operator, Four Rotated Gmail Accounts",
+    tldr: "One operator sent four fake recruiter emails from four Gmail accounts in 12 days: CV request, keyword reply, open question, then a salary lure asking for the CV again under a reused 'Gideon' persona. All auth passes. Template fingerprints link them.",
 
     screenshots: [],
 
@@ -23,19 +23,20 @@ export default {
         { emailId: "e1", sent: "Sun 08 Nov 2026, 08:21 SGT", sender: "gideons134679@gmail.com",      persona: "Gideon, Career Consultant, Ashmont Search",          ask: "Send latest CV and target roles" },
         { emailId: "e2", sent: "Wed 11 Nov 2026, 10:48 SGT", sender: "qakinola29@gmail.com",         persona: "Professional Executive Talent Relations Specialist", ask: "Reply INTERESTED or OPEN" },
         { emailId: "e3", sent: "Fri 13 Nov 2026, 09:25 SGT", sender: "samuel.executive28@gmail.com", persona: "None (unsigned)",                                   ask: "Share future career interests" },
+        { emailId: "e4", sent: "Fri 20 Nov 2026, 08:09 SGT", sender: "gideonsalau83@gmail.com",      persona: "Gideon Salau (no title, agency, or signature)",       ask: "Send résumé as a YES" },
       ],
     fingerprints: [
-      { indicator: "Subject Header",        values: ["NAME + HEADLINE", "Name | Headline", "Name | Headline"],                         shared: true  },
-      { indicator: "HTML Nesting",            values: ["ltr > div > auto", "ltr > div > auto", "ltr > div > auto"],                      shared: true  },
-      { indicator: "Scraped Profile Summary", values: ["Yes", "Yes", "Yes"],                                                             shared: true  },
-      { indicator: "Sender Domain",           values: ["gmail.com", "gmail.com", "gmail.com"],                                           shared: true  },
-      { indicator: "Delivery Window (SGT)",   values: ["08:21", "10:48", "09:25"],                                                       shared: true  },
-      { indicator: "Authentication",          values: ["All pass", "All pass", "All pass"],                                              shared: true  },
-      { indicator: "Sender Account",          values: ["gideons134679", "qakinola29", "samuel.executive28"],                             shared: false },
-      { indicator: "Agency Name",            values: ["Ashmont Search", "None", "None"],                                                shared: false },
-      { indicator: "Tracking Pixel",          values: ["None", "p.mailmerge.eu", "None"],                                                shared: false },
-      { indicator: "Date Header Offset",      values: ["+0100", "-0800", "+0100"],                                                       shared: false },
-      { indicator: "Google Relay IP Address",            values: ["209.85.220.41", "209.85.220.65", "209.85.220.41"],                               shared: false },
+      { indicator: "Subject Header",        values: ["NAME + HEADLINE", "Name | Headline", "Name | Headline", "NAME + HEADLINE"],                         shared: true  },
+      { indicator: "HTML Nesting",            values: ["ltr > div > auto", "ltr > div > auto", "ltr > div > auto", "ltr > auto"],                      shared: true  },
+      { indicator: "Scraped Profile Summary", values: ["Yes", "Yes", "Yes", "Yes"],                                                             shared: true  },
+      { indicator: "Sender Domain",           values: ["gmail.com", "gmail.com", "gmail.com", "gmail.com"],                                           shared: true  },
+      { indicator: "Delivery Window (SGT)",   values: ["08:21", "10:48", "09:25", "08:09"],                                                       shared: true  },
+      { indicator: "Authentication",          values: ["All pass", "All pass", "All pass", "All pass"],                                              shared: true  },
+      { indicator: "Sender Account",          values: ["gideons134679", "qakinola29", "samuel.executive28", "gideonsalau83"],                             shared: false },
+      { indicator: "Agency Name",            values: ["Ashmont Search", "None", "None", "None"],                                                shared: false },
+      { indicator: "Tracking Pixel",          values: ["None", "p.mailmerge.eu", "None", "None"],                                                shared: false },
+      { indicator: "Date Header Offset",      values: ["+0100", "-0800", "+0100", "+0100"],                                                       shared: false },
+      { indicator: "Google Relay IP Address",            values: ["209.85.220.41", "209.85.220.65", "209.85.220.41", "209.85.220.41"],                               shared: false },
     ],
     },
 
@@ -172,6 +173,51 @@ export default {
           { flag: "No payload or concrete ask: built to elicit a reply",               severity: "Medium" },
         ],
       },
+      {
+        id: "e4",
+        label: "Email 4: Gideon Salau",
+        date: "2026-11-20",
+        severity: "High",
+        emailHeaders: [
+          // Delivery & Routing
+          { key: "Delivered-To",     value: "[recipient]", flagged: false },
+          { key: "Received",         value: "by 2002:a05:7119:6105:b0:1ec:fca0:f95a with SMTP id y5csp756634ggq; Thu, 19 Nov 2026 16:09:47 -0800 (PST)", flagged: false }, // decodes to 10.5.113.25, recipient's Gmail mailbox server (same as email 1)
+          { key: "X-Received",       value: "by 2002:a2e:ab0a:0:b0:3ac:e4b6:b93d with SMTP id 38308e7fff4ca-3ae7f9a072fmr4270231fa; Thu, 19 Nov 2026 16:09:47 -0800 (PST)", flagged: false }, // decodes to 10.46.171.10, Google internal
+          { key: "Return-Path",      value: "<gideonsalau83@gmail.com>", flagged: true }, // free Gmail with numeric suffix; fourth account
+          { key: "Received",         value: "from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41]) by mx.google.com with SMTPS; Thu, 19 Nov 2026 16:09:47 -0800 (PST)", flagged: false }, // Google outbound relay, AS15169
+          { key: "X-Received",       value: "by 2002:a05:651c:2127:b0:3ae:5909:3c47 with SMTP id 38308e7fff4ca-3ae7fa64618mr3863591fa; Thu, 19 Nov 2026 16:09:46 -0800 (PST)", flagged: false }, // decodes to 10.5.101.28, Google internal
+          { key: "X-Originating-IP", value: "(absent: Gmail strips the sender's client IP)", flagged: true },
+
+          // Sender Identity
+          { key: "From",     value: "Gideon Salau <gideonsalau83@gmail.com>", flagged: true }, // expands email 1's 'Gideon S' persona on a new account
+          { key: "To",       value: "Adrian Lee <[recipient]>", flagged: true }, // mail-merge personalisation
+          { key: "Reply-To", value: "(not set)", flagged: false },
+
+          // Content
+          { key: "Subject", value: "ADRIAN LEE – DIGITAL FORENSICS SPECIALIST OPPORTUNITY IN SINGAPORE", flagged: true }, // NAME + HEADLINE template, as in email 1
+          { key: "Date",    value: "Fri, 20 Nov 2026 01:09:22 +0100", flagged: true }, // = 00:09 UTC = 08:09 SGT Friday; same offset as emails 1 and 3
+
+          // Authentication
+          { key: "Authentication-Results", value: "mx.google.com; dkim=pass header.i=@gmail.com header.s=20260707; arc=pass (i=1); spf=pass smtp.mailfrom=gideonsalau83@gmail.com; dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com; dara=pass header.i=@gmail.com", flagged: false },
+          { key: "Received-SPF",           value: "pass (google.com: domain of gideonsalau83@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41", flagged: false },
+          { key: "DKIM-Signature",         value: "v=1; a=rsa-sha256; d=gmail.com; s=20260707; t=1795133386; x=1795738186", flagged: false }, // t = 2026-11-20 00:09:46 UTC
+          { key: "ARC-Seal",               value: "i=1; cv=none; d=google.com, then i=2; cv=pass; d=google.com", flagged: false },
+
+          // Message Structure
+          { key: "Message-ID",          value: "<CADnS1YtjxbUoXa8vfe1LgzzsP5hSDSieOEwkyFYsYw0GziDkSg@mail.gmail.com>", flagged: false },
+          { key: "Content-Type",        value: "multipart/alternative; boundary=\"000000000000d2c7030660aa0f0b\"", flagged: false },
+          { key: "HTML body structure", value: "<div dir=\"ltr\"><div dir=\"auto\">...", flagged: true }, // same ltr/auto template with one wrapper div fewer
+        ],
+        redFlags: [
+          { flag: "Résumé requested as the reply ('send your résumé as a YES'): PII harvest",          severity: "Critical" },
+          { flag: "Reuses email 1's 'Gideon S' persona, now 'Gideon Salau', on a fourth Gmail account", severity: "High" },
+          { flag: "Salary lure (SGD 5,000–6,500) with no company, client, or EA licence number",       severity: "High" },
+          { flag: "Body paraphrases public portfolio projects (email forensics, GRC, network scanning)", severity: "High" },
+          { flag: "Contradictory requirement: 'Junior-to-mid; 8+ years'",                               severity: "Medium" },
+          { flag: "Mail-merge greeting with the surname in lower case: 'Dear Adrian lee'",             severity: "Medium" },
+          { flag: "No signature, title, phone, website, or LinkedIn profile",                          severity: "Medium" },
+        ],
+      },
     ],
 
     // ── Campaign-level findings ────────────────────────────────────────────────
@@ -180,19 +226,20 @@ export default {
       { flag: "Campaign opens with a CV request to an unverified sender: PII harvest", severity: "Critical" },
   
       // High
-      { flag: "Three sender identities in six days: account rotation",                         severity: "High" },
-      { flag: "Ask softens after each non-reply: CV, then keyword, then open question",        severity: "High" },
-      { flag: "Identical template across all three emails: one operator",                      severity: "High" },
-      { flag: "All three paraphrase the recipient's public portfolio: OSINT scraping",         severity: "High" },
+      { flag: "Four sender identities in 12 days: account rotation",                           severity: "High" },
+      { flag: "Ask softens after each non-reply, then resets: CV, keyword, open question, CV again", severity: "High" },
+      { flag: "Email 4 reuses email 1's 'Gideon S' persona on a new account: same operator",   severity: "High" },
+      { flag: "Same template across all four emails: one operator",                            severity: "High" },
+      { flag: "All four paraphrase the recipient's public portfolio: OSINT scraping",          severity: "High" },
       { flag: "Every sender uses free Gmail; no agency domain, licence, or verifiable identity", severity: "High" },
-  
+
       // Medium
-      { flag: "Sender IP concealed in all three: only Google relay and private Google addresses", severity: "Medium" },
+      { flag: "Sender IP concealed in all four: only Google relay and private Google addresses", severity: "Medium" },
       { flag: "All sends land between 08:00 and 11:00 SGT: scheduled to the recipient's morning", severity: "Medium" },
       { flag: "Mail-merge tooling confirmed by tracking pixel in email 2",                        severity: "Medium" },
-  
+
       // Low
-      { flag: "Date offsets disagree (+0100, -0800, +0100): timezone is not a location signal", severity: "Low" },
+      { flag: "Date offsets disagree (+0100, -0800, +0100, +0100): timezone is not a location signal", severity: "Low" },
       { flag: "All authentication passes via Google: header checks offer no protection",        severity: "Low" },
     ],
   
@@ -200,7 +247,7 @@ export default {
       {
         step: "1. Campaign Timeline",
         content:
-          "Three emails arrived in six days from three Gmail accounts. The first carried the fullest persona and the strongest ask: a named agency and a CV request. The second dropped the agency and asked for a one-word reply. The third dropped every identity marker and asked an open question. The operator rotated accounts and lowered the barrier to reply after each silence.",
+          "Four emails arrived in 12 days from four Gmail accounts. The first carried the fullest persona and the strongest ask: a named agency and a CV request. The second dropped the agency and asked for a one-word reply. The third dropped every identity marker and asked an open question. The operator rotated accounts and lowered the barrier to reply after each silence. A week after the third email, the fourth reset to the strongest ask: a CV, sweetened with a salary range.",
         codeBlock: {
           language: "text",
           title: "Timeline",
@@ -208,24 +255,25 @@ export default {
   ──────────────────────────────────────────────────────────────────────────────────────────
   1  Sun 08 Nov 08:21    gideons134679@gmail.com        Ashmont Search        Send CV + target roles
   2  Wed 11 Nov 10:48    qakinola29@gmail.com           Talent Relations      Reply INTERESTED / OPEN
-  3  Fri 13 Nov 09:25    samuel.executive28@gmail.com   none                  Share career interests`,
+  3  Fri 13 Nov 09:25    samuel.executive28@gmail.com   none                  Share career interests
+  4  Fri 20 Nov 08:09    gideonsalau83@gmail.com        Gideon Salau          Send résumé as a YES`,
         },
       },
       {
         step: "2. Attribution by Template, Not Infrastructure",
         content:
-          "No infrastructure links these emails. Each uses a different account, and the shared Google relays serve millions of senders. The link is the template. All three subjects pair the recipient's name with a profile headline. All three HTML bodies nest a dir=\"auto\" block inside a dir=\"ltr\" block in the same way. All three open with the same paraphrase of the recipient's public profile. Emails 2 and 3 share an unsigned 'Best regards' sign-off. Structure matching caught what IP and domain matching cannot.",
+          "No infrastructure links these emails. Each uses a different account, and the shared Google relays serve millions of senders. The link is the template. All four subjects pair the recipient's name with a profile headline. All four HTML bodies nest a dir=\"auto\" block inside a dir=\"ltr\" block; email 4 drops one wrapper div between them. All four open with a paraphrase of the recipient's public profile. Emails 2 and 3 share an unsigned 'Best regards' sign-off. Email 4 adds the strongest single link: it reuses email 1's 'Gideon S' persona. Structure matching caught what IP and domain matching cannot.",
         codeBlock: {
           language: "text",
           title: "Shared fingerprints",
-          code: `Indicator            Email 1              Email 2              Email 3
-  ───────────────────────────────────────────────────────────────────────────
-  Subject template     NAME + HEADLINE      Name | Headline      Name | Headline
-  HTML nesting         ltr > div > auto     ltr > div > auto     ltr > div > auto
-  Scraped summary      yes                  yes                  yes
-  Sender domain        gmail.com            gmail.com            gmail.com
-  Authentication       all pass             all pass             all pass
-  Delivery (SGT)       08:21                10:48                09:25`,
+          code: `Indicator            Email 1              Email 2              Email 3              Email 4
+  ──────────────────────────────────────────────────────────────────────────────────────────────
+  Subject template     NAME + HEADLINE      Name | Headline      Name | Headline      NAME + HEADLINE
+  HTML nesting         ltr > div > auto     ltr > div > auto     ltr > div > auto     ltr > auto
+  Scraped summary      yes                  yes                  yes                  yes
+  Sender domain        gmail.com            gmail.com            gmail.com            gmail.com
+  Authentication       all pass             all pass             all pass             all pass
+  Delivery (SGT)       08:21                10:48                09:25                08:09`,
         },
       },
       {
@@ -240,8 +288,9 @@ export default {
   1      209.85.220.41  mail-sor-f41.google.com    10.5.113.25 (mailbox), 10.5.101.28
   2      209.85.220.65  mail-sor-f65.google.com    10.5.113.24 (mailbox), 10.23.9.2
   3      209.85.220.41  mail-sor-f41.google.com    10.5.113.24 (mailbox), 10.83.194.196, 10.5.105.14
-  
-  X-Originating-IP: absent in all three (stripped by Gmail)`,
+  4      209.85.220.41  mail-sor-f41.google.com    10.5.113.25 (mailbox), 10.46.171.10, 10.5.101.28
+
+  X-Originating-IP: absent in all four (stripped by Gmail)`,
         },
       },
       {
@@ -265,15 +314,33 @@ export default {
         content:
           "Two early calls changed as evidence arrived. First: email 3, analysed alone, looked like a hand-typed targeted send because of its named To field. The tracking pixel in email 2 showed the campaign runs on mail merge, so the personalisation is automated. Second: the +0100 Date offset in email 3 looked like a soft location signal. Email 2 carries -0800 from the same campaign, so the offset reflects account settings and carries no location value. Send times converted to the recipient's timezone proved the better signal.",
       },
+      {
+        step: "7. Email 4: Persona Reuse and a Reset to the CV Ask",
+        content:
+          "Seven days after email 3, on the same weekday, a fourth account wrote: 'Gideon Salau'. Email 1 signed as 'Gideon S', so the operator reused its first persona and filled in a surname. The subject returns to email 1's all-caps NAME + HEADLINE form. The Date offset is +0100, as in emails 1 and 3, and the send lands at 08:09 SGT, inside the campaign's morning window. The body names a 'Digital Forensics Specialist' role, which mirrors the recipient's email forensics portfolio, and repeats public project details: GRC and network scanning. It adds the campaign's first salary lure, SGD 5,000–6,500 a month, and asks for the CV again: 'send your résumé as a YES'. That merges email 1's CV request with email 2's keyword reply. Template slips confirm a mail merge: 'Junior-to-mid; 8+ years' contradicts itself, and the greeting reads 'Dear Adrian lee'. No company, client, licence number, or signature appears. The HTML drops one wrapper div, a small template edit that does not break the ltr/auto pattern.",
+        codeBlock: {
+          language: "text",
+          title: "Email 4 against the campaign",
+          code: `Persona        Gideon S (email 1)  →  Gideon Salau (email 4), new account gideonsalau83
+  Subject        ADRIAN LEE — CYBERSECURITY & TECHNOLOGY OPERATIONS   (email 1)
+                 ADRIAN LEE – DIGITAL FORENSICS SPECIALIST OPPORTUNITY IN SINGAPORE   (email 4)
+  Date offset    +0100 (emails 1, 3, 4)
+  Sent           Fri 20 Nov 08:09 SGT, 7 days after email 3 (Fri 13 Nov)
+  Ask            CV → keyword → open question → "send your résumé as a YES"
+  New lure       SGD 5,000–6,500 per month
+  Template slips "Junior-to-mid; 8+ years", "Dear Adrian lee"`,
+        },
+      },
     ],
   
     recommendations: [
-      "Do not send a CV, NRIC, passport, or bank details to any of the three senders.",
+      "Do not send a CV, NRIC, passport, or bank details to any of the four senders.",
+      "Treat a salary range in an unsolicited email as bait, not as evidence of a real role.",
       "Do not reply, including with the keyword. A reply confirms a live, job-seeking target.",
       "Verify any agency and recruiter in the MOM EA Directory before sharing personal data.",
       "Disable automatic image loading in Gmail to block tracking pixels.",
       "Never pay a fee for a job, and never run an unsolicited 'assessment' file outside an isolated VM.",
-      "Report all three accounts via Gmail 'Report phishing' and submit the campaign to ScamShield.",
+      "Report all four accounts via Gmail 'Report phishing' and submit the campaign to ScamShield.",
       "Remove phone, address, and date of birth from any publicly downloadable CV.",
       "Do not geolocate Gmail relay IPs. Decode 2002:: addresses and mark private ranges as internal.",
     ],
@@ -287,7 +354,9 @@ export default {
       "Open-Tracking Pixel",
       "Keyword-Reply Qualification Funnel",
       "Sender Account Rotation",
+      "Persona Reuse Under a New Account",
       "Retargeting with Softened Asks",
+      "Salary Lure",
       "Scheduled Delivery to Recipient's Timezone",
       "Sender Location Concealment via Gmail Infrastructure",
     ],
@@ -296,9 +365,11 @@ export default {
       { type: "Email",   value: "gideons134679@gmail.com (email 1)" },
       { type: "Email",   value: "qakinola29@gmail.com (email 2)" },
       { type: "Email",   value: "samuel.executive28@gmail.com (email 3)" },
+      { type: "Email",   value: "gideonsalau83@gmail.com (email 4)" },
       { type: "Name",    value: "Gideon S, 'Career Consultant' (unverified persona, email 1)" },
       { type: "Name",    value: "Akinola Quadri (unverified persona, email 2)" },
       { type: "Name",    value: "Samuel Executive (placeholder identity, email 3)" },
+      { type: "Name",    value: "Gideon Salau (reused 'Gideon S' persona, email 4)" },
       { type: "Company", value: "Ashmont Search (no discoverable registration or web presence, email 1)" },
       { type: "Domain",  value: "p.mailmerge.eu (tracking pixel host, email 2)" },
       { type: "URL",     value: "hxxps://p[.]mailmerge[.]eu/trace/mail/[redacted].png?u=[redacted] (email 2)" },
